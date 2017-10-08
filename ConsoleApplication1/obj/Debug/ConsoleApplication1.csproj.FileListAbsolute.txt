@@ -1,0 +1,6 @@
+E:\work\cs\好品推\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+E:\work\cs\好品推\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+E:\work\cs\好品推\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+E:\work\cs\好品推\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+E:\work\cs\好品推\ConsoleApplication1\bin\Debug\Framework.dll
+E:\work\cs\好品推\ConsoleApplication1\bin\Debug\Framework.xml

@@ -1,0 +1,94 @@
+Web插件已经提供C#源码，如有需要请自行修改编译！
+
+★Web接口工作原理
+机器人收到消息，把消息内容、QQ、等数据以HTTP协议POST方法发送给接口地址，php处理后输入结果，机器人处理返回数据，返回数据会调用机器人的各种不同方法
+多个方法之间使用<&&>分割，每个方法传递的参数使用<&>分割
+
+例如返回“<&&>SendMessage<&>123456<&>您好”表示给123456发送消息您好
+一次可以返回多条指令，例如：
+echo('<&&>SendMessage<&>123456<&>您好');
+echo('<&&>SendClusterMessage<&>90335222<&>群里的朋友，大家好');
+
+除此以外，机器人还会定时发送GET请求给接口，以检查接口是否有需要发送的指令，可以用来主动给用户发送消息
+
+
+★注意：
+1、编码要和php文件编码保持一致，否则可能乱码，推荐使用utf-8
+2、推荐使用密钥，确保接口安全
+3、必要时可以查阅机器人日志
+
+★调试代码
+<?php
+if($_POST){
+	$ret = print_r($_POST, TRUE);
+	echo("<&&>SendMessage<&>123456<&>收到数据：\n$ret");
+}
+?>
+调试效果：
+================================
+发送“你好”给机器人，机器人回复：
+Array
+(
+    [RobotQQ] => 976811781
+    [Key] => 123
+    [Event] => ReceiveNormalIM
+    [QQ] => 123456
+    [NickName] => 小灰【QQ机器人促销中】
+    [Message] => 您好
+)
+================================
+我们可以看到，机器人发送了6个参数给Web，分别是：RobotQQ、Key、Event、QQ、NickName、Message
+调试代码调用echo返回结果，结果调用了SendMessage函数，给123456发送收到的数据
+
+更多发送参数，请放上调试代码，运行下机器人、插件，即可在机器人日志窗口中看到发送的参数。
+返回的结果可以调用的函数，请参考“开发文档.chm”中的Coco.Framework->QQClient节公共方法
+
+
+★监听端口使用（很少用）
+开启“监听端口”后，机器人可以监听端口，等待指令，例如设置8080，使用管理员身份重启后，打开浏览器，输入：
+http://localhost:8080/?key=123&a=<%26%26>SendMessage<%26>123456<%26>test
+回车后看到机器人日志窗口出现：
+================================
+2013/4/25 15:08:28 本地监听接收：<&&>SendMessage<&>123456<&>test
+
+2013/4/25 15:08:28 给【123456】发送消息：test
+2013/4/25 15:08:28 本地监听返回：ok
+
+================================
+即可以即时执行指令，其中<%26%26>是<&&>的url编码，<%26>是<&>的url编码，这里指令格式同上面的指令是一样的<&&>、<&>分割，注意整个指令都需要进行url编码
+
+
+Web接口支持的函数：
+说明格式：函数含义：函数名，参数1，参数2，参数3...
+加好友：AddFriend，好友qq号码，验证内容
+同意或拒绝群邀请：AgreeAddedToClusterInvite
+AgreeFriendInvite
+AgreeJoinCluster
+ChangeQQStatus
+ExitCluster
+GetCluster
+GetClusterMemberInfo
+GetFriend
+JoinCluster
+Logout
+ModifyMemberCard
+ModifySignature
+RemoveMember
+SendClusterMessage
+SendMessage
+SendSubjectMessage
+SendOfflineFile
+SendTempMessage
+SendVerifyCode
+SendVibration
+延迟，多个指令之间使用：Sleep
+获取所有群信息、成员信息：GetClusters
+获取所有好友信息：GetFriends
+查询积分：GetExtcredits,群号，群成员QQ号
+更新积分：UpdateExtcredits,群号，群成员QQ号，积分类别（从0开始），积分数量（负数表示减积分，正数表示加积分）
+
+具体函数签名请参考chm文档，特别说明，Sleep是延迟，GetClusters获取所有群，GetFriends获取所有好友
+
+http://localhost:8080/?key=123&a=<%26%26>SendMessage<%26>123456<%26>test
+http://localhost:8080/?key=123&a=<%26%26>GetClusters
+http://localhost:8080/?key=123&a=<%26%26>GetFriends

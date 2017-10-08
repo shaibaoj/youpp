@@ -1,0 +1,6 @@
+E:\work\cs\好品推\Release\Plugin\Coco\Plugin\qq.dll
+E:\work\cs\好品推\Release\Plugin\Coco\Plugin\qq.pdb
+E:\work\cs\好品推\qq\obj\Debug\qq.Form1.resources
+E:\work\cs\好品推\qq\obj\Debug\qq.csproj.GenerateResource.Cache
+E:\work\cs\好品推\qq\obj\Debug\qq.dll
+E:\work\cs\好品推\qq\obj\Debug\qq.pdb

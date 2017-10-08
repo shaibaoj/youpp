@@ -1,0 +1,6 @@
+E:\work\cs\好品推\AutoUpd\bin\Debug\AutoUpd.exe
+E:\work\cs\好品推\AutoUpd\bin\Debug\AutoUpd.pdb
+E:\work\cs\好品推\bin\AutoUpd.exe
+E:\work\cs\好品推\bin\AutoUpd.pdb
+E:\work\cs\好品推\AutoUpd\obj\x86\Debug\AutoUpd.exe
+E:\work\cs\好品推\AutoUpd\obj\x86\Debug\AutoUpd.pdb
