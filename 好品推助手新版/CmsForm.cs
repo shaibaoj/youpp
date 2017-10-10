@@ -478,6 +478,8 @@ namespace haopintui
         public TextBox textBox_price2;
         public TextBox textBox_price1;
         private Label label72;
+        private Button button47;
+        private Button button48;
 
         private Thread thread_zhuan_copy;
 
@@ -755,7 +757,7 @@ namespace haopintui
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CmsForm));
             this.richTextBoxLogs = new System.Windows.Forms.RichTextBox();
             this.layout_menu = new System.Windows.Forms.FlowLayoutPanel();
@@ -813,7 +815,11 @@ namespace haopintui
             this.tabControl_qunfa = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox33 = new System.Windows.Forms.GroupBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.textBox_price2 = new System.Windows.Forms.TextBox();
+            this.textBox_price1 = new System.Windows.Forms.TextBox();
             this.label60 = new System.Windows.Forms.Label();
+            this.label72 = new System.Windows.Forms.Label();
             this.label63 = new System.Windows.Forms.Label();
             this.label65 = new System.Windows.Forms.Label();
             this.comboBox_qunfa_ds_f2 = new System.Windows.Forms.ComboBox();
@@ -1144,10 +1150,8 @@ namespace haopintui
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.timer_kouling = new System.Windows.Forms.Timer(this.components);
             this.timer_caiji = new System.Windows.Forms.Timer(this.components);
-            this.textBox_price1 = new System.Windows.Forms.TextBox();
-            this.label40 = new System.Windows.Forms.Label();
-            this.textBox_price2 = new System.Windows.Forms.TextBox();
-            this.label72 = new System.Windows.Forms.Label();
+            this.button47 = new System.Windows.Forms.Button();
+            this.button48 = new System.Windows.Forms.Button();
             this.layout_menu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelTop.SuspendLayout();
@@ -1323,6 +1327,7 @@ namespace haopintui
             // 
             this.panelTop.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.panelTop.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panelTop.Controls.Add(this.button47);
             this.panelTop.Controls.Add(this.button_bind);
             this.panelTop.Controls.Add(this.label_user_type_name);
             this.panelTop.Controls.Add(this.label_welcome);
@@ -1412,7 +1417,7 @@ namespace haopintui
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.linkLabel1.LinkColor = System.Drawing.Color.White;
-            this.linkLabel1.Location = new System.Drawing.Point(350, 5);
+            this.linkLabel1.Location = new System.Drawing.Point(754, 5);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(32, 17);
             this.linkLabel1.TabIndex = 5;
@@ -1928,6 +1933,31 @@ namespace haopintui
             this.groupBox33.TabStop = false;
             this.groupBox33.Text = "发送规则";
             // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(481, 24);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(83, 17);
+            this.label40.TabIndex = 12;
+            this.label40.Text = "商品价格区间:";
+            // 
+            // textBox_price2
+            // 
+            this.textBox_price2.Location = new System.Drawing.Point(620, 24);
+            this.textBox_price2.Name = "textBox_price2";
+            this.textBox_price2.Size = new System.Drawing.Size(27, 23);
+            this.textBox_price2.TabIndex = 11;
+            this.textBox_price2.Text = "0";
+            // 
+            // textBox_price1
+            // 
+            this.textBox_price1.Location = new System.Drawing.Point(564, 24);
+            this.textBox_price1.Name = "textBox_price1";
+            this.textBox_price1.Size = new System.Drawing.Size(30, 23);
+            this.textBox_price1.TabIndex = 11;
+            this.textBox_price1.Text = "0";
+            // 
             // label60
             // 
             this.label60.AutoSize = true;
@@ -1936,6 +1966,16 @@ namespace haopintui
             this.label60.Size = new System.Drawing.Size(59, 17);
             this.label60.TabIndex = 7;
             this.label60.Text = "定时发送:";
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label72.Location = new System.Drawing.Point(596, 24);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(23, 17);
+            this.label72.TabIndex = 10;
+            this.label72.Text = "---";
             // 
             // label63
             // 
@@ -2275,8 +2315,8 @@ namespace haopintui
             // 
             // Column_time
             // 
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("新宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Column_time.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("新宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Column_time.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column_time.FillWeight = 20F;
             this.Column_time.HeaderText = "时间";
             this.Column_time.Name = "Column_time";
@@ -5476,6 +5516,7 @@ namespace haopintui
             // 
             // groupBox_alimama
             // 
+            this.groupBox_alimama.Controls.Add(this.button48);
             this.groupBox_alimama.Controls.Add(this.linkLabel10);
             this.groupBox_alimama.Controls.Add(this.label66);
             this.groupBox_alimama.Controls.Add(this.checkBoxScanLogin);
@@ -5613,40 +5654,28 @@ namespace haopintui
             this.timer_caiji.Interval = 60000;
             this.timer_caiji.Tick += new System.EventHandler(this.timer_caiji_Tick);
             // 
-            // textBox_price1
+            // button47
             // 
-            this.textBox_price1.Location = new System.Drawing.Point(564, 24);
-            this.textBox_price1.Name = "textBox_price1";
-            this.textBox_price1.Size = new System.Drawing.Size(30, 23);
-            this.textBox_price1.TabIndex = 11;
-            this.textBox_price1.Text = "0";
+            this.button47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button47.ForeColor = System.Drawing.Color.Red;
+            this.button47.Location = new System.Drawing.Point(326, 5);
+            this.button47.Name = "button47";
+            this.button47.Size = new System.Drawing.Size(75, 23);
+            this.button47.TabIndex = 9;
+            this.button47.Text = "高佣授权";
+            this.button47.UseVisualStyleBackColor = false;
+            this.button47.Click += new System.EventHandler(this.button47_Click);
             // 
-            // label40
+            // button48
             // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(481, 24);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(83, 17);
-            this.label40.TabIndex = 12;
-            this.label40.Text = "商品价格区间:";
-            // 
-            // textBox_price2
-            // 
-            this.textBox_price2.Location = new System.Drawing.Point(620, 24);
-            this.textBox_price2.Name = "textBox_price2";
-            this.textBox_price2.Size = new System.Drawing.Size(27, 23);
-            this.textBox_price2.TabIndex = 11;
-            this.textBox_price2.Text = "0";
-            // 
-            // label72
-            // 
-            this.label72.AutoSize = true;
-            this.label72.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label72.Location = new System.Drawing.Point(596, 24);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(23, 17);
-            this.label72.TabIndex = 10;
-            this.label72.Text = "---";
+            this.button48.ForeColor = System.Drawing.Color.Red;
+            this.button48.Location = new System.Drawing.Point(164, 162);
+            this.button48.Name = "button48";
+            this.button48.Size = new System.Drawing.Size(75, 23);
+            this.button48.TabIndex = 6;
+            this.button48.Text = "高佣授权";
+            this.button48.UseVisualStyleBackColor = true;
+            this.button48.Click += new System.EventHandler(this.button48_Click);
             // 
             // CmsForm
             // 
@@ -9787,6 +9816,16 @@ namespace haopintui
         private void linkLabel10_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("http://software1.huopinjie.com/update/update/aliwangwang.zip");
+        }
+
+        private void button47_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://www.haopintui.net/user_info.php?action=user&mod=taoke_token");
+        }
+
+        private void button48_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://www.haopintui.net/user_info.php?action=user&mod=taoke_token");
         }
 
 

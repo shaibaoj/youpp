@@ -20,7 +20,7 @@ namespace com.haopintui
         public static string user_cms_data_url = "user-cms.plug.huopinjie.com";
 
         public static string product_code = "zhushou";
-        public static int version = 176; //版本 更新判断
+        public static int version = 178; //版本 更新判断
         public static string version_str = "1.0"; //显示的版本编号
 
         public static string main_exe = "好品推助手.exe";
@@ -64,6 +64,7 @@ namespace com.haopintui
 
         public static string user_goods_click_url = "http://" + user_plug_url + "/click.php";
         public static string user_short_url = "http://" + user_plug_url + "/short_url.php";
+        public static string goods_api_url = "http://" + user_plug_url + "/goods_api_url.php";
 
         public static string user_ali_order_create_url = "http://" + user_plug_url + "/taoke_order.php";
 

@@ -707,6 +707,33 @@ namespace haopintui
             return "";
         }
 
+        public static string query_ali_api_url(CmsForm cmsForm
+           , string num_iid, string pid, string activity_id)
+        {
+            HttpService httpservice = cmsForm.httpService;
+            long user_id = cmsForm.appBean.user_id;
+            string app_id = cmsForm.appBean.cms_app_id;
+            String user_key = cmsForm.appBean.user_key;
+            String user_name = cmsForm.appBean.user_name;
+            String click_url = Constants.goods_api_url;
+            String body = httpservice.post_http(click_url
+                , "user_id=" + user_id
+                + "&app_id=" + app_id
+                + "&user_key=" + user_key
+                + "&user_token="
+                + "&num_iid=" + num_iid
+                + "&pid=" + pid
+                + "&activity_id=" + activity_id
+                , null);
+
+            if (body.Contains("<content>"))
+            {
+                string content = StringUtil.subString(body, 0, "<content>", "</content>");
+                return content;
+            }
+            return "";
+        }
+
         public static CouponStatusBean query_coupon_status(CmsForm cmsForm)
         {
             CouponStatusBean couponStatusBean = new CouponStatusBean();

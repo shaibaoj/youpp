@@ -139,6 +139,14 @@ namespace haopintui.util
                     string activityId = StringUtil.subString(coupon_url, 0, "activityId=", "&");
                     string sellerId = StringUtil.subString(coupon_url, 0, "sellerId=", "&");
                     string uland_url = Constants.uland_url.Replace("{activityId}", activityId).Replace("{pid}", pid).Replace("{itemId}", num_iid).Replace("{dx}", "" + contentItem.dx);
+
+                    string api_uland_url = UserUtil.query_ali_api_url(cmsForm, num_iid, pid, activityId);
+                    if (!string.IsNullOrEmpty(api_uland_url))
+                    {
+                        uland_url = api_uland_url;
+                        LogUtil.log_call(cmsForm, string.Concat("高佣金接口转化链接：", api_uland_url));
+                    }
+
                     urlItem.click_url = UserUtil.query_short_url(cmsForm,uland_url);
                     if (urlItem.taokeItem!=null
                         &&urlItem.taokeItem.tkMktStatus == 1
@@ -1035,6 +1043,14 @@ namespace haopintui.util
                                 && !string.IsNullOrEmpty(contentItem.goodsUrlItem.click_url))
                             {
                                 uland_url = contentItem.goodsUrlItem.click_url;
+                            }
+
+                            string api_uland_url = UserUtil.query_ali_api_url(cmsForm, contentItem.num_iid,pid,activityId);
+                            if (!string.IsNullOrEmpty(api_uland_url))
+                            {
+                                uland_url = api_uland_url;
+
+                                LogUtil.log_call(cmsForm, string.Concat("高佣金接口转化链接：", api_uland_url));
                             }
 
                             pc_coupon_url = Constants.coupon_url_pc.Replace("{seller_id}", sellerId).Replace("{activity_id}", activityId);
