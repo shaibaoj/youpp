@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BB76BD4C-067C-4BDB-9988-653A318F5761}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>common</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="IrisSkin2">
+      <HintPath>..\bin\IrisSkin2.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJson, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Release\LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="com\haopintui\Constants.cs" />
+    <Compile Include="com\haopintui\domain\Campaign.cs" />
+    <Compile Include="com\haopintui\domain\CouponGoodsItem.cs" />
+    <Compile Include="com\haopintui\domain\CouponItem.cs" />
+    <Compile Include="com\haopintui\domain\EventItem.cs" />
+    <Compile Include="com\haopintui\domain\GoodsItem.cs" />
+    <Compile Include="com\haopintui\util\AutoUpdateUtil.cs" />
+    <Compile Include="com\haopintui\util\UserAgentHelper.cs" />
+    <Compile Include="entity\AlimamaBean.cs" />
+    <Compile Include="entity\KoulingBean.cs" />
+    <Compile Include="entity\UserBean.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="haopintui\dama\DamaUser.cs" />
+    <Compile Include="common\MessageObj.cs" />
+    <Compile Include="common\EmailAddr.cs" />
+    <Compile Include="common\EmailAcc.cs" />
+    <Compile Include="haopintui\dama\DamaUser2.cs" />
+    <Compile Include="util\ProcessorUtil.cs" />
+    <Compile Include="util\UnicodeUtil.cs" />
+    <Compile Include="util\UploadUtil.cs" />
+    <Compile Include="util\CryptUtil.cs" />
+    <Compile Include="util\FtpUtil.cs" />
+    <Compile Include="util\FileUtil.cs" />
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qq\QQUtil.cs" />
+    <Compile Include="haopintui\down\UpdateFile.cs" />
+    <Compile Include="RegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="util\StringUtil.cs" />
+    <Compile Include="util\CookieUtil.cs" />
+    <Compile Include="haopintui\dama\Dama_Struct.cs" />
+    <Compile Include="haopintui\dama\DamaUser3.cs" />
+    <Compile Include="haopintui\Config.cs" />
+    <Compile Include="entity\Entity15.cs" />
+    <Compile Include="util\HttpService.cs" />
+    <Compile Include="util\UtilFile.cs" />
+    <Compile Include="util\IpUtil.cs" />
+    <Compile Include="entity\GoodsItem1.cs" />
+    <Compile Include="entity\StoreItem.cs" />
+    <Compile Include="entity\BrandItem.cs" />
+    <Compile Include="entity\StoreItem1.cs" />
+    <Compile Include="entity\ShopItem.cs" />
+    <Compile Include="entity\GoodsItem.cs" />
+    <Compile Include="entity\GoodsComment.cs" />
+    <Compile Include="entity\CouponItem.cs" />
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="haopintui\dama\DamaUtil.cs" />
+    <Compile Include="util\MouseUtil.cs" />
+    <Compile Include="util\GzipUtil.cs" />
+    <Compile Include="qq\QQ_qun_util.cs" />
+    <Compile Include="qq\QQqun.cs" />
+    <Compile Include="qq\QQItem.cs" />
+    <Compile Include="util\ImageUtil.cs" />
+    <Compile Include="LoginForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="util\VipUtil.cs" />
+    <Compile Include="entity\GuideItem.cs" />
+    <Compile Include="entity\AlimamaClick.cs" />
+    <Compile Include="entity\AdzoneBean.cs" />
+    <Compile Include="entity\AdZonesItem.cs" />
+    <Compile Include="entity\AdzonesSubItem.cs" />
+    <Compile Include="entity\CampaignBean.cs" />
+    <Compile Include="entity\GoodsItem2.cs" />
+    <Compile Include="entity\CampaignItem1.cs" />
+    <Compile Include="entity\GoodsItem3.cs" />
+    <Compile Include="entity\GoodsItem5.cs" />
+    <Compile Include="entity\PayOrder.cs" />
+    <Compile Include="entity\EventItem.cs" />
+    <Compile Include="entity\EventGoods.cs" />
+    <Compile Include="entity\CampaignItem.cs" />
+    <Compile Include="entity\StoreItem2.cs" />
+    <EmbeddedResource Include="UpdateForm.resources" />
+    <EmbeddedResource Include="RegisterForm.resources" />
+    <EmbeddedResource Include="LoginForm2.resources" />
+    <EmbeddedResource Include="LoginForm.resources" />
+    <EmbeddedResource Include="Form2.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="com\haopintui\action\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="Fakes\Newtonsoft.Json.fakes" />
+  </ItemGroup>
+</Project>

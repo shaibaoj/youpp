@@ -1,0 +1,1 @@
+{"Skin":"不使用皮肤","Accounts":[{"QQ":2695321517,"Password":"91ECB80753B58E3C6E54834B138090D4","LoginStatus":"Q我吧","AutoLogin":true,"ErrorCount":0,"LastTime":"\/Date(1485942308787)\/"}],"plugins":["qq.dll"],"Closed":[],"Silenced":[]}

@@ -1,0 +1,3766 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>Framework</name>
+  </assembly>
+  <members>
+    <member name="T:Dapper.NoSQLAttribute">
+      <summary>
+            不存储在数据库中
+            </summary>
+    </member>
+    <member name="T:Dapper.DbBase">
+      <summary>
+            数据库操作类，建议集成该类，实现数据库操作代码
+            </summary>
+    </member>
+    <member name="M:Dapper.DbBase.ChangePassword(System.String)">
+      <summary>
+            修改数据库密码
+            </summary>
+      <param name="newPassword">
+      </param>
+    </member>
+    <member name="T:Dapper.CocoDb">
+      <summary>
+            Coco数据库操作类，包括积分等
+            </summary>
+    </member>
+    <member name="F:Dapper.CocoDb.config">
+      <summary>
+            有些数据需要读取设置
+            </summary>
+    </member>
+    <member name="F:Dapper.CocoDb.lockDb">
+      <summary>
+            数据库访问锁
+            </summary>
+    </member>
+    <member name="M:Dapper.CocoDb.GetExtcreditsCount">
+      <summary>
+            统计积分数量
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Dapper.CocoDb.GetExtcredits(System.Int64,System.Int64)">
+      <summary>
+            根据群号码、QQ号码获取积分，如果用户不存在，自动添加并返回      
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="QQ">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Dapper.CocoDb.GetExtcredits(System.Int64,System.Int64,System.Int64)">
+      <summary>
+            排行榜
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="Type">
+      </param>
+      <param name="Top">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Dapper.CocoDb.ClearExtcredits(System.Int64)">
+      <summary>
+            清零积分
+            </summary>
+      <param name="Type">
+      </param>
+      <returns>清理数量</returns>
+    </member>
+    <member name="M:Dapper.CocoDb.CopyExtcredits(System.Int64,System.Int64)">
+      <summary>
+            复制积分
+            </summary>
+      <param name="Type1">
+      </param>
+      <param name="Type2">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Dapper.CocoDb.UpdateExtcredits(System.Int64,System.Int64,System.Int64,System.Int64)">
+      <summary>
+            修改积分
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="QQ">
+      </param>
+      <param name="Type">
+      </param>
+      <param name="Value">
+      </param>
+      <returns>返回修改后积分值</returns>
+    </member>
+    <member name="M:Dapper.CocoDb.UpdateExtcredits(System.Int64,System.Int64,System.Int64,System.Int64,System.Int64,System.Int64)">
+      <summary>
+            修改积分，同时修改两个积分类型
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="QQ">
+      </param>
+      <param name="Type">
+      </param>
+      <param name="Value">
+      </param>
+      <param name="Type1">
+      </param>
+      <param name="Value1">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Dapper.CocoDb.DeleteExtcredits(System.Int64,System.Int64)">
+      <summary>
+            删除积分
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="QQ">
+      </param>
+    </member>
+    <member name="M:Dapper.CocoDb.GetQQPay(System.Int64)">
+      <summary>
+            查询钱包
+            </summary>
+      <param name="QQ">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Dapper.CocoDb.UpdateQQPay(System.Int64,System.Decimal)">
+      <summary>
+            修改余额
+            </summary>
+      <param name="QQ">
+      </param>
+      <param name="Money">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="T:Dapper._history">
+      <summary>
+            通用配置
+            </summary>
+    </member>
+    <member name="P:Dapper._history.Config">
+      <summary>
+            设置，JSON格式存储，具体对象自己定义
+            </summary>
+    </member>
+    <member name="T:Dapper.QQPay">
+      <summary>
+            钱包系统(现金)
+            </summary>
+    </member>
+    <member name="P:Dapper.QQPay.Money">
+      <summary>
+            余额
+            </summary>
+    </member>
+    <member name="T:Dapper.Extcredits">
+      <summary>
+            积分系统
+            </summary>
+    </member>
+    <member name="T:Dapper.SqlMapper">
+      <summary>
+            Dapper, a light weight object mapper for ADO.NET
+            </summary>
+    </member>
+    <member name="M:Dapper.SqlMapper.PurgeQueryCache">
+      <summary>
+            Purge the query cache 
+            </summary>
+    </member>
+    <member name="M:Dapper.SqlMapper.GetCachedSQLCount">
+      <summary>
+            Return a count of all the cached queries by dapper
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Dapper.SqlMapper.GetCachedSQL(System.Int32)">
+      <summary>
+            Return a list of all the queries cached by dapper
+            </summary>
+      <param name="ignoreHitCountAbove">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Dapper.SqlMapper.GetHashCollissions">
+      <summary>
+            Deep diagnostics only: find any hash collisions in the cache
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Dapper.SqlMapper.ReadChar(System.Object)">
+      <summary>
+            Internal use only
+            </summary>
+      <param name="value">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Dapper.SqlMapper.ReadNullableChar(System.Object)">
+      <summary>
+            Internal use only
+            </summary>
+    </member>
+    <member name="M:Dapper.SqlMapper.FindOrAddParameter(System.Data.IDataParameterCollection,System.Data.IDbCommand,System.String)">
+      <summary>
+            Internal use only
+            </summary>
+    </member>
+    <member name="M:Dapper.SqlMapper.PackListParameters(System.Data.IDbCommand,System.String,System.Object)">
+      <summary>
+            Internal use only
+            </summary>
+    </member>
+    <member name="M:Dapper.SqlMapper.GetTypeMap(System.Type)">
+      <summary>
+            Gets type-map for the given type
+            </summary>
+      <returns>Type map implementation, DefaultTypeMap instance if no override present</returns>
+    </member>
+    <member name="M:Dapper.SqlMapper.GetTypeDeserializer(System.Type,System.Data.IDataReader,System.Int32,System.Int32,System.Boolean)">
+      <summary>
+            Internal use only
+            </summary>
+      <param name="type">
+      </param>
+      <param name="reader">
+      </param>
+      <param name="startBound">
+      </param>
+      <param name="length">
+      </param>
+      <param name="returnNullIfFirstMissing">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Dapper.SqlMapper.ThrowDataException(System.Exception,System.Int32,System.Data.IDataReader)">
+      <summary>
+            Throws a data exception, only used internally
+            </summary>
+      <param name="ex">
+      </param>
+      <param name="index">
+      </param>
+      <param name="reader">
+      </param>
+    </member>
+    <member name="E:Dapper.SqlMapper.QueryCachePurged">
+      <summary>
+            Called if the query cache is purged via PurgeQueryCache
+            </summary>
+    </member>
+    <member name="T:Dapper.DynamicParameters">
+      <summary>
+            A bag of parameters that can be passed to the Dapper Query and Execute methods
+            </summary>
+    </member>
+    <member name="M:Dapper.DynamicParameters.AddDynamicParams(System.Object)">
+      <summary>
+            Append a whole object full of params to the dynamic
+            EG: AddDynamicParams(new {A = 1, B = 2}) // will add property A and B to the dynamic
+            </summary>
+      <param name="param">
+      </param>
+    </member>
+    <member name="P:Dapper.DynamicParameters.ParameterNames">
+      <summary>
+            All the names of the param in the bag, use Get to yank them out
+            </summary>
+    </member>
+    <member name="T:Dapper.DbString">
+      <summary>
+            This class represents a SQL string, it can be used if you need to denote your parameter is a Char vs VarChar vs nVarChar vs nChar
+            </summary>
+    </member>
+    <member name="M:Dapper.DbString.AddParameter(System.Data.IDbCommand,System.String)">
+      <summary>
+            Add the parameter to the command... internal use only
+            </summary>
+      <param name="command">
+      </param>
+      <param name="name">
+      </param>
+    </member>
+    <member name="P:Dapper.DbString.IsAnsi">
+      <summary>
+            Ansi vs Unicode 
+            </summary>
+    </member>
+    <member name="P:Dapper.DbString.IsFixedLength">
+      <summary>
+            Fixed length 
+            </summary>
+    </member>
+    <member name="P:Dapper.DbString.Length">
+      <summary>
+            Length of the string -1 for max
+            </summary>
+    </member>
+    <member name="P:Dapper.DbString.Value">
+      <summary>
+            The value of the string
+            </summary>
+    </member>
+    <member name="T:Dapper.FeatureSupport">
+      <summary>
+            Handles variances in features per DBMS
+            </summary>
+    </member>
+    <member name="M:Dapper.FeatureSupport.Get(System.Data.IDbConnection)">
+      <summary>
+            Gets the featureset based on the passed connection
+            </summary>
+    </member>
+    <member name="P:Dapper.FeatureSupport.Arrays">
+      <summary>
+            True if the db supports array columns e.g. Postgresql
+            </summary>
+    </member>
+    <member name="T:Dapper.SimpleMemberMap">
+      <summary>
+            Represents simple memeber map for one of target parameter or property or field to source DataReader column
+            </summary>
+    </member>
+    <member name="P:Dapper.SimpleMemberMap.ColumnName">
+      <summary>
+            DataReader column name
+            </summary>
+    </member>
+    <member name="P:Dapper.SimpleMemberMap.MemberType">
+      <summary>
+            Target member type
+            </summary>
+    </member>
+    <member name="P:Dapper.SimpleMemberMap.Property">
+      <summary>
+            Target property
+            </summary>
+    </member>
+    <member name="P:Dapper.SimpleMemberMap.Field">
+      <summary>
+            Target field
+            </summary>
+    </member>
+    <member name="P:Dapper.SimpleMemberMap.Parameter">
+      <summary>
+            Target constructor parameter
+            </summary>
+    </member>
+    <member name="T:Dapper.DefaultTypeMap">
+      <summary>
+            Represents default type mapping strategy used by Dapper
+            </summary>
+    </member>
+    <member name="M:Dapper.DefaultTypeMap.FindConstructor(System.String[],System.Type[])">
+      <summary>
+            Finds best constructor
+            </summary>
+      <param name="names">DataReader column names</param>
+      <param name="types">DataReader column types</param>
+      <returns>Matching constructor or default one</returns>
+    </member>
+    <member name="M:Dapper.DefaultTypeMap.GetConstructorParameter(System.Reflection.ConstructorInfo,System.String)">
+      <summary>
+            Gets mapping for constructor parameter
+            </summary>
+      <param name="constructor">Constructor to resolve</param>
+      <param name="columnName">DataReader column name</param>
+      <returns>Mapping implementation</returns>
+    </member>
+    <member name="M:Dapper.DefaultTypeMap.GetMember(System.String)">
+      <summary>
+            Gets member mapping for column
+            </summary>
+      <param name="columnName">DataReader column name</param>
+      <returns>Mapping implementation</returns>
+    </member>
+    <member name="T:Dapper.CustomPropertyTypeMap">
+      <summary>
+            Implements custom property mapping by user provided criteria (usually presence of some custom attribute with column to member mapping)
+            </summary>
+    </member>
+    <member name="M:Dapper.CustomPropertyTypeMap.FindConstructor(System.String[],System.Type[])">
+      <summary>
+            Always returns default constructor
+            </summary>
+      <param name="names">DataReader column names</param>
+      <param name="types">DataReader column types</param>
+      <returns>Default constructor</returns>
+    </member>
+    <member name="M:Dapper.CustomPropertyTypeMap.GetConstructorParameter(System.Reflection.ConstructorInfo,System.String)">
+      <summary>
+            Not impelmeneted as far as default constructor used for all cases
+            </summary>
+      <param name="constructor">
+      </param>
+      <param name="columnName">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Dapper.CustomPropertyTypeMap.GetMember(System.String)">
+      <summary>
+            Returns property based on selector strategy
+            </summary>
+      <param name="columnName">DataReader column name</param>
+      <returns>Poperty member map</returns>
+    </member>
+    <member name="T:Coco.Framework.Entities.Cluster">
+      <summary>
+            QQ群
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.Entities.Cluster.members">
+      <summary>
+            成员
+            </summary>
+    </member>
+    <member name="M:Coco.Framework.Entities.Cluster.ToString">
+      <summary>
+            返回：群名（群号）
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:Coco.Framework.Entities.Cluster.ExternalId">
+      <summary>
+            群号码
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Cluster.GroupId">
+      <summary>
+            所在分组
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Cluster.Creator">
+      <summary>
+            创建者
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Cluster.Name">
+      <summary>
+            群名称
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Cluster.Notice">
+      <summary>
+            公告
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Cluster.Description">
+      <summary>
+            介绍
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Cluster.Tag">
+      <summary>
+            获取或设置包含数据的对象以与该项关联
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Cluster.gCrtTime">
+      <summary>
+            创建时间(需要先调用client.GetGroupInfo)
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Cluster.gLevel">
+      <summary>
+            群等级(需要先调用client.GetGroupInfo)
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Cluster.gMaxMem">
+      <summary>
+            最大成员数量(需要先调用client.GetGroupInfo)
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Cluster.gMemNum">
+      <summary>
+            成员数量(需要先调用client.GetGroupInfo)
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Cluster.AdminMax">
+      <summary>
+            管理员数量上限
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Cluster.AdminNum">
+      <summary>
+            当前管理员数量
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Cluster.LastMembersTime">
+      <summary>
+            通过web获取的群成员最后更新时间
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Cluster.levelname">
+      <summary>
+            群等级名称
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.Entities.ClusterIM">
+      <summary>
+            群消息
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.ClusterIM.ExternalId">
+      <summary>
+            群号
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.ClusterIM.Sender">
+      <summary>
+            发送者
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.ClusterIM.SendTime">
+      <summary>
+            时间
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.ClusterIM.FontStyle">
+      <summary>
+            字体样式
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.ClusterIM.Message">
+      <summary>
+            消息内容
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.Entities.ClusterMember">
+      <summary>
+            群成员
+            </summary>
+    </member>
+    <member name="M:Coco.Framework.Entities.ClusterMember.IsAdmin">
+      <summary>
+            是否为管理员
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:Coco.Framework.Entities.ClusterMember.QQ">
+      <summary>
+            QQ号码
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.ClusterMember.Nick">
+      <summary>
+            昵称
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.ClusterMember.Gender">
+      <summary>
+            性别
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.ClusterMember.Card">
+      <summary>
+            名片
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.ClusterMember.OldCard">
+      <summary>
+            记录旧名片
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.ClusterMember.LastTime">
+      <summary>
+            最后发言时间（调用client.SearchGroupMembers刷新）
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.ClusterMember.JoinTime">
+      <summary>
+            入群时间（调用client.SearchGroupMembers刷新）
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.ClusterMember.Black">
+      <summary>
+            近期多次被其他群举报或清理（调用client.SearchGroupMembers刷新）
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.ClusterMember.Points">
+      <summary>
+            积分（调用client.SearchGroupMembers刷新）
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.ClusterMember.Level">
+      <summary>
+            等级（调用client.SearchGroupMembers刷新）
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.ClusterMember.QAge">
+      <summary>
+            Q龄（调用client.SearchGroupMembers刷新）
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.ClusterMember.CardOrName">
+      <summary>
+            如果名片不为空，返回名片，否则返回昵称
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.Entities.FontFlag">
+      <summary>
+            字体标志
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.Entities.FontFlag.NONE">
+      <summary>
+            没有属性
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.Entities.FontFlag.BOLD">
+      <summary>
+            粗体
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.Entities.FontFlag.ITALIC">
+      <summary>
+            斜体
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.Entities.FontFlag.UNDERLINE">
+      <summary>
+            下划线
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.Entities.FontStyle">
+      <summary>
+            聊天内容的字体样式等
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.FontStyle.RandColor">
+      <summary>
+            随机颜色
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.FontStyle.FontName">
+      <summary>
+            字体名称
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.FontStyle.FontSize">
+      <summary>
+            字号
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.FontStyle.Color">
+      <summary>
+            字体颜色
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.FontStyle.FontFlag">
+      <summary>
+            粗体、斜体、下划线
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.Entities.Friend">
+      <summary>
+            好友、QQ成员
+            </summary>
+    </member>
+    <member name="M:Coco.Framework.Entities.Friend.ToString">
+      <summary>
+            返回描述
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.QQ">
+      <summary>
+            好友QQ号码
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.NickName">
+      <summary>
+            昵称
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Remark">
+      <summary>
+            备注
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.GroupId">
+      <summary>
+            所在分组
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Header">
+      <summary>
+            头像
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Level">
+      <summary>
+            QQ等级
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Age">
+      <summary>
+            年龄
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Gender">
+      <summary>
+            性别
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.QQStatus">
+      <summary>
+            在线状态
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Signature">
+      <summary>
+            签名
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.IP">
+      <summary>
+            客户IP
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Area">
+      <summary>
+            地区
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Tag">
+      <summary>
+            获取或设置包含数据的对象以与该项关联
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Zipcode">
+      <summary>
+            邮编
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Address">
+      <summary>
+            地址
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Phone">
+      <summary>
+            电话
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Name">
+      <summary>
+            姓名
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Email">
+      <summary>
+            邮箱
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.HomePage">
+      <summary>
+            主页
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Mobile">
+      <summary>
+            手机号码
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Intro">
+      <summary>
+            个人说明
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.School">
+      <summary>
+            学校
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Guxiang">
+      <summary>
+            故乡
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.EnName">
+      <summary>
+            英文名
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.QQAge">
+      <summary>
+            Q龄
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Birthday">
+      <summary>
+            生日
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Shengxiao">
+      <summary>
+            生肖
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Xingzuo">
+      <summary>
+            星座
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Work">
+      <summary>
+            职业
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Friend.Xueli">
+      <summary>
+            学历
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.Entities.Group">
+      <summary>
+            QQ分组、QQ群分组，暂时合用
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Group.GroupId">
+      <summary>
+            分组ID
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Group.Name">
+      <summary>
+            分组名称
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.Entities.LoginStatus">
+      <summary>
+            登录状态
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.LoginStatus.Logout">
+      <summary>
+            未登录
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.LoginStatus.JiHuo">
+      <summary>
+            服务器没有响应，连接超时
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.LoginStatus.Logining">
+      <summary>
+            登录中
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.LoginStatus.NeedVerifyCode">
+      <summary>
+            需要验证码
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.LoginStatus.SendVerifyCode">
+      <summary>
+            发送验证码
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.LoginStatus.Login">
+      <summary>
+            登录成功
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.LoginStatus.Failed">
+      <summary>
+            登录失败
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.Entities.QQLevel">
+      <summary>
+            解析QQ等级用
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.Entities.Signature">
+      <summary>
+            个性签名
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Signature.Sig">
+      <summary>
+            签名内容
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Entities.Signature.ModifiedTime">
+      <summary>
+            签名修改时间
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.FormBase">
+      <summary>
+            自动设置icon图标的窗体
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.FormConfig">
+      <summary>
+            propertyGrid1显示和修改PluginConfig实例
+            </summary>
+    </member>
+    <!-- 对于成员“T:Coco.Framework.Packets.x0067OutPacket”忽略有格式错误的 XML 注释 -->
+    <!-- 对于成员“P:Coco.Framework.Packets.x012bInPacket.Message”忽略有格式错误的 XML 注释 -->
+    <member name="T:Coco.Framework.QQClient">
+      <summary>
+            QQ协议封装，引用DLL二次开发机器人，实例化该类即可
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.QQClient.UDPServer">
+      <summary>
+            服务器列表，调用Login之前可以插入IP，端口8000
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.QQClient.TCPServer">
+      <summary>
+            服务器列表，调用Login之前可以插入IP，端口443
+            </summary>
+    </member>
+    <member name="M:Coco.Framework.QQClient.Login">
+      <summary>
+            顺序选择服务器登录
+            </summary>
+    </member>
+    <member name="M:Coco.Framework.QQClient.GetClusterInfo(System.UInt32,System.UInt32,System.Int32)">
+      <summary>
+            获取群信息、成员信息，就是刷新群
+            </summary>
+      <param name="ClusterId">
+      </param>
+      <param name="Next">
+      </param>
+      <param name="TimeOut">同步</param>
+    </member>
+    <member name="M:Coco.Framework.QQClient.Logout">
+      <summary>
+            注销登录
+            </summary>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SendVibration(System.UInt32)">
+      <summary>
+            给好友发送震动，请勿频繁调用
+            </summary>
+      <param name="QQ">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SendAudio(System.UInt32,System.String)">
+      <summary>
+            发送QQ语音消息
+            </summary>
+      <param name="QQ">
+      </param>
+      <param name="file">arm文件地址</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SendMessage(System.UInt32,System.String,Coco.Framework.Entities.FontStyle,System.Boolean)">
+      <summary>
+            发QQ送消息，支持文字、表情、图片
+            </summary>
+      <param name="Receive">
+      </param>
+      <param name="Message">
+      </param>
+      <param name="FontStyle">
+      </param>
+      <param name="GetIP">获取对方IP</param>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SendQQMessage(System.UInt32,System.String,Coco.Framework.Entities.FontStyle,System.Boolean,System.Boolean)">
+      <summary>
+            发QQ送消息，支持文字、表情、图片
+            </summary>
+      <param name="Receive">
+      </param>
+      <param name="Message">
+      </param>
+      <param name="FontStyle">
+      </param>
+      <param name="GetIP">获取对方IP</param>
+      <param name="UBB">替换UBB代码，例如：[QQ]</param>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SendClusterMessage(System.UInt32,System.String,Coco.Framework.Entities.FontStyle)">
+      <summary>
+            发QQ群送消息，支持文字、表情、图片，声音、如消息内容含有[变量]请用另一个版本
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="Message">
+      </param>
+      <param name="FontStyle">字体样式</param>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SendClusterMessage(System.UInt32,System.UInt32,System.String,Coco.Framework.Entities.FontStyle,System.Boolean,System.Boolean)">
+      <summary>
+            发QQ群送消息，支持文字、表情、图片、声音、[变量]
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="QQ">
+      </param>
+      <param name="Message">
+      </param>
+      <param name="FontStyle">
+      </param>
+      <param name="Var">替换变量[]，[QQ][昵称][时间]等</param>
+      <param name="UBB">替换UBB代码[]，图片、@、表情等</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SendClusterMessage(Coco.Framework.Entities.Cluster,Coco.Framework.Entities.ClusterMember,System.String,Coco.Framework.Entities.FontStyle,System.Boolean,System.Boolean)">
+      <summary>
+      </summary>
+      <param name="cluster">
+      </param>
+      <param name="member">
+      </param>
+      <param name="Message">
+      </param>
+      <param name="FontStyle">
+      </param>
+      <param name="Var">
+      </param>
+      <param name="UBB">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SendClusterAudio(Coco.Framework.Entities.Cluster,System.String)">
+      <summary>
+            发送群语音，也可以在发群消息时使用[声音=xxx/]代码发送
+            </summary>
+      <param name="cluster">
+      </param>
+      <param name="Uri">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SendSubjectMessage(System.UInt32,System.String,Coco.Framework.Entities.FontStyle)">
+      <summary>
+            发送讨论组消息
+            </summary>
+      <param name="ClusterId">
+      </param>
+      <param name="Message">
+      </param>
+      <param name="FontStyle">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SendSubjectMessage(System.UInt32,System.UInt32,System.String,Coco.Framework.Entities.FontStyle)">
+      <summary>
+            发送讨论组消息
+            </summary>
+      <param name="ClusterId">
+      </param>
+      <param name="QQ">支持替换变量用</param>
+      <param name="Message">
+      </param>
+      <param name="FontStyle">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SendTempMessage(System.UInt32,System.UInt32,System.String,Coco.Framework.Entities.FontStyle)">
+      <summary>
+            发送群临时对话（请勿用于群发）
+            </summary>
+      <param name="ExternalId">0表示网页临时会话 大于0表示群临时对话</param>
+      <param name="Receive">
+      </param>
+      <param name="Message">
+      </param>
+      <param name="FontStyle">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SendTempMessage(System.UInt32,System.String,Coco.Framework.Entities.FontStyle)">
+      <summary>
+            发送网页临时对话（请勿用于群发）
+            </summary>
+      <param name="Receive">
+      </param>
+      <param name="Message">
+      </param>
+      <param name="FontStyle">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SendAdminQQMessage(System.String,System.Object[])">
+      <summary>
+            给机器人管理员发消息
+            </summary>
+      <param name="Message">
+      </param>
+      <param name="args">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SendAdminEmail(System.String,System.String)">
+      <summary>
+            给管理员发送Email
+            </summary>
+      <param name="Subject">
+      </param>
+      <param name="Body">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.QQClient.ChangeQQStatus(Coco.Framework.QQStatus,System.String)">
+      <summary>
+            改变我的在线状态
+            </summary>
+      <param name="QQStatus">在线、离开、忙碌、Q我吧、请勿打扰</param>
+      <param name="StatusInfo">个性描述</param>
+    </member>
+    <member name="M:Coco.Framework.QQClient.ModifySignature(System.String)">
+      <summary>
+            修改签名
+            </summary>
+      <param name="Sig">如果传递null则表示删除</param>
+    </member>
+    <member name="M:Coco.Framework.QQClient.GetFriend(System.UInt32)">
+      <summary>
+            得到qq资料
+            </summary>
+      <param name="QQ">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.AgreeFriendInvite(System.UInt32,System.Byte,System.String)">
+      <summary>
+            同意并加好友、同意、拒绝 添加我为好友
+            </summary>
+      <param name="QQ">
+      </param>
+      <param name="Agree">3：同意并加好友 4：同意 5：拒绝</param>
+      <param name="Message">拒绝的理由</param>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SendVerifyCode(System.String,System.String)">
+      <summary>
+            发送验证码
+            </summary>
+      <param name="QQSession">
+      </param>
+      <param name="Code">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.GetCluster(System.UInt32)">
+      <summary>
+            搜索QQ群
+            </summary>
+      <param name="ExternalId">群号码</param>
+      <returns>群实例</returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.JoinCluster(System.UInt32,System.String)">
+      <summary>
+            我申请加入别人的群
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="Message">验证内容</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.ExitCluster(System.UInt32)">
+      <summary>
+            我退出别人的群
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.ExitSubject(System.UInt32)">
+      <summary>
+            退出讨论组
+            </summary>
+      <param name="ClusterId">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.AddMember(System.UInt32,System.UInt32)">
+      <summary>
+            邀请成员（只能从好友中邀请）
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="QQ">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SubstringCard(System.String)">
+      <summary>
+            截取名片有效长度
+            </summary>
+      <param name="Card">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.ModifyMemberCard(System.UInt32,System.UInt32,System.String,System.Boolean)">
+      <summary>
+            修改群成员名片（如需预知名片实际长度，请调用SubstringCard）
+            </summary>
+      <param name="ExternalId">群号码</param>
+      <param name="QQ">
+      </param>
+      <param name="Card">新名片</param>
+      <param name="IsWeb">true 使用Web接口踢人，false使用PCQQ协议踢人</param>
+    </member>
+    <member name="M:Coco.Framework.QQClient.AgreeJoinCluster(System.UInt32,System.UInt32,System.Boolean,System.String)">
+      <summary>
+            同意他人加入群或者拒绝
+            </summary>
+      <param name="ExternalId">群号码</param>
+      <param name="QQ">
+      </param>
+      <param name="Agree">同意：true 不同意：false</param>
+      <param name="Message">不同意时，拒绝的理由</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.AgreeAddedToClusterInvite(System.UInt32,System.Boolean,System.String)">
+      <summary>
+            同意、拒绝加入别人的群（我被邀请加入群），机器人重启无效
+            </summary>
+      <param name="ExternalId">群号码</param>
+      <param name="Agree">true：同意 false：拒绝</param>
+      <param name="Message">拒绝理由</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.GetClusterMemberInfo(System.UInt32,System.UInt32)">
+      <summary>
+            去服务器上获取单个群成员资料，如果不需要刷新数据，请直接去client.User.Clusters里面找
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="QQ">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SendVerifyCode(System.String)">
+      <summary>
+            发送验证码
+            </summary>
+      <param name="Code">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.QQClient.AddFriend(System.UInt32,System.String)">
+      <summary>
+            主动加好友，不能频繁调用，否则悲剧
+            </summary>
+      <param name="QQ">对方QQ</param>
+      <param name="Message">验证内容</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SendOfflineFile(System.UInt32,System.String)">
+      <summary>
+            发送离线文件，测试未成功
+            </summary>
+      <param name="QQ">接受者</param>
+      <param name="File">文件完整本地路径</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SearchFriend">
+      <summary>
+            搜索好友
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.ModifyRemark(System.UInt32,System.String)">
+      <summary>
+            修改好友备注，必须是好友
+            </summary>
+      <param name="QQ">好友QQ号码</param>
+      <param name="Remark">备注内容</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.Silenced(System.UInt32,System.UInt32,System.UInt32)">
+      <summary>
+            禁言（Time支持：0、600、3600、43200、86400（秒）、自定义时间（不超过30天）
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="QQ">
+      </param>
+      <param name="Time">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SilencedALL(System.UInt32,System.Boolean)">
+      <summary>
+            全体禁言
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="Silenced">true 禁言，false 解除禁言</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.DeleteFriend(System.UInt32)">
+      <summary>
+            删除好友
+            </summary>
+      <param name="QQ">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.GetRandomEmoji">
+      <summary>
+            随机符号表情
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.GetRandomFace">
+      <summary>
+            随机表情
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.DownloadClusterImage(System.UInt32,System.String)">
+      <summary>
+            下载群消息内的图片
+            </summary>
+      <param name="ExternalId">群号</param>
+      <param name="FileName">文件名</param>
+    </member>
+    <member name="M:Coco.Framework.QQClient.DownloadClusterImages(System.UInt32,System.String)">
+      <summary>
+            下载群消息内的图片
+            </summary>
+      <param name="ExternalId">群号</param>
+      <param name="Message">消息内容</param>
+    </member>
+    <member name="M:Coco.Framework.QQClient.DownloadQQImage(System.UInt32,System.String)">
+      <summary>
+            下载好友发过来消息中的图片
+            </summary>
+      <param name="QQ">好友QQ号码</param>
+      <param name="FileName">文件名</param>
+    </member>
+    <member name="M:Coco.Framework.QQClient.DownloadQQImages(System.UInt32,System.String)">
+      <summary>
+            批量下载好友发过来的图片，自动分析消息内容，取出图片
+            </summary>
+      <param name="QQ">
+      </param>
+      <param name="Message">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.QQClient.DownloadQQAudio(System.UInt32,System.String)">
+      <summary>
+            下载好友发过来声音
+            </summary>
+      <param name="QQ">好友QQ号码</param>
+      <param name="FileName">文件名</param>
+    </member>
+    <member name="M:Coco.Framework.QQClient.DownloadQQAudios(System.UInt32,System.String)">
+      <summary>
+            下载好友发过来的声音
+            </summary>
+      <param name="QQ">好友QQ号码</param>
+      <param name="Message">消息内容</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.DownloadClusterAudio(System.UInt32,System.String)">
+      <summary>
+            下载群声音文件
+            </summary>
+      <param name="ExternalId">群号</param>
+      <param name="FileName">文件名</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.DownloadClusterAudios(System.UInt32,System.String)">
+      <summary>
+            下载群声音文件
+            </summary>
+      <param name="ExternalId">群号</param>
+      <param name="Message">消息内容</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.ReplaceVAL(System.String,Coco.Framework.Entities.Cluster,Coco.Framework.Entities.ClusterMember)">
+      <summary>
+            替换变量[禁言xx]、[等级]、[全体禁言]、[取消全体禁言]、[群名]、[群公告]、[群号]、[群主]、[群人数]、[机器人名片]、
+            [机器人名片或昵称]、[QQ][昵称][名片][旧名片][入群时间][最后发言时间][积分][Q龄][名片或昵称]
+            [随机符号表情] [随机表情]、[换行]、[机器人昵称]、[机器人QQ]、[时间]、[年]、[月]、[日]、[时]、[分]、[秒]
+            </summary>
+      <param name="Message">
+      </param>
+      <param name="cluster">
+      </param>
+      <param name="member">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.ReplaceVAL(System.String)">
+      <summary>
+            [随机符号表情]、[随机表情]、[换行]、[机器人昵称]、[机器人QQ]、[时间]、[年]、[月]、[日]、[时]、[分]、[秒]
+            </summary>
+      <param name="Message">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.ReplaceVAL(System.String,System.UInt32)">
+      <summary>
+            [积分0+100] [积分0]
+            替换[QQ]、[个性签名]、[市]、[省]、[名片或昵称]、[昵称]、[个人说明]、[性别]、[年龄]、[生肖]、[星座]、[故乡]、[所在地]、[电话]、[手机]
+            [主页]、[邮箱]、[地址]、[邮编]、[Q龄]、[姓名]、[英文名]、[职业]、[学历]、[学校]、[头像0]、[头像1]、[头像2]、[头像3]
+            [随机符号表情] [随机表情]、[换行]、[机器人昵称]、[机器人QQ]、[时间]、[年]、[月]、[日]、[时]、[分]、[秒]
+            </summary>
+      <param name="Message">
+      </param>
+      <param name="QQ">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.GetQQFace(System.UInt32,System.Int32)">
+      <summary>
+            获取头像
+            </summary>
+      <param name="QQ">
+      </param>
+      <param name="Type">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.GetCookies">
+      <summary>
+            获取访问web所需的cookie，Cookie存放在User.Cookies中，同时更新User.Bkn\Gtk
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.GetGroupInfo(System.UInt32)">
+      <summary>
+            未加入群即可获取群信息，JSON格式，结果会自动更新到client.User.Clusters实体中
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.GetGroupInfoEn(System.UInt32)">
+      <summary>
+            未加入群即可获取群信息：创建时间、等级、最大人数、当前人数
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.GetQQLevel(System.UInt32)">
+      <summary>
+            获取QQ等级
+            </summary>
+      <param name="QQ">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.SearchGroupMembers(System.UInt32)">
+      <summary>
+            获取群成员等资料（名片、入群时间、最后发言时间、昵称、Q龄、等级、积分、性别）、AdminMax、AdminNum、gMaxMem、gMemNum
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.RemoveMember(System.UInt32,System.UInt32,System.Boolean,System.Boolean)">
+      <summary>
+            踢人，需要群管理权限，支持不再接收加群申请
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="QQ">
+      </param>
+      <param name="Black">true 以后不再接收申请 false可以再次申请加入</param>
+      <param name="IsWeb">true 使用Web接口踢人，false使用PCQQ协议踢人</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.QQClient.DeleteGroupMember(System.UInt32,System.UInt32,System.Boolean)">
+      <summary>
+            Web接口踢人
+            </summary>
+      <param name="ExternalId">群号</param>
+      <param name="QQ">
+      </param>
+      <param name="flag">不在接收此人加群申请</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:Coco.Framework.QQClient.User">
+      <summary>
+            QQ属性，存放好友、群、个人信息等
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQClient.Tag">
+      <summary>
+            获取或设置包含数据的对象以与该项关联
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQClient.Config">
+      <summary>
+            机器人设置
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQClient.Versions">
+      <summary>
+            程序集版本
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQClient.AllPlugin">
+      <summary>
+            全部插件
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQClient.RuningPlugin">
+      <summary>
+            在运行的插件
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.SystemMessage">
+      <summary>
+            更新界面
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.LoginSuccessed">
+      <summary>
+            登录成功
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.ReceiveNormalIM">
+      <summary>
+            收到QQ消息
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.ReceiveTempIM">
+      <summary>
+            收到临时会话消息
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.ReceiveVibration">
+      <summary>
+            收到抖动
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.ReceiveClusterIM">
+      <summary>
+            收到群消息
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.ReceiveSubjectIM">
+      <summary>
+            收到讨论组消息
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.LostConnection">
+      <summary>
+            连接丢失，一般是掉线
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.ClusterNoticeChanged">
+      <summary>
+            群公告改变
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.SignatureChanged">
+      <summary>
+            好友签名修改
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.StatusChanged">
+      <summary>
+            好友状态改变
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.SilencedQQEvent">
+      <summary>
+            禁言事件
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.SignQQEvent">
+      <summary>
+            签到事件
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.QQClientStatusChanged">
+      <summary>
+            客户端状态变化（被屏蔽）
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.AddedToClusterInvite">
+      <summary>
+            我被邀请加入群或者我是管理员，其他人被邀请
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.AddedToCluster">
+      <summary>
+            有人进入群，参数：群、加入的人、管理员
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.RejectJoinCluster">
+      <summary>
+            群管理员拒绝我的入群申请
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.AddToClusterNeedAuth">
+      <summary>
+            有人申请加入群等待我审核
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.MemberExitCluster">
+      <summary>
+            成员退出群
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.AddMeFriend">
+      <summary>
+            我被加为好友，自动通过认证
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.AddMeSubject">
+      <summary>
+            我被拉入讨论组
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.AddMeFriendNeedAuth">
+      <summary>
+            我被加为好友，需要我认证
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.CardChanged">
+      <summary>
+            群成员修改名片
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.ClusterAdminChanged">
+      <summary>
+            管理员权限改变
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.ClusterEvent">
+      <summary>
+            收到群上传文件、群动态、分享图片、发起投票、贴标签事件
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.KeepAlive">
+      <summary>
+            心跳包
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.QQLevel">
+      <summary>
+            收到QQ等级资料
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.LoginStatusChanged">
+      <summary>
+            登录状态改变
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.VerifyImage">
+      <summary>
+            需要验证码
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.QQClient.QQPayEvent">
+      <summary>
+            QQ转账信息
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.QQDat">
+      <summary>
+            账号相关数据
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.QQStatus">
+      <summary>
+            在线状态
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.QQStatus.未知">
+      <summary>
+            未知
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.QQStatus.删除">
+      <summary>
+            删除好友
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.QQStatus.在线">
+      <summary>
+            在线
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.QQStatus.离线">
+      <summary>
+            离线
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.QQStatus.离开">
+      <summary>
+            离开
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.QQStatus.隐身">
+      <summary>
+            隐身
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.QQStatus.忙碌">
+      <summary>
+            繁忙
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.QQStatus.Q我吧">
+      <summary>
+            Q我吧
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.QQStatus.请勿打扰">
+      <summary>
+            请勿打扰
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.QQStatus.微信在线">
+      <summary>
+            微信在线、Iphone在线
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.QQStatus.微信接收离线消息">
+      <summary>
+            微信接收离线消息
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.Gender">
+      <summary>
+            性别
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.Gender.保密">
+      <summary>
+            保密
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.Gender.男">
+      <summary>
+            男
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.Gender.女">
+      <summary>
+            女
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.CocoConfig">
+      <summary>
+            机器人配置
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.PluginConfig">
+      <summary>
+            插件配置保存辅助类，保存JSON格式到plugin目录下，使用步骤：1、调用GetObject初始化对象。2、用完后如需保存调用Save保存即可
+            </summary>
+    </member>
+    <member name="M:Coco.Framework.SDK.PluginConfig.Serialize">
+      <summary>
+            直接返回序列化的JSON字符串
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.PluginConfig.Save">
+      <summary>
+            保存到plugin目录下
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.QQProtocol">
+      <summary>
+            QQ协议，不要改，不是改了就能用的。
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.Protocol">
+      <summary>
+            上次登录协议，可选值：UDP、TCP
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.Server">
+      <summary>
+            上次登录服务器
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.SMTP">
+      <summary>
+            SMTP服务器
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.EmailPort">
+      <summary>
+            端口
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.EmailAccount">
+      <summary>
+            管理员邮箱，推荐163、qq邮箱
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.EmailPassword">
+      <summary>
+            邮箱密码
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.EmailNick">
+      <summary>
+            发件人
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.SSL">
+      <summary>
+            发送邮件使用SSL
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.ExtcreditsVal">
+      <summary>
+            积分变量
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.GlobalExtcredits">
+      <summary>
+            通用积分
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.ExtcreditsType">
+      <summary>
+            默认值：经验\n金钱\n威望
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.AdminQQs">
+      <summary>
+            管理员QQ
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.ExitSubject">
+      <summary>
+            自动退出讨论组
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.SilencedExitCluster">
+      <summary>
+            禁言退群
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.CacheImage">
+      <summary>
+            使用本地图片缓存
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.AutoChangeQQ">
+      <summary>
+            自动换号
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.RestartTime">
+      <summary>
+            定时重启
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.ChangeRobotTime">
+      <summary>
+            更换机器人时间（分钟）
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.ShowLog">
+      <summary>
+            显示日志
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.SaveLog">
+      <summary>
+            保存日志
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.OfflineMessage">
+      <summary>
+            处理离线消息
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.SendQQMessage">
+      <summary>
+            允许发送QQ消息
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.SendClusterMessage">
+      <summary>
+            允许发送群消息
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.SendTempMessage">
+      <summary>
+            允许发送临时对话
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.SendSubjectMessage">
+      <summary>
+            允许发送讨论组消息
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.SendAudio">
+      <summary>
+            允许发送语音
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.SleepTime">
+      <summary>
+            不发消息时间
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.StartSleep">
+      <summary>
+            启动休眠
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.QueueSend">
+      <summary>
+            队列发送
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.ClusterXML">
+      <summary>
+            使用XML发送群消息
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.FriendXML">
+      <summary>
+            使用XML发送好友消息
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.AutoXMLTime">
+      <summary>
+            自动切换XML工作
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.RKUser">
+      <summary>
+            uu账号
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.CocoConfig.RKPassword">
+      <summary>
+            uu密码
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.QQUser">
+      <summary>
+            保存好友、群、分组、个人信息等
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.QQUser.Friends">
+      <summary>
+            好友
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.QQUser.Clusters">
+      <summary>
+            QQ群
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.QQUser.FriendGroups">
+      <summary>
+            QQ好友分组
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.QQUser.ClusterGroups">
+      <summary>
+            QQ群分组
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.QQUser.FriendCache">
+      <summary>
+            非好友的QQ资料缓存
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.EndTime">
+      <summary>
+            QQ授权有效期
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.QQ">
+      <summary>
+            QQ号码
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.md5_1">
+      <summary>
+            密码一次MD5
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.IsUdp">
+      <summary>
+            使用UDP模式
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.Server">
+      <summary>
+            服务器、重定向
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.KeepAliveTime">
+      <summary>
+            最后收到心跳包时间，以本地时间为准
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.LoginTime">
+      <summary>
+            登陆时间
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.XMLTime">
+      <summary>
+            使用XML格式有效期
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.NickName">
+      <summary>
+            昵称
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.Status">
+      <summary>
+            在线状态
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.StatusInfo">
+      <summary>
+            状态描述信息
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.LoginMode">
+      <summary>
+            登录后默认状态
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.LoginStatus">
+      <summary>
+            登录过程
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.Signature">
+      <summary>
+            个性签名
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.ClusterCache">
+      <summary>
+            保存群信息
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.VerifyMessage">
+      <summary>
+            存储需要验证码的理由
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.Bkn">
+      <summary>
+            某些web接口需要该参数
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.skey">
+      <summary>
+            某些web接口需要该参数
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.Gtk">
+      <summary>
+            某些web接口需要该参数
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.ClientKey">
+      <summary>
+            ClientKey，可以用来登录邮箱、微博等web产品
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.QQUser.Cookies">
+      <summary>
+            访问web所用Cookie
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.DLLPlugin">
+      <summary>
+            非托管DLL使用，托管代码开发请勿使用
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.Plugin">
+      <summary>
+            开发Coco插件，继承该类，重写里面的方法即可
+            </summary>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.InitQQClient(Coco.Framework.QQClient)">
+      <summary>
+            初始化QQClient
+            </summary>
+      <param name="client">
+      </param>
+    </member>
+    <member name="F:Coco.Framework.SDK.Plugin.PluginPath">
+      <summary>
+            返回插件目录
+            </summary>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.OnLog(System.String,System.Object[])">
+      <summary>
+            输出日志
+            </summary>
+      <param name="format">
+      </param>
+      <param name="args">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.SilencedALL(System.UInt32,System.Boolean)">
+      <summary>
+            全体禁言
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="Silenced">true 禁言，false 解除禁言</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.Silenced(System.UInt32,System.UInt32,System.UInt32)">
+      <summary>
+            禁言（Time支持：0、600、3600、43200、86400（秒）、自定义时间（不超过30天）
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="QQ">
+      </param>
+      <param name="Time">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.SendVibration(System.UInt32)">
+      <summary>
+            发送震动，请勿频繁调用
+            </summary>
+      <param name="Receive">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.SendVerifyCode(System.String)">
+      <summary>
+            发送验证码
+            </summary>
+      <param name="Code">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.SendVerifyCode(System.String,System.String)">
+      <summary>
+            发送验证码
+            </summary>
+      <param name="QQSession">
+      </param>
+      <param name="Code">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.SendTempMessage(System.UInt32,System.UInt32,System.String,Coco.Framework.Entities.FontStyle)">
+      <summary>
+            发送群临时对话（请勿用于群发）
+            </summary>
+      <param name="ExternalId">0表示网页临时会话 大于0表示群临时对话</param>
+      <param name="QQ">
+      </param>
+      <param name="Message">
+      </param>
+      <param name="FontStyle">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.SendOfflineFile(System.UInt32,System.String)">
+      <summary>
+            发送离线文件，测试未成功
+            </summary>
+      <param name="QQ">接受者</param>
+      <param name="File">文件完整本地路径</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.SendMessage(System.UInt32,System.String,Coco.Framework.Entities.FontStyle,System.Boolean)">
+      <summary>
+            发QQ送消息，支持文字、表情、图片
+            </summary>
+      <param name="QQ">
+      </param>
+      <param name="Message">
+      </param>
+      <param name="FontStyle">
+      </param>
+      <param name="GetIP">获取对方IP</param>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.SendClusterMessage(System.UInt32,System.UInt32,System.String,Coco.Framework.Entities.FontStyle,System.Boolean,System.Boolean)">
+      <summary>
+            发QQ群送消息，支持文字、表情、图片、[变量]
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="QQ">
+      </param>
+      <param name="Message">
+      </param>
+      <param name="FontStyle">
+      </param>
+      <param name="Var">替换变量[]，[QQ][昵称][时间]等</param>
+      <param name="UBB">替换UBB代码[]，图片、@、表情等</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.SendClusterMessage(Coco.Framework.Entities.Cluster,Coco.Framework.Entities.ClusterMember,System.String,Coco.Framework.Entities.FontStyle,System.Boolean,System.Boolean)">
+      <summary>
+      </summary>
+      <param name="cluster">
+      </param>
+      <param name="member">
+      </param>
+      <param name="Message">
+      </param>
+      <param name="FontStyle">
+      </param>
+      <param name="Var">
+      </param>
+      <param name="UBB">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.SendClusterMessage(System.UInt32,System.String,Coco.Framework.Entities.FontStyle)">
+      <summary>
+            发QQ群送消息，支持文字、表情、图片，如消息内容含有[变量]请用另一个版本
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="Message">
+      </param>
+      <param name="FontStyle">字体样式</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.SendSubjectMessage(System.UInt32,System.String,Coco.Framework.Entities.FontStyle)">
+      <summary>
+            发送讨论组消息
+            </summary>
+      <param name="ClusterId">
+      </param>
+      <param name="Message">
+      </param>
+      <param name="FontStyle">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.SendAdminQQMessage(System.String,System.Object[])">
+      <summary>
+            给机器人管理员发消息
+            </summary>
+      <param name="Message">
+      </param>
+      <param name="args">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.RemoveMember(System.UInt32,System.UInt32,System.Boolean,System.Boolean)">
+      <summary>
+            踢人，需要群管理权限，支持不再接收加群申请
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="QQ">
+      </param>
+      <param name="Black">true 以后不再接收申请 false可以再次申请加入</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.ModifySignature(System.String)">
+      <summary>
+            修改签名
+            </summary>
+      <param name="Sig">如果传递null则表示删除</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.ModifyMemberCard(System.UInt32,System.UInt32,System.String)">
+      <summary>
+            修改群成员名片（如需预知名片实际长度，请调用SubstringCard）
+            </summary>
+      <param name="ExternalId">群号码</param>
+      <param name="QQ">
+      </param>
+      <param name="Card">新名片</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.Logout">
+      <summary>
+            注销登录
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.JoinCluster(System.UInt32,System.String)">
+      <summary>
+            我申请加入别人的群
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="Message">验证内容</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.GetFriend(System.UInt32)">
+      <summary>
+            得到qq资料
+            </summary>
+      <param name="QQ">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.GetClusterMemberInfo(System.UInt32,System.UInt32)">
+      <summary>
+            获取单个群成员资料
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <param name="QQ">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.GetCluster(System.UInt32)">
+      <summary>
+            搜索QQ群
+            </summary>
+      <param name="ExternalId">群号码</param>
+      <returns>群实例</returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.ExitCluster(System.UInt32)">
+      <summary>
+            我退出别人的群
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.ChangeQQStatus(Coco.Framework.QQStatus,System.String)">
+      <summary>
+            改变我的在线状态
+            </summary>
+      <param name="QQStatus">在线、离开、忙碌、Q我吧、请勿打扰</param>
+      <param name="StatusInfo">个性描述</param>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.AgreeJoinCluster(System.UInt32,System.UInt32,System.Boolean,System.String)">
+      <summary>
+            同意他人加入群或者拒绝
+            </summary>
+      <param name="ExternalId">群号码</param>
+      <param name="QQ">
+      </param>
+      <param name="Agree">同意：true 不同意：false</param>
+      <param name="Message">不同意时，拒绝的理由</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.AgreeFriendInvite(System.UInt32,System.Byte,System.String)">
+      <summary>
+            同意并加好友、同意、拒绝 添加我为好友
+            </summary>
+      <param name="QQ">
+      </param>
+      <param name="Agree">3：同意并加好友 4：同意 5：拒绝</param>
+      <param name="Message">拒绝的理由</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.AgreeAddedToClusterInvite(System.UInt32,System.Boolean,System.String)">
+      <summary>
+            同意、拒绝加入别人的群（我被邀请加入群），机器人重启无效
+            </summary>
+      <param name="ExternalId">群号码</param>
+      <param name="Agree">true：同意 false：拒绝</param>
+      <param name="Message">拒绝理由</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.AddFriend(System.UInt32,System.String)">
+      <summary>
+            主动加好友，不能频繁调用，否则悲剧
+            </summary>
+      <param name="QQ">对方QQ</param>
+      <param name="Message">验证内容</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.GetGroupInfoEn(System.UInt32)">
+      <summary>
+            未加入群即可获取群信息：创建时间、等级、最大人数、当前人数
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.GetGroupInfo(System.UInt32)">
+      <summary>
+            获取群信息，JSON格式，结果会自动更新到client.User.Clusters实体中
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.SearchGroupMembers(System.UInt32)">
+      <summary>
+            获取群成员等资料（名片、入群时间、最后发言时间、昵称、Q龄、等级、积分、性别）、AdminMax、AdminNum、gMaxMem、gMemNum
+            </summary>
+      <param name="ExternalId">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.ReplaceVAL(System.String,Coco.Framework.Entities.Cluster,Coco.Framework.Entities.ClusterMember)">
+      <summary>
+            替换变量[群名][群号][群人数][机器人QQ][机器人昵称][机器人名片][机器人名片或昵称][QQ][昵称][名片][名片或昵称][时间][年][月][日]
+            </summary>
+      <param name="Message">
+      </param>
+      <param name="cluster">
+      </param>
+      <param name="member">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.ReplaceVAL(System.String,System.UInt32)">
+      <summary>
+            替换[QQ]、[昵称]、[头像]、[头像1]、[头像2]、[随机符号表情]、[随机表情]、[机器人昵称]、[时间]、[年]、[月]、[日]
+            </summary>
+      <param name="Message">
+      </param>
+      <param name="QQ">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.GetQQLevel(System.UInt32)">
+      <summary>
+            获取QQ等级
+            </summary>
+      <param name="QQ">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.Reply(Coco.Framework.SDK.ReceiveClusterIMQQEventArgs,System.String)">
+      <summary>
+            回复群消息，同时设置e.Cancel = true
+            </summary>
+      <param name="e">
+      </param>
+      <param name="result">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.Reply(Coco.Framework.SDK.ReceiveNormalIMQQEventArgs,System.String)">
+      <summary>
+            回复好友消息，同时设置e.Cancel = true
+            </summary>
+      <param name="e">
+      </param>
+      <param name="result">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.Reply(Coco.Framework.SDK.ReceiveTempIMQQEventArgs,System.String)">
+      <summary>
+            回复临时会话，同时设置e.Cancel = true
+            </summary>
+      <param name="e">
+      </param>
+      <param name="result">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.DownloadClusterImage(System.UInt32,System.String)">
+      <summary>
+            下载群消息内的图片
+            </summary>
+      <param name="ExternalId">群号</param>
+      <param name="FileName">文件名</param>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.DownloadClusterImages(System.UInt32,System.String)">
+      <summary>
+            下载群消息内的图片
+            </summary>
+      <param name="ExternalId">群号</param>
+      <param name="Message">消息内容</param>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.DownloadQQImage(System.UInt32,System.String)">
+      <summary>
+            下载好友发过来消息中的图片
+            </summary>
+      <param name="QQ">好友QQ号码</param>
+      <param name="FileName">文件名</param>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.DownloadQQImages(System.UInt32,System.String)">
+      <summary>
+            批量下载好友发过来的图片，自动分析消息内容，取出图片
+            </summary>
+      <param name="QQ">
+      </param>
+      <param name="Message">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.DownloadQQAudio(System.UInt32,System.String)">
+      <summary>
+            下载好友发过来声音
+            </summary>
+      <param name="QQ">好友QQ号码</param>
+      <param name="FileName">文件名</param>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.DownloadQQAudios(System.UInt32,System.String)">
+      <summary>
+            下载好友发过来的声音
+            </summary>
+      <param name="QQ">好友QQ号码</param>
+      <param name="Message">消息内容</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.DownloadClusterAudio(System.UInt32,System.String)">
+      <summary>
+            下载群声音文件
+            </summary>
+      <param name="ExternalId">群号</param>
+      <param name="FileName">文件名</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.DownloadClusterAudios(System.UInt32,System.String)">
+      <summary>
+            下载群声音文件
+            </summary>
+      <param name="ExternalId">群号</param>
+      <param name="Message">消息内容</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.Install">
+      <summary>
+            插件安装时执行
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.UnInstall">
+      <summary>
+            插件卸载时执行
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.Start">
+      <summary>
+            插件安装后执行
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.Stop">
+      <summary>
+            插件卸载前执行
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.ShowForm">
+      <summary>
+            显示插件窗体，没有窗体可不重写
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.SDK.Plugin.ToString">
+      <summary>
+            插件名
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:Coco.Framework.SDK.Plugin.Id">
+      <summary>
+            插件唯一标识，可用来识别插件，推荐格式：作者.插件名，例如：xiaohui.Coco
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.Plugin.PluginName">
+      <summary>
+            插件名称
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.Plugin.Description">
+      <summary>
+            插件介绍
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.Plugin.Author">
+      <summary>
+            作者
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.Plugin.FileName">
+      <summary>
+            插件文件名，请勿设置
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.OutputReplace">
+      <summary>
+            输出替换，给群、好友、讨论组、临时会话发送消息前调用，可以改变发送消息内容，可以拦截消息
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.Log">
+      <summary>
+            输出日志到窗口
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.LoginSuccessed">
+      <summary>
+            登录成功
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.ReceiveNormalIM">
+      <summary>
+            收到QQ消息
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.ReceiveTempIM">
+      <summary>
+            收到临时会话消息
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.ReceiveVibration">
+      <summary>
+            收到抖动
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.ReceiveSubjectIM">
+      <summary>
+            收到讨论组消息，包括自己发出的消息，这里要注意
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.ReceiveClusterIM">
+      <summary>
+            收到群消息，包括自己发出的消息，这里要注意
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.ReceiveShuoShuo">
+      <summary>
+            收到说说
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.LostConnection">
+      <summary>
+            连接丢失，一般是掉线
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.SignatureChanged">
+      <summary>
+            好友签名修改
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.StatusChanged">
+      <summary>
+            好友状态改变
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.AddedToClusterInvite">
+      <summary>
+            我被邀请加入群或者我是管理员，其他人被邀请
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.AddedToCluster">
+      <summary>
+            有人进入群，参数：群、加入的人、管理员
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.RejectJoinCluster">
+      <summary>
+            群管理员拒绝我的入群申请
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.AddToClusterNeedAuth">
+      <summary>
+            有人申请加入群等待我审核
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.MemberExitCluster">
+      <summary>
+            成员退出群
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.ClusterEvent">
+      <summary>
+            收到共享文件事件
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.AddMeFriend">
+      <summary>
+            我被加为好友，自动通过认证
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.AddMeFriendNeedAuth">
+      <summary>
+            我被加为好友，需要我认证
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.CardChanged">
+      <summary>
+            群成员修改名片
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.ClusterAdminChanged">
+      <summary>
+            管理员权限改变
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.KeepAlive">
+      <summary>
+            心跳包
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.QQLevel">
+      <summary>
+            收到QQ等级资料
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.Licence">
+      <summary>
+            是否授权，授权成功才能继续登录
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.LoginStatusChanged">
+      <summary>
+            登录状态改变
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.ClusterNoticeChanged">
+      <summary>
+            群公告改变
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.VerifyImage">
+      <summary>
+            需要验证码，调用qqclient.SendVerifyCode发送验证码
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.SilencedQQEvent">
+      <summary>
+            成员被禁言、解除禁言
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.SignQQEvent">
+      <summary>
+            签到事件
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.Plugin.QQPayEvent">
+      <summary>
+            QQ转账信息
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.Plugin.User">
+      <summary>
+            获取机器人相关数据，例如好友列表、群列表、群成员等
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.Plugin.Config">
+      <summary>
+            获取机器人配置
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.Plugin.Versions">
+      <summary>
+            程序集版本
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.Plugin.AllPlugin">
+      <summary>
+            全部插件
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.Plugin.RuningPlugin">
+      <summary>
+            在运行的插件
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.LoginSuccessed">
+      <summary>
+            登录成功
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.ReceiveNormalIM">
+      <summary>
+            收到QQ消息
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.ReceiveTempIM">
+      <summary>
+            收到临时会话消息
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.ReceiveVibration">
+      <summary>
+            收到抖动
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.ReceiveSubjectIM">
+      <summary>
+            收到讨论组消息，包括自己发出的消息，这里要注意
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.ReceiveClusterIM">
+      <summary>
+            收到群消息，包括自己发出的消息，这里要注意
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.ReceiveShuoShuo">
+      <summary>
+            收到说说
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.LostConnection">
+      <summary>
+            连接丢失，一般是掉线
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.SignatureChanged">
+      <summary>
+            好友签名修改
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.StatusChanged">
+      <summary>
+            好友状态改变
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.AddedToClusterInvite">
+      <summary>
+            我被邀请加入群或者我是管理员，其他人被邀请
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.AddedToCluster">
+      <summary>
+            有人进入群，参数：群、加入的人、管理员
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.RejectJoinCluster">
+      <summary>
+            群管理员拒绝我的入群申请
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.AddToClusterNeedAuth">
+      <summary>
+            有人申请加入群等待我审核
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.MemberExitCluster">
+      <summary>
+            成员退出群
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.ClusterEvent">
+      <summary>
+            收到共享文件事件
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.AddMeFriend">
+      <summary>
+            我被加为好友，自动通过认证
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.AddMeFriendNeedAuth">
+      <summary>
+            我被加为好友，需要我认证
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.CardChanged">
+      <summary>
+            群成员修改名片
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.ClusterAdminChanged">
+      <summary>
+            管理员权限改变
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.KeepAlive">
+      <summary>
+            心跳包
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.QQLevel">
+      <summary>
+            收到QQ等级资料
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.Licence">
+      <summary>
+            是否授权，授权成功才能继续登录
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.LoginStatusChanged">
+      <summary>
+            登录状态改变
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.ClusterNoticeChanged">
+      <summary>
+            群公告改变
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.VerifyImage">
+      <summary>
+            需要验证码，调用client.SendVerifyCode发送验证码
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.SilencedQQEvent">
+      <summary>
+            成员被禁言、解除禁言
+            </summary>
+    </member>
+    <member name="E:Coco.Framework.SDK.QQClientSDK.QQPayEvent">
+      <summary>
+            QQ转账信息
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.SystemMessage">
+      <summary>
+            用于表示获取好友昵称、签名、状态、群、成员、名片完成
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.SDK.SystemMessage.FriendNick">
+      <summary>
+            获取昵称完成
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.SDK.SystemMessage.FriendSignature">
+      <summary>
+            获取签名完成
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.SDK.SystemMessage.FirendStatus">
+      <summary>
+            获取状态完成
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.SDK.SystemMessage.ClusterInfo">
+      <summary>
+            获取群信息完成
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.SDK.SystemMessage.ClusterMember">
+      <summary>
+            获取群成员完成
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.SDK.SystemMessage.ClusterMemberCard">
+      <summary>
+            获取名片完成
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.SDK.SystemMessage.NeedVerify">
+      <summary>
+            需要验证码
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.QQEventArgs.Cancel">
+      <summary>
+            取消下一个插件调用：true，继续传到你给下一个插件处理false
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.OutputReplaceEventArgs.Type">
+      <summary>
+            类型：0 好友消息 1群消息 2临时会话 3讨论组
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.OutputReplaceEventArgs.ExternalId">
+      <summary>
+            群号
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.OutputReplaceEventArgs.QQ">
+      <summary>
+            QQ号码
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.OutputReplaceEventArgs.Message">
+      <summary>
+            消息内容
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.VerifyImageQQEventArgs.Type">
+      <summary>
+            操作类型
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.VerifyImageQQEventArgs.QQ">
+      <summary>
+            QQ或者群号
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.VerifyImageQQEventArgs.Message">
+      <summary>
+            验证码说明
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.VerifyImageQQEventArgs.Session">
+      <summary>
+            验证码图片存放在Verify\{Session}.jpg中
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.VerifyImageQQEventArgs.ImageFile">
+      <summary>
+            验证码图片位置
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.SystemMessageQQEventArgs.Info">
+      <summary>
+            其他说明
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.LoginSuccessedQQEventArgs">
+      <summary>
+            登录成功
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.ReceiveQQEventArgs">
+      <summary>
+            接收消息基类
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.ReceiveQQEventArgs.SendTime">
+      <summary>
+            消息发送时间
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.ReceiveNormalIMQQEventArgs">
+      <summary>
+            收到QQ消息
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.ReceiveTempIMQQEventArgs">
+      <summary>
+            收到临时会话消息
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.ReceiveTempIMQQEventArgs.ExternalId">
+      <summary>
+            群号码，如果为0，可能是网页发起的
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.ClusterEventArgs">
+      <summary>
+            群共享文件、群动态
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.ClusterEventArgs.Cluster">
+      <summary>
+            群
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.ClusterEventArgs.QQ">
+      <summary>
+            上传者
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.ClusterEventArgs.DateTime">
+      <summary>
+            时间
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.ClusterEventArgs.XML">
+      <summary>
+            XML描述
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.ReceiveVibrationQQEventArgs">
+      <summary>
+            收到震动
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.ReceiveVibrationQQEventArgs.First">
+      <summary>
+            首次打开聊天窗口：true，抖动：false
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.ReceiveClusterIMQQEventArgs">
+      <summary>
+            收到QQ群消息
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.ReceiveClusterIMQQEventArgs.SendTime">
+      <summary>
+            消息发送时间
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.ReceiveClusterIMQQEventArgs.Cluster">
+      <summary>
+            群
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.ReceiveClusterIMQQEventArgs.ClusterMember">
+      <summary>
+            群成员
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.ClusterNoticeChangedEventArgs">
+      <summary>
+            群公告改变
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.ClusterNoticeChangedEventArgs.OldNotice">
+      <summary>
+            旧公告
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.ClusterNoticeChangedEventArgs.QQ">
+      <summary>
+            修改公告操作者
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.ClusterNoticeChangedEventArgs.Time">
+      <summary>
+            修改时间
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.ClusterNoticeChangedEventArgs.Cluster">
+      <summary>
+            群
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.ReceiveSubjectIMQQEventArgs">
+      <summary>
+            收到讨论组消息
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.ReceiveSubjectIMQQEventArgs.ClusterId">
+      <summary>
+            讨论组id
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.LostConnectionQQEventArgs">
+      <summary>
+            掉线（收不到心跳包）
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.LostConnectionQQEventArgs.Message">
+      <summary>
+            掉线描述
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.SignatureChangedQQEventArgs">
+      <summary>
+            好友签名改变
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.SignatureChangedQQEventArgs.friend">
+      <summary>
+            好友
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.StatusChangedQQEventArgs">
+      <summary>
+            好友在线状态改变
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.StatusChangedQQEventArgs.friend">
+      <summary>
+            好友
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.QQClientStatusChangedQQEventArgs">
+      <summary>
+            群消息被屏蔽时触发
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.QQClientStatusChangedQQEventArgs.Count">
+      <summary>
+            累计发送失败次数
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.AddedToClusterInviteQQEventArgs">
+      <summary>
+            我被邀请加入群或者我是管理员时其他人被邀请加入群
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.AddedToClusterInviteQQEventArgs.Cluster">
+      <summary>
+            群
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.AddedToClusterInviteQQEventArgs.ClusterMember">
+      <summary>
+            群成员
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.AddedToClusterInviteQQEventArgs.ClusterMemberAdmin">
+      <summary>
+            管理员
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.SilencedQQEventArgs">
+      <summary>
+            禁言事件
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.SilencedQQEventArgs.Cluster">
+      <summary>
+            群
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.SilencedQQEventArgs.QQ">
+      <summary>
+            如果为0则是全体禁言
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.SilencedQQEventArgs.Time">
+      <summary>
+            如果为0xffffffff则为全体禁言
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.SilencedQQEventArgs.ClusterMember">
+      <summary>
+            群成员（可能为null）
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.SilencedQQEventArgs.ClusterMemberAdmin">
+      <summary>
+            管理员
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.SignQQEventArgs.Cluster">
+      <summary>
+            群
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.SignQQEventArgs.Message">
+      <summary>
+            签到内容
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.AddedToClusterQQEventArgs">
+      <summary>
+            有人入群，被ClusterMemberAdmin通过
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.AddedToClusterQQEventArgs.Cluster">
+      <summary>
+            群
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.AddedToClusterQQEventArgs.ClusterMember">
+      <summary>
+            群成员
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.AddedToClusterQQEventArgs.ClusterMemberAdmin">
+      <summary>
+            管理员
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.RejectJoinClusterQQEventArgs">
+      <summary>
+            管理员拒绝我加入群
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.RejectJoinClusterQQEventArgs.Cluster">
+      <summary>
+            群
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.RejectJoinClusterQQEventArgs.ClusterMemberAdmin">
+      <summary>
+            管理员
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.AddToClusterNeedAuthQQEventArgs">
+      <summary>
+            有人申请入群，需要我审核
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.AddToClusterNeedAuthQQEventArgs.Cluster">
+      <summary>
+            群
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.MemberExitClusterQQEventArgs">
+      <summary>
+            成员退出群，如果ClusterMemberAdmin非空，则表示被踢
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.MemberExitClusterQQEventArgs.Cluster">
+      <summary>
+            群
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.MemberExitClusterQQEventArgs.ClusterMember">
+      <summary>
+            成员
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.MemberExitClusterQQEventArgs.ClusterMemberAdmin">
+      <summary>
+            如果非空，则表示被踢
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.AddMeFriendQQEventArgs">
+      <summary>
+            添加我为好友，自动通过
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.AddMeSubjectQQEventArgs">
+      <summary>
+            被拉进讨论组
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.AddMeSubjectQQEventArgs.ClusterId">
+      <summary>
+            讨论组ID
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.AddMeSubjectQQEventArgs.QQ">
+      <summary>
+            讨论组创建者
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.AddMeSubjectQQEventArgs.CreateTime">
+      <summary>
+            讨论组创建时间
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.AddMeSubjectQQEventArgs.Members">
+      <summary>
+            讨论组成员
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.CardChangedQQEventArgs">
+      <summary>
+            群名片改变
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.CardChangedQQEventArgs.Cluster">
+      <summary>
+            群
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.CardChangedQQEventArgs.ClusterMember">
+      <summary>
+            成员
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.CardChangedQQEventArgs.IsRobot">
+      <summary>
+            是机器人修改
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.ClusterAdminChangedQQEventArgs">
+      <summary>
+            群管理员权限改变
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.ClusterAdminChangedQQEventArgs.Cluster">
+      <summary>
+            群
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.ClusterAdminChangedQQEventArgs.ClusterMember">
+      <summary>
+            成员
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.KeepAliveQQEventArgs">
+      <summary>
+            心跳包
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.QQLevelQQEventArgs">
+      <summary>
+            等级等信息
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.LicenceQQEventArgs">
+      <summary>
+            授权信息
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.LicenceQQEventArgs.ExpTime">
+      <summary>
+            软件有效期，默认DateTime.MinValue
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.LoginStatusChangedQQEventArgs">
+      <summary>
+            登录状态改变
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.AddMeFriendNeedAuthQQEventArgs">
+      <summary>
+            我被加为好友
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.QQPayEventArgs">
+      <summary>
+            收到转账信息
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.QQPayEventArgs.Fee">
+      <summary>
+            金额
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.QQPayEventArgs.Intro">
+      <summary>
+            备注
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.QQPayEventArgs.Id">
+      <summary>
+            交易号
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.SDK.SoftOEM">
+      <summary>
+            OEM
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.SoftOEM.ICON">
+      <summary>
+            系统图标
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.SoftOEM.ShowLicence">
+      <summary>
+            显示授权时间
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.SDK.SoftOEM.Licenece">
+      <summary>
+            协议内容
+            </summary>
+    </member>
+    <member name="M:Coco.Framework.Utils.CmdUtil.ExeCommand(System.String[])">
+      <summary>
+            执行多条cmd.exe命令
+            </summary>
+      <param name="commandTexts">命令文本数组</param>
+      <returns>命令输出文本</returns>
+    </member>
+    <member name="M:Coco.Framework.Utils.CmdUtil.StartApp(System.String)">
+             
+             启动外部Windows应用程序，隐藏程序界面
+             
+            应用程序路径名称
+             true表示成功，false表示失败
+        </member>
+    <member name="M:Coco.Framework.Utils.CmdUtil.StartApp(System.String,System.Diagnostics.ProcessWindowStyle)">
+             
+             启动外部应用程序
+             
+            应用程序路径名称
+            进程窗口模式
+             true表示成功，false表示失败
+        </member>
+    <member name="M:Coco.Framework.Utils.CmdUtil.StartApp(System.String,System.String)">
+             
+             启动外部应用程序，隐藏程序界面
+             
+            应用程序路径名称
+            启动参数
+             true表示成功，false表示失败
+        </member>
+    <member name="M:Coco.Framework.Utils.CmdUtil.StartApp(System.String,System.String,System.Diagnostics.ProcessWindowStyle)">
+             
+             启动外部应用程序
+             
+            应用程序路径名称
+            启动参数
+            进程窗口模式
+             true表示成功，false表示失败
+        </member>
+    <member name="T:Coco.Framework.Utils.Email">
+      <summary>
+            发送邮件
+            </summary>
+    </member>
+    <member name="P:Coco.Framework.Utils.HttpWebClient.Timeout">
+      <summary>
+            超时
+            </summary>
+    </member>
+    <member name="M:Coco.Framework.Utils.JSON.Serialize(System.Object)">
+      <summary>
+            直接返回序列化的JSON字符串
+            </summary>
+      <param name="obj">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="F:Coco.Framework.Utils.SortType.String">
+      <summary>
+            字母排序
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.Utils.SortType.Value">
+      <summary>
+            数字排序
+            </summary>
+    </member>
+    <member name="F:Coco.Framework.Utils.SortType.DateTime">
+      <summary>
+            日期排序
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.Utils.PropertyGridRichText">
+      <summary>
+            PropertyGridRichText
+            </summary>
+    </member>
+    <member name="T:Coco.Framework.Utils.QQLog">
+      <summary>
+            记录运行日志
+            </summary>
+    </member>
+    <member name="M:Coco.Framework.Utils.QQLog.Write(System.String,System.Object[])">
+      <summary>
+            按日期格式存储的程序运行日志
+            </summary>
+      <param name="format">
+      </param>
+      <param name="p">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.Utils.QQLog.Error(System.Exception,System.String,System.Object[])">
+      <summary>
+            记录程序异常
+            </summary>
+      <param name="ex">
+      </param>
+      <param name="format">
+      </param>
+      <param name="args">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.Utils.QQLog.Error(System.Object,System.Exception)">
+      <summary>
+            记录程序异常
+            </summary>
+      <param name="source">
+      </param>
+      <param name="ex">
+      </param>
+    </member>
+    <member name="T:Coco.Framework.Utils.Util">
+      <summary>
+            常用辅助代码
+            </summary>
+    </member>
+    <member name="M:Coco.Framework.Utils.Util.GetUInt(System.Byte[],System.Int32,System.Int32)">
+      <summary>
+            把字节数组从offset开始的len个字节转换成一个unsigned int，
+            </summary>
+      <param name="inData">字节数组</param>
+      <param name="offset">从哪里开始转换.</param>
+      <param name="len">转换长度, 如果len超过8则忽略后面的.</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.Utils.Util.GetTimeSpan">
+      <summary>
+            返回当前时间的 Unix 时间戳
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.Utils.Util.GetDateTime(System.Int32)">
+      <summary>
+            返回时间
+            </summary>
+      <param name="TimeSpan">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.Utils.Util.ToBytes(System.String)">
+      <summary>
+            16进制字符串转byte[]
+            </summary>
+      <param name="hexStr">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.Utils.Util.ToHex(System.Byte[],System.String,System.String)">
+      <summary>
+            转为16进制字符串
+            </summary>
+      <param name="bs">
+      </param>
+      <param name="NewLine">
+      </param>
+      <param name="Format">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.Utils.Util.MapPath(System.String,System.Boolean)">
+      <summary>
+            相对路径返回绝对路径，自动创建
+            </summary>
+      <param name="path">
+      </param>
+      <param name="CreateDirectory">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.Utils.Util.MapFile(System.String)">
+      <summary>
+            相对路径文件名返回绝对路径文件名
+            </summary>
+      <param name="file">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.Utils.Util.GetRandomColor">
+      <summary>
+            获取随机颜色
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.Utils.Util.ToUintList(System.String)">
+      <summary>
+            与ListToString相反，从字符串中提取多个数字，包装成List类型，便于查询、存储
+            </summary>
+      <param name="str">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.Utils.Util.ToStringArrList(System.String)">
+      <summary>
+            空行分隔的字符串转换成List《string[]》类型
+            </summary>
+      <param name="str">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.Utils.Util.ToIntList(System.String)">
+      <summary>
+            与ListToString相反，从字符串中提取多个数字，包装成List类型，便于查询、存储
+            </summary>
+      <param name="str">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.Utils.Util.ToDoubleList(System.String)">
+      <summary>
+            逗号或空格或换行符分隔
+            </summary>
+      <param name="str">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.Utils.Util.StrToHashSet(System.String)">
+      <summary>
+            ,分割的字符串转化成HashSet类型，例如多个QQ号码
+            </summary>
+      <param name="str">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.Utils.Util.ReplaceNick(System.String)">
+      <summary>
+            替换昵称、名片中的html字符
+            </summary>
+      <param name="str">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.Utils.Util.EncodeUBB(System.String)">
+      <summary>
+            过滤变量，防止昵称、名片中发出@全体、图片等
+            </summary>
+      <param name="str">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Coco.Framework.Utils.Util.Compress(System.Byte[])">
+      <summary>
+            压缩字节数组
+            </summary>
+      <param name="str">
+      </param>
+    </member>
+    <member name="M:Coco.Framework.Utils.Util.Decompress(System.Byte[])">
+      <summary>
+            解压缩字节数组
+            </summary>
+      <param name="str">
+      </param>
+    </member>
+  </members>
+</doc>

@@ -1,0 +1,9 @@
+E:\work\cs\好品推\好品推\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+E:\work\cs\好品推\好品推\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+E:\work\cs\好品推\好品推\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+E:\work\cs\好品推\好品推\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+E:\work\cs\好品推\好品推\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+E:\work\cs\好品推\好品推\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+E:\work\cs\好品推\好品推\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+E:\work\cs\好品推\好品推\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+E:\work\cs\好品推\好品推\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb

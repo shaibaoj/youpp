@@ -1,0 +1,11 @@
+E:\work\cs\好品推\好品推助手新版\bin\Debug\好品推助手.exe.config
+E:\work\cs\好品推\Release\好品推助手.exe.config
+E:\work\cs\好品推\Release\好品推助手.exe
+E:\work\cs\好品推\好品推助手新版\obj\x86\Debug\好品推助手新版.csprojResolveAssemblyReference.cache
+E:\work\cs\好品推\好品推助手新版\obj\x86\Debug\haopintui.BaseForm.resources
+E:\work\cs\好品推\好品推助手新版\obj\x86\Debug\haopintui.CmsForm.resources
+E:\work\cs\好品推\好品推助手新版\obj\x86\Debug\haopintui.FormLogin.resources
+E:\work\cs\好品推\好品推助手新版\obj\x86\Debug\haopintui.Properties.Resources.resources
+E:\work\cs\好品推\好品推助手新版\obj\x86\Debug\haopintui.ShowFwSndForm.resources
+E:\work\cs\好品推\好品推助手新版\obj\x86\Debug\好品推助手新版.csproj.GenerateResource.Cache
+E:\work\cs\好品推\好品推助手新版\obj\x86\Debug\好品推助手.exe

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<software>
+<version>19</version>
+<filelist count="6" url="http://software.huopinjie.com" sourcepath="/update/">
+<file updateType="1">好品推助手.exe</file>
+<file updateType="1">common.dll</file>
+<file updateType="1">AlimamaLogin.exe</file>
+<file updateType="0">NPOI.dll</file>
+<file updateType="0">System.Data.SQLite.dll</file>
+<file updateType="1">注意事项.txt</file>
+<file updateType="0">config/淘清仓淘抢购.mdb</file>
+<file updateType="0">config/alibridge.db</file>
+<file updateType="0">Plugin/AxInterop.Dama2Lib.dll</file>
+<file updateType="0">Plugin/CrackCaptchaAPI.dll</file>
+<file updateType="0">Plugin/Interop.Dama2Lib.dll</file>
+</filelist>
+</software>

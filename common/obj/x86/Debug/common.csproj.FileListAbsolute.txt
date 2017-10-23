@@ -1,0 +1,8 @@
+E:\work\cs\好品推\common\bin\Debug\common.dll
+E:\work\cs\好品推\common\bin\Debug\common.pdb
+E:\work\cs\好品推\common\bin\Debug\IrisSkin2.dll
+E:\work\cs\好品推\bin\common.dll
+E:\work\cs\好品推\bin\common.pdb
+E:\work\cs\好品推\common\obj\x86\Debug\common.csprojResolveAssemblyReference.cache
+E:\work\cs\好品推\common\obj\x86\Debug\common.dll
+E:\work\cs\好品推\common\obj\x86\Debug\common.pdb
