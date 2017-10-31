@@ -15,3 +15,5 @@ E:\work\cs\好品推\好品推助手新版\obj\x86\Release\haopintui.ShowQqForm.
 E:\work\cs\好品推\好品推助手新版\obj\x86\Release\haopintui.ShowWeixinForm.resources
 E:\work\cs\好品推\好品推助手新版\obj\x86\Release\好品推助手新版.csproj.GenerateResource.Cache
 E:\work\cs\好品推\好品推助手新版\obj\x86\Release\好品推助手.exe
+E:\haopintui\zhuzhou\Release\好品推助手.exe.config
+E:\haopintui\zhuzhou\好品推助手新版\obj\x86\Release\好品推助手.exe

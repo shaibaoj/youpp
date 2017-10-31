@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "common", "..\common\common.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoUpdate", "..\AutoUpd\AutoUpdate.csproj", "{2DB0FE13-52EE-4BDE-AC9D-23D89D75BAA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "好品推助手新版", "..\好品推助手新版\好品推助手新版.csproj", "{05CC89B6-EF40-490F-A663-228AE6468776}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "好品推助手", "..\好品推助手新版\好品推助手.csproj", "{05CC89B6-EF40-490F-A663-228AE6468776}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliLogin", "..\AliLogin\AliLogin.csproj", "{477B7FF0-089A-4785-A1D5-E140A8372D43}"
 EndProject

@@ -1,2 +1,4 @@
 E:\work\cs\好品推\Release\common.dll
 E:\work\cs\好品推\common\obj\x86\Release\common.dll
+E:\haopintui\zhuzhou\Release\common.dll
+E:\haopintui\zhuzhou\common\obj\x86\Release\common.dll
