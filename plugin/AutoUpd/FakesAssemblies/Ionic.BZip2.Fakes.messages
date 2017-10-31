@@ -1,0 +1,16 @@
+E:\haopintui\zhuzhou\plugin\AutoUpd\Fakes\Ionic.BZip2.fakes : warning : 无法为 Ionic.BZip2.Rand 生成存根: 类型已密封。
+E:\haopintui\zhuzhou\plugin\AutoUpd\Fakes\Ionic.BZip2.fakes : warning : 无法为 Ionic.BZip2.BZip2 生成存根: 类型已密封。
+E:\haopintui\zhuzhou\plugin\AutoUpd\Fakes\Ionic.BZip2.fakes : warning : 无法为 Ionic.BZip2.BZip2Compressor 生成存根: 类型对 exported or assembly(Ionic.BZip2.Fakes) 不可见。
+E:\haopintui\zhuzhou\plugin\AutoUpd\Fakes\Ionic.BZip2.fakes : warning : 无法为 Ionic.BZip2.WorkItem 生成存根: 类型对 exported or assembly(Ionic.BZip2.Fakes) 不可见。
+E:\haopintui\zhuzhou\plugin\AutoUpd\Fakes\Ionic.BZip2.fakes : warning : 无法为 Ionic.BZip2.BitWriter 生成存根: 类型对 exported or assembly(Ionic.BZip2.Fakes) 不可见。
+E:\haopintui\zhuzhou\plugin\AutoUpd\Fakes\Ionic.BZip2.fakes : warning : 无法为 <PrivateImplementationDetails>{0D238D3B-BCDE-430E-BFDE-20A0C5D2C593} 生成存根: 类型不受支持，因为存在内部限制。
+E:\haopintui\zhuzhou\plugin\AutoUpd\Fakes\Ionic.BZip2.fakes : warning : 无法为 Ionic.BZip2.Rand 生成填充码: 类型对 exported or assembly(Ionic.BZip2.Fakes) 不可见。
+E:\haopintui\zhuzhou\plugin\AutoUpd\Fakes\Ionic.BZip2.fakes : warning : 无法为 Ionic.BZip2.BZip2InputStream+CState 生成填充码: 类型是一个枚举。
+E:\haopintui\zhuzhou\plugin\AutoUpd\Fakes\Ionic.BZip2.fakes : warning : 无法为 Ionic.BZip2.BZip2InputStream+DecompressionState 生成填充码: 类型对 exported or assembly(Ionic.BZip2.Fakes) 不可见。
+E:\haopintui\zhuzhou\plugin\AutoUpd\Fakes\Ionic.BZip2.fakes : warning : 无法为 Ionic.BZip2.BZip2 生成填充码: 类型对 exported or assembly(Ionic.BZip2.Fakes) 不可见。
+E:\haopintui\zhuzhou\plugin\AutoUpd\Fakes\Ionic.BZip2.fakes : warning : 无法为 Ionic.BZip2.BZip2Compressor 生成填充码: 类型对 exported or assembly(Ionic.BZip2.Fakes) 不可见。
+E:\haopintui\zhuzhou\plugin\AutoUpd\Fakes\Ionic.BZip2.fakes : warning : 无法为 Ionic.BZip2.BZip2OutputStream+TraceBits 生成填充码: 类型是一个枚举。
+E:\haopintui\zhuzhou\plugin\AutoUpd\Fakes\Ionic.BZip2.fakes : warning : 无法为 Ionic.BZip2.WorkItem 生成填充码: 类型对 exported or assembly(Ionic.BZip2.Fakes) 不可见。
+E:\haopintui\zhuzhou\plugin\AutoUpd\Fakes\Ionic.BZip2.fakes : warning : 无法为 Ionic.BZip2.ParallelBZip2OutputStream+TraceBits 生成填充码: 类型是一个枚举。
+E:\haopintui\zhuzhou\plugin\AutoUpd\Fakes\Ionic.BZip2.fakes : warning : 无法为 Ionic.BZip2.BitWriter 生成填充码: 类型对 exported or assembly(Ionic.BZip2.Fakes) 不可见。
+E:\haopintui\zhuzhou\plugin\AutoUpd\Fakes\Ionic.BZip2.fakes : warning : 无法为 <PrivateImplementationDetails>{0D238D3B-BCDE-430E-BFDE-20A0C5D2C593} 生成填充码: 类型不受支持，因为存在内部限制。

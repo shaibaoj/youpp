@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2DB0FE13-52EE-4BDE-AC9D-23D89D75BAA7}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>AutoUpdate</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>update.ico</ApplicationIcon>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="Ionic.BZip2">
+      <HintPath>..\..\Release\Ionic.BZip2.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\..\Release\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zlib">
+      <HintPath>..\..\Release\Ionic.Zlib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="ZipUtil.cs" />
+    <Compile Include="自动更新程序\ShowUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="自动更新程序\AutoUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="自动更新程序\Crypt.cs" />
+    <Compile Include="自动更新程序\ShowSuccessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="自动更新程序\HttpService.cs" />
+    <Compile Include="自动更新程序\Properties\Settings.cs" />
+    <Compile Include="自动更新程序\Properties\Resources.cs" />
+    <Compile Include="Class0.cs" />
+    <EmbeddedResource Include="自动更新程序.Properties.Resources.resources" />
+    <EmbeddedResource Include="自动更新程序.AutoUpdateForm.resources" />
+    <EmbeddedResource Include="自动更新程序.ShowSuccessForm.resources" />
+    <EmbeddedResource Include="自动更新程序.ShowUpdateForm.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="update.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="Fakes\Ionic.BZip2.fakes" />
+  </ItemGroup>
+</Project>

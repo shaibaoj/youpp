@@ -1,5 +1,0 @@
-E:\work\cs\好品推\bin\AutoUpdate.exe
-E:\work\cs\好品推\bin\AutoUpdate.pdb
-E:\work\cs\好品推\AutoUpd\obj\x86\Debug\AutoUpdate.csprojResolveAssemblyReference.cache
-E:\work\cs\好品推\AutoUpd\obj\x86\Debug\AutoUpdate.exe
-E:\work\cs\好品推\AutoUpd\obj\x86\Debug\AutoUpdate.pdb

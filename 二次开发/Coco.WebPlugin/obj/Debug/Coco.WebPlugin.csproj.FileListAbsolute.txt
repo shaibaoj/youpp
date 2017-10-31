@@ -1,3 +1,0 @@
-E:\work\cs\好品推\二次开发\Coco.WebPlugin\obj\Debug\Coco.WebPlugin.csprojResolveAssemblyReference.cache
-E:\work\cs\好品推\二次开发\Coco.WebPlugin\obj\Debug\Coco.WebPlugin.FormMain.resources
-E:\work\cs\好品推\二次开发\Coco.WebPlugin\obj\Debug\Coco.WebPlugin.csproj.GenerateResource.Cache

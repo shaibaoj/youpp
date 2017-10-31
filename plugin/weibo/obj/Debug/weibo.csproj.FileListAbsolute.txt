@@ -1,0 +1,12 @@
+E:\haopintui\zhuzhou\plugin\Release\WeiboLogin.exe.config
+E:\haopintui\zhuzhou\plugin\Release\WeiboLogin.exe
+E:\haopintui\zhuzhou\plugin\Release\WeiboLogin.pdb
+E:\haopintui\zhuzhou\Release\WeiboLogin.exe.config
+E:\haopintui\zhuzhou\Release\WeiboLogin.exe
+E:\haopintui\zhuzhou\Release\WeiboLogin.pdb
+E:\haopintui\zhuzhou\plugin\weibo\obj\Debug\阿里妈妈登录.AlimamaLoginForm.resources
+E:\haopintui\zhuzhou\plugin\weibo\obj\Debug\WeiboLogin.阿里妈妈登录.Properties.Resources.resources
+E:\haopintui\zhuzhou\plugin\weibo\obj\Debug\阿里妈妈登录.TaobaoLoginForm.resources
+E:\haopintui\zhuzhou\plugin\weibo\obj\Debug\weibo.csproj.GenerateResource.Cache
+E:\haopintui\zhuzhou\plugin\weibo\obj\Debug\WeiboLogin.exe
+E:\haopintui\zhuzhou\plugin\weibo\obj\Debug\WeiboLogin.pdb

@@ -1,0 +1,11 @@
+E:\work\cs\好品推\bin\AutoUpdate.exe
+E:\work\cs\好品推\bin\AutoUpdate.pdb
+E:\work\cs\好品推\AutoUpd\obj\x86\Debug\AutoUpdate.csprojResolveAssemblyReference.cache
+E:\work\cs\好品推\AutoUpd\obj\x86\Debug\AutoUpdate.exe
+E:\work\cs\好品推\AutoUpd\obj\x86\Debug\AutoUpdate.pdb
+E:\haopintui\zhuzhou\plugin\bin\AutoUpdate.exe
+E:\haopintui\zhuzhou\plugin\bin\AutoUpdate.pdb
+E:\haopintui\zhuzhou\Release\AutoUpdate.exe
+E:\haopintui\zhuzhou\Release\AutoUpdate.pdb
+E:\haopintui\zhuzhou\plugin\AutoUpd\obj\x86\Debug\AutoUpdate.exe
+E:\haopintui\zhuzhou\plugin\AutoUpd\obj\x86\Debug\AutoUpdate.pdb
