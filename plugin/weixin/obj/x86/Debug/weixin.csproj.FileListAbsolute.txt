@@ -19,3 +19,4 @@ E:\haopintui\zhuzhou\plugin\weixin\obj\x86\Debug\WeChat.NET.sendMainForm.resourc
 E:\haopintui\zhuzhou\plugin\weixin\obj\x86\Debug\weixin.csproj.GenerateResource.Cache
 E:\haopintui\zhuzhou\plugin\weixin\obj\x86\Debug\HptWeixin.exe
 E:\haopintui\zhuzhou\plugin\weixin\obj\x86\Debug\HptWeixin.pdb
+E:\haopintui\zhuzhou\plugin\weixin\obj\x86\Debug\weixin.csprojResolveAssemblyReference.cache

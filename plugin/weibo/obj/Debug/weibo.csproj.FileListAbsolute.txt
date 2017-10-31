@@ -10,3 +10,4 @@ E:\haopintui\zhuzhou\plugin\weibo\obj\Debug\阿里妈妈登录.TaobaoLoginForm.r
 E:\haopintui\zhuzhou\plugin\weibo\obj\Debug\weibo.csproj.GenerateResource.Cache
 E:\haopintui\zhuzhou\plugin\weibo\obj\Debug\WeiboLogin.exe
 E:\haopintui\zhuzhou\plugin\weibo\obj\Debug\WeiboLogin.pdb
+E:\haopintui\zhuzhou\plugin\weibo\obj\Debug\weibo.csprojResolveAssemblyReference.cache
