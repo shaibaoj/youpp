@@ -148,6 +148,7 @@ namespace haopintui.util
                     }
 
                     urlItem.click_url = UserUtil.query_short_url(cmsForm,uland_url);
+
                     if (urlItem.taokeItem!=null
                         &&urlItem.taokeItem.tkMktStatus == 1
                         &&urlItem.taokeItem.tkRate>urlItem.taokeItem.eventRate
@@ -206,6 +207,15 @@ namespace haopintui.util
                         return urlItem;
                     }
                     //LogUtil.log_call(cmsForm, ":" + urlItem.num_iid);
+
+                    string click_url = "";
+                    string api_uland_url = UserUtil.query_ali_api_url(cmsForm, urlItem.num_iid, pid, activityId);
+                    if (!string.IsNullOrEmpty(api_uland_url))
+                    {
+                        uland_url = api_uland_url;
+                        LogUtil.log_call(cmsForm, string.Concat("高佣金接口转化链接：", api_uland_url));
+                    }
+
                     string click_url = AppUtil.apply_taoke_url_item(cmsForm, contentItem, urlItem, urlItem.num_iid, pid, ref click_status,apply_jihua,  url_type);
                     urlItem.click_url = click_url;
                     if (urlItem.taokeItem!=null
