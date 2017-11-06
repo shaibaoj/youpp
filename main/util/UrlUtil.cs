@@ -209,14 +209,41 @@ namespace haopintui.util
                     //LogUtil.log_call(cmsForm, ":" + urlItem.num_iid);
 
                     string click_url = "";
-                    string api_uland_url = UserUtil.query_ali_api_url(cmsForm, urlItem.num_iid, pid, activityId);
+                    string api_uland_url = UserUtil.query_ali_api_url(cmsForm, urlItem.num_iid, pid, "1");
                     if (!string.IsNullOrEmpty(api_uland_url))
                     {
-                        uland_url = api_uland_url;
+                        click_url = api_uland_url;
                         LogUtil.log_call(cmsForm, string.Concat("高佣金接口转化链接：", api_uland_url));
+
+                        if (urlItem.taokeItem == null)
+                        {
+                            ArrayList taoke_goods_list = AlimamaUtil.query_taoke_goods_list("https://item.taobao.com/item.htm?id=" + urlItem.num_iid, cmsForm.appBean.taoke_cookie, out out_log);
+                            if ((taoke_goods_list != null) && (taoke_goods_list.Count != 0))
+                            {
+                                TaokeItem taokeItem = new TaokeItem();
+                                taokeItem.num_iid = urlItem.num_iid;
+                                taokeItem.user_num_id = ((GoodsItem2)taoke_goods_list[0]).user_num_id;
+                                taokeItem.title = ((GoodsItem2)taoke_goods_list[0]).title;
+                                taokeItem.tkRate = ((GoodsItem2)taoke_goods_list[0]).tkRate;
+
+                                taokeItem.price = ((GoodsItem2)taoke_goods_list[0]).zkPrice;
+                                taokeItem.userType = "" + ((GoodsItem2)taoke_goods_list[0]).userType;
+                                taokeItem.user_num_id = ((GoodsItem2)taoke_goods_list[0]).user_num_id;
+
+                                taokeItem.tkMktStatus = ((GoodsItem2)taoke_goods_list[0]).tkMktStatus;
+                                taokeItem.eventRate = ((GoodsItem2)taoke_goods_list[0]).eventRate;
+
+                                taokeItem.short_url = api_uland_url;
+
+                                urlItem.taokeItem = taokeItem;
+
+                            }
+                        }
+                    }
+                    else {                     
+                        click_url = AppUtil.apply_taoke_url_item(cmsForm, contentItem, urlItem, urlItem.num_iid, pid, ref click_status,apply_jihua,  url_type);
                     }
 
-                    string click_url = AppUtil.apply_taoke_url_item(cmsForm, contentItem, urlItem, urlItem.num_iid, pid, ref click_status,apply_jihua,  url_type);
                     urlItem.click_url = click_url;
                     if (urlItem.taokeItem!=null
                         && urlItem.taokeItem.tkMktStatus==1
