@@ -757,7 +757,7 @@ namespace haopintui
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CmsForm));
             this.richTextBoxLogs = new System.Windows.Forms.RichTextBox();
             this.layout_menu = new System.Windows.Forms.FlowLayoutPanel();
@@ -767,6 +767,7 @@ namespace haopintui
             this.label_qunfa = new System.Windows.Forms.Label();
             this.label_cms = new System.Windows.Forms.Label();
             this.panelTop = new System.Windows.Forms.Panel();
+            this.button47 = new System.Windows.Forms.Button();
             this.button_bind = new System.Windows.Forms.Button();
             this.label_user_type_name = new System.Windows.Forms.Label();
             this.label_welcome = new System.Windows.Forms.Label();
@@ -1136,6 +1137,7 @@ namespace haopintui
             this.label9 = new System.Windows.Forms.Label();
             this.textBox_setting_appId = new System.Windows.Forms.TextBox();
             this.groupBox_alimama = new System.Windows.Forms.GroupBox();
+            this.button48 = new System.Windows.Forms.Button();
             this.linkLabel10 = new System.Windows.Forms.LinkLabel();
             this.label66 = new System.Windows.Forms.Label();
             this.checkBoxScanLogin = new System.Windows.Forms.CheckBox();
@@ -1150,8 +1152,6 @@ namespace haopintui
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.timer_kouling = new System.Windows.Forms.Timer(this.components);
             this.timer_caiji = new System.Windows.Forms.Timer(this.components);
-            this.button47 = new System.Windows.Forms.Button();
-            this.button48 = new System.Windows.Forms.Button();
             this.layout_menu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelTop.SuspendLayout();
@@ -1354,6 +1354,18 @@ namespace haopintui
             this.panelTop.MouseHover += new System.EventHandler(this.panelTop_MouseHover);
             this.panelTop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseMove);
             this.panelTop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseUp);
+            // 
+            // button47
+            // 
+            this.button47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button47.ForeColor = System.Drawing.Color.Red;
+            this.button47.Location = new System.Drawing.Point(326, 5);
+            this.button47.Name = "button47";
+            this.button47.Size = new System.Drawing.Size(75, 23);
+            this.button47.TabIndex = 9;
+            this.button47.Text = "高佣授权";
+            this.button47.UseVisualStyleBackColor = false;
+            this.button47.Click += new System.EventHandler(this.button47_Click);
             // 
             // button_bind
             // 
@@ -2315,8 +2327,8 @@ namespace haopintui
             // 
             // Column_time
             // 
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("新宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Column_time.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("新宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Column_time.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column_time.FillWeight = 20F;
             this.Column_time.HeaderText = "时间";
             this.Column_time.Name = "Column_time";
@@ -5451,22 +5463,22 @@ namespace haopintui
             // radioButtonsetting_app_haopintui
             // 
             this.radioButtonsetting_app_haopintui.AutoSize = true;
+            this.radioButtonsetting_app_haopintui.Checked = true;
             this.radioButtonsetting_app_haopintui.Location = new System.Drawing.Point(115, 131);
             this.radioButtonsetting_app_haopintui.Name = "radioButtonsetting_app_haopintui";
             this.radioButtonsetting_app_haopintui.Size = new System.Drawing.Size(92, 23);
             this.radioButtonsetting_app_haopintui.TabIndex = 4;
+            this.radioButtonsetting_app_haopintui.TabStop = true;
             this.radioButtonsetting_app_haopintui.Text = "好品推接口";
             this.radioButtonsetting_app_haopintui.UseVisualStyleBackColor = true;
             // 
             // radioButtonsetting_app_ben
             // 
             this.radioButtonsetting_app_ben.AutoSize = true;
-            this.radioButtonsetting_app_ben.Checked = true;
             this.radioButtonsetting_app_ben.Location = new System.Drawing.Point(8, 131);
             this.radioButtonsetting_app_ben.Name = "radioButtonsetting_app_ben";
             this.radioButtonsetting_app_ben.Size = new System.Drawing.Size(105, 23);
             this.radioButtonsetting_app_ben.TabIndex = 3;
-            this.radioButtonsetting_app_ben.TabStop = true;
             this.radioButtonsetting_app_ben.Text = "自己口令接口";
             this.radioButtonsetting_app_ben.UseVisualStyleBackColor = true;
             // 
@@ -5533,6 +5545,17 @@ namespace haopintui
             this.groupBox_alimama.TabIndex = 0;
             this.groupBox_alimama.TabStop = false;
             this.groupBox_alimama.Text = "阿里妈妈";
+            // 
+            // button48
+            // 
+            this.button48.ForeColor = System.Drawing.Color.Red;
+            this.button48.Location = new System.Drawing.Point(164, 162);
+            this.button48.Name = "button48";
+            this.button48.Size = new System.Drawing.Size(75, 23);
+            this.button48.TabIndex = 6;
+            this.button48.Text = "高佣授权";
+            this.button48.UseVisualStyleBackColor = true;
+            this.button48.Click += new System.EventHandler(this.button48_Click);
             // 
             // linkLabel10
             // 
@@ -5647,35 +5670,6 @@ namespace haopintui
             this.timer_kouling.Enabled = true;
             this.timer_kouling.Interval = 500;
             this.timer_kouling.Tick += new System.EventHandler(this.timer_kouling_Tick);
-            // 
-            // timer_caiji
-            // 
-            this.timer_caiji.Enabled = true;
-            this.timer_caiji.Interval = 60000;
-            this.timer_caiji.Tick += new System.EventHandler(this.timer_caiji_Tick);
-            // 
-            // button47
-            // 
-            this.button47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button47.ForeColor = System.Drawing.Color.Red;
-            this.button47.Location = new System.Drawing.Point(326, 5);
-            this.button47.Name = "button47";
-            this.button47.Size = new System.Drawing.Size(75, 23);
-            this.button47.TabIndex = 9;
-            this.button47.Text = "高佣授权";
-            this.button47.UseVisualStyleBackColor = false;
-            this.button47.Click += new System.EventHandler(this.button47_Click);
-            // 
-            // button48
-            // 
-            this.button48.ForeColor = System.Drawing.Color.Red;
-            this.button48.Location = new System.Drawing.Point(164, 162);
-            this.button48.Name = "button48";
-            this.button48.Size = new System.Drawing.Size(75, 23);
-            this.button48.TabIndex = 6;
-            this.button48.Text = "高佣授权";
-            this.button48.UseVisualStyleBackColor = true;
-            this.button48.Click += new System.EventHandler(this.button48_Click);
             // 
             // CmsForm
             // 
@@ -9080,22 +9074,6 @@ namespace haopintui
         private void linkLabel6_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("http://wenda.shaibaoj.com/article/13");
-        }
-
-        private void timer_caiji_Tick(object sender, EventArgs e)
-        {
-            try
-            {
-                this.online_version = CmsUtil.query_post_ver(this);
-                if (online_version==(Constants.version+""))
-                {
-                
-                }
-            }
-            catch (Exception)
-            {
-                
-            }
         }
 
         private void button2_Click_3(object sender, EventArgs e)

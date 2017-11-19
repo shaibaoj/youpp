@@ -141,6 +141,23 @@ namespace haopintui.util
                 {                
                     str2 = "http://pub.alimama.com/report/getTbkPaymentDetails.json?queryType=3&payStatus=3&DownloadID=DOWNLOAD_REPORT_INCOME_NEW&startTime={startTime}&endTime={endTime}";
                 }
+                if (queryType == 2)
+                {
+                    str2 = "http://pub.alimama.com/report/getTbkThirdPaymentDetails.json?queryType=2&payStatus=&DownloadID=DOWNLOAD_REPORT_TK3_PUB&startTime={startTime}&endTime={endTime}";
+                }
+                if (queryType == 3)
+                {
+                    str2 = "http://pub.alimama.com/report/getTbkThirdPaymentDetails.json?queryType=4&payStatus=3&DownloadID=DOWNLOAD_REPORT_TK3_PUB&startTime={startTime}&endTime={endTime}";
+                }
+
+                if (queryType == 4)
+                {
+                    str2 = "http://pub.alimama.com/report/getElitePaymentDetails.json?queryType=5&payStatus=&DownloadID=DOWNLOAD_REPORT_ELITE&startTime={startTime}&endTime={endTime}";
+                }
+                if (queryType == 5)
+                {
+                    str2 = "http://pub.alimama.com/report/getElitePaymentDetails.json?queryType=6&payStatus=3&DownloadID=DOWNLOAD_REPORT_ELITE&startTime={startTime}&endTime={endTime}";
+                }
                 
                 str2 = str2.Replace("{startTime}", startTime).Replace("{endTime}", endTime);
                 WebClient webClient = new WebClient();

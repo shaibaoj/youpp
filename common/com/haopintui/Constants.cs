@@ -11,16 +11,16 @@ namespace com.haopintui
         public static string domain_url = "www.haopintui.com";
         public static string user_plug_url = "user.plug.huopinjie.com";
         public static string user_data_plug_url = "user-data.plug.huopinjie.com";
-        public static string user_kouling_plug_url = "user-kouling.plug.huopinjie.com";
-        public static string user_plan_plug_url = "user-plan.plug.huopinjie.com";
 
-        public static string yun_post_url = "yun.post.huopinjie.com";
+        public static string user_kouling_plug_url = "user-kouling.plug.huopinjie.com";
 
         public static string top_data_plug_url = "top.data.haopintui.net";
         public static string user_cms_data_url = "user-cms.plug.huopinjie.com";
 
+        public static string put_tools_url = "http://put.tools.youdanhui.com";
+
         public static string product_code = "zhushou";
-        public static int version = 180; //版本 更新判断
+        public static int version = 181; //版本 更新判断
         public static string version_str = "1.0"; //显示的版本编号
 
         public static string main_exe = "好品推助手.exe";
@@ -57,7 +57,7 @@ namespace com.haopintui
         public static string cms_tongji_url = "http://" + user_plug_url + "/tongji.php";
         public static string cms_tongzhi_url = "http://" + user_plug_url + "/tongzhi.php";
 
-        public static string user_taoke_create_url_plan = "http://" + user_plan_plug_url + "/taoke_item_plan.php";
+        public static string user_taoke_create_url_plan = "http://" + user_plug_url + "/taoke_item_plan.php";
 
         public static string user_coupon_status_url = "http://" + user_plug_url + "/coupon.php";
         public static string user_coupon_status_submit_url = "http://" + user_plug_url + "/coupon_status.php";
@@ -74,9 +74,6 @@ namespace com.haopintui
         public static string sms_url = "http://" + api_url + "/sms.php";
 
         public static string kouling_url = "http://" + user_kouling_plug_url + "/kouling.php";
-
-        public static string post_url_get = "http://" + yun_post_url + "/get.php";
-        public static string post_url_post = "http://" + yun_post_url + "/post.php";
 
         public static string config_ini = "/config/config.ini";
         public static string config_qq_template_ini = "/config/qq_template.txt";

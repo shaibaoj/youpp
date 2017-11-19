@@ -1,0 +1,10 @@
+E:\haopintui\zhuzhou\jiangkong\jiankong\obj\Debug\jiankong.jk.Form1.resources
+E:\haopintui\zhuzhou\jiangkong\jiankong\obj\Debug\jiankong.Properties.Resources.resources
+E:\haopintui\zhuzhou\jiangkong\jiankong\obj\Debug\jiankong.jk.Properties.Resources.resources
+E:\haopintui\zhuzhou\jiangkong\jiankong\obj\Debug\jiankong.csproj.GenerateResource.Cache
+E:\haopintui\zhuzhou\jiangkong\jiankong\bin\Debug\jiankong.exe.config
+E:\haopintui\zhuzhou\jiangkong\jiankong\bin\Debug\jiankong.exe
+E:\haopintui\zhuzhou\jiangkong\jiankong\bin\Debug\jiankong.pdb
+E:\haopintui\zhuzhou\jiangkong\jiankong\obj\Debug\jiankong.csprojResolveAssemblyReference.cache
+E:\haopintui\zhuzhou\jiangkong\jiankong\obj\Debug\jiankong.exe
+E:\haopintui\zhuzhou\jiangkong\jiankong\obj\Debug\jiankong.pdb
