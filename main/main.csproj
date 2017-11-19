@@ -217,6 +217,7 @@
     <Compile Include="Enums\Win32.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="util\WinFileTransporter.cs" />
     <Compile Include="weixin\BaseService.cs" />
     <Compile Include="weixin\LoginService.cs" />
     <Compile Include="订单DataSet.Designer.cs">

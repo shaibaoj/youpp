@@ -1339,43 +1339,6 @@ namespace haopintui
 
         }
 
-        public static string query_post_ver(CmsForm cmsForm)
-        {
-
-            string version = null ;
-            try
-            {
-                WebClient client = new WebClient();
-                client.Headers.Add("Accept", "application/json, text/javascript, */*; q=0.01");
-                client.Headers.Add("X-Requested-With", "XMLHttpRequest");
-                client.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36");
-                client.Headers.Add("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-                client.Headers.Add("Accept-Encoding", "gzip,deflate,sdch");
-                client.Headers.Add("Accept-Language", "zh-CN,zh;q=0.8");
-                string body = "";
-                byte[] buffer = client.DownloadData(Constants.post_url_get);
-                string str5 = client.ResponseHeaders["Content-Encoding"];
-                if ("gzip".Equals(str5))
-                {
-                    body = GzipUtil.zip_to_string(buffer, Encoding.UTF8);
-                }
-                else
-                {
-                    body = Encoding.UTF8.GetString(buffer);
-                }
-                //LogUtil.log_call(cmsForm, "[body:" + body + "]");
-                JsonData jo = JsonMapper.ToObject(body);
-                JsonData data = jo["data"];
-                version = data["version"].ToString();
-            }
-            catch (Exception)
-            {
-
-            }
-            return version;
-
-        }
-
         public static UserCmsItemBean get_user_cms_data_num_iid_user(CmsForm cmsForm)
         {
             UserCmsItemBean userCmsItemBean = null;

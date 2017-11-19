@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliLogin", "..\plugin\AliLo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoUpdate", "..\plugin\AutoUpd\AutoUpdate.csproj", "{2DB0FE13-52EE-4BDE-AC9D-23D89D75BAA7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jiankong", "..\jiangkong\jiankong\jiankong.csproj", "{64F45A3C-1DF9-4CF8-87C3-19847F88467E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +87,16 @@ Global
 		{2DB0FE13-52EE-4BDE-AC9D-23D89D75BAA7}.Release|Mixed Platforms.Build.0 = Release|x86
 		{2DB0FE13-52EE-4BDE-AC9D-23D89D75BAA7}.Release|x86.ActiveCfg = Release|x86
 		{2DB0FE13-52EE-4BDE-AC9D-23D89D75BAA7}.Release|x86.Build.0 = Release|x86
+		{64F45A3C-1DF9-4CF8-87C3-19847F88467E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64F45A3C-1DF9-4CF8-87C3-19847F88467E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64F45A3C-1DF9-4CF8-87C3-19847F88467E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{64F45A3C-1DF9-4CF8-87C3-19847F88467E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{64F45A3C-1DF9-4CF8-87C3-19847F88467E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{64F45A3C-1DF9-4CF8-87C3-19847F88467E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64F45A3C-1DF9-4CF8-87C3-19847F88467E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64F45A3C-1DF9-4CF8-87C3-19847F88467E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{64F45A3C-1DF9-4CF8-87C3-19847F88467E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{64F45A3C-1DF9-4CF8-87C3-19847F88467E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
