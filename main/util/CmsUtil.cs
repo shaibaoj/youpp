@@ -1603,7 +1603,7 @@ namespace haopintui
                 HttpService httpservice = cmsForm.httpService;
                 long user_id = cmsForm.appBean.user_id;
                 string app_id = cmsForm.appBean.cms_app_id;
-                String user_key = cmsForm.appBean.user_key;
+                String user_key = cmsForm.appBean.user_token;
                 String user_name = cmsForm.appBean.user_name;
                 //String user_taoke_url = "http://" + Constants.user_cms_data_url + "/" + app_id + "_.html";
                 //String body = httpservice.get(user_taoke_url, null);
@@ -1647,7 +1647,7 @@ namespace haopintui
                 HttpService httpservice = cmsForm.httpService;
                 long user_id = cmsForm.appBean.user_id;
                 string app_id = cmsForm.appBean.cms_app_id;
-                String user_key = cmsForm.appBean.user_key;
+                String user_key = cmsForm.appBean.user_token;
                 String user_name = cmsForm.appBean.user_name;
                 String ip_url = "http://" + Constants.api_url + "/ip.php";
                 String body = httpservice.get(ip_url, null);

@@ -3,3 +3,6 @@ E:\work\cs\好品推\common\obj\x86\Release\common.dll
 E:\haopintui\zhuzhou\Release\common.dll
 E:\haopintui\zhuzhou\common\obj\x86\Release\common.csprojFakesResolveAssemblyReference.cache
 E:\haopintui\zhuzhou\common\obj\x86\Release\common.dll
+D:\www\助手\Release\common.dll
+D:\www\助手\common\obj\x86\Release\common.csprojResolveAssemblyReference.cache
+D:\www\助手\common\obj\x86\Release\common.dll

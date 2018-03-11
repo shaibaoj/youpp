@@ -21,7 +21,7 @@ namespace haopintui
         public int visits = 0;
         public long user_id = 0L;
         public string user_name = "";
-        public string user_key = "";
+        public string user_token = "";
         public string login_url = "";
         public string softwarename = "";
         public string main_exe = "";
@@ -44,7 +44,7 @@ namespace haopintui
             form.login_url = this.login_url;
             form.ShowDialog();
             this.user_id = form.user_id;
-            this.user_key = form.user_key;
+            this.user_token = form.user_token;
             this.user_name = form.user_name;
             this.feetype = form.feetype;
             this.expiredate = form.expiredate;

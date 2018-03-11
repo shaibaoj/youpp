@@ -8,3 +8,13 @@ E:\haopintui\zhuzhou\jiangkong\jiankong\bin\Debug\jiankong.pdb
 E:\haopintui\zhuzhou\jiangkong\jiankong\obj\Debug\jiankong.csprojResolveAssemblyReference.cache
 E:\haopintui\zhuzhou\jiangkong\jiankong\obj\Debug\jiankong.exe
 E:\haopintui\zhuzhou\jiangkong\jiankong\obj\Debug\jiankong.pdb
+D:\www\助手\jiangkong\jiankong\bin\Debug\jiankong.exe.config
+D:\www\助手\jiangkong\jiankong\bin\Debug\jiankong.exe
+D:\www\助手\jiangkong\jiankong\bin\Debug\jiankong.pdb
+D:\www\助手\jiangkong\jiankong\obj\Debug\jiankong.csprojResolveAssemblyReference.cache
+D:\www\助手\jiangkong\jiankong\obj\Debug\jiankong.jk.Form1.resources
+D:\www\助手\jiangkong\jiankong\obj\Debug\jiankong.Properties.Resources.resources
+D:\www\助手\jiangkong\jiankong\obj\Debug\jiankong.jk.Properties.Resources.resources
+D:\www\助手\jiangkong\jiankong\obj\Debug\jiankong.csproj.GenerateResource.Cache
+D:\www\助手\jiangkong\jiankong\obj\Debug\jiankong.exe
+D:\www\助手\jiangkong\jiankong\obj\Debug\jiankong.pdb

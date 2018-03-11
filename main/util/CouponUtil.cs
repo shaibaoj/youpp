@@ -41,49 +41,7 @@ namespace haopintui.util
              return "http://shop.m.taobao.com/shop/coupon.htm?seller_id={seller_id}&activity_id={activity_id}".Replace("{seller_id}", user_num_id).Replace("{activity_id}", str2);
          }
 
-         internal static void check_coupon(object obj)
-         {
-             CmsForm cmsForm = (CmsForm)obj;
-             try
-             {
-                 int times = 60000;
-                 while (true)
-                 {
-                     try
-                     {
-                         CouponStatusBean couponStatusBean = UserUtil.query_coupon_status(cmsForm);
-                         if (couponStatusBean!=null
-                             && couponStatusBean.times>0)
-                         {
-                             times = couponStatusBean.times;
-                         }
-                         if (couponStatusBean != null
-                             && !String.IsNullOrEmpty(couponStatusBean.activity_id)
-                             && !String.IsNullOrEmpty(couponStatusBean.user_num_id)
-                             && !String.IsNullOrEmpty(couponStatusBean.num_iid)
-                             )
-                         {
-                             bool coupon_status = CouponUtil.check_coupon_status(couponStatusBean.activity_id, couponStatusBean.num_iid);
-                             //LogUtil.log_call(cmsForm, "coupon_status:" + coupon_status);
-                             if (!coupon_status)
-                             {
-                                 UserUtil.update_coupon_status(cmsForm, couponStatusBean.activity_id,-1);
-                             }
-                         }
-                     }
-                     catch (Exception exception)
-                     {
-                         //LogUtil.log_call(cmsForm, "" + exception.ToString());
-                     }
-                     Thread.Sleep(times);
-                 }
-             }
-             catch (Exception exception)
-             {
-                 //LogUtil.log_call(cmsForm,"[checkAutoLogin]出错！" + exception.ToString());
-             }
-
-         }
+        
 
          public static bool check_coupon_status(string activity_id, string num_iid)
          {

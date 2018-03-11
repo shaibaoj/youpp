@@ -102,6 +102,8 @@
     <Compile Include="entity\CmsPlanItem.cs" />
     <Compile Include="entity\ContentWeixin.cs" />
     <Compile Include="entity\CouponBean.cs" />
+    <Compile Include="entity\CouponContent.cs" />
+    <Compile Include="entity\CouponContentSend.cs" />
     <Compile Include="entity\CouponStatusBean.cs" />
     <Compile Include="entity\GengfaItem.cs" />
     <Compile Include="entity\GStruct0.cs" />
@@ -109,6 +111,7 @@
     <Compile Include="entity\PidBean.cs" />
     <Compile Include="entity\SelectedItem.cs" />
     <Compile Include="entity\SendItem.cs" />
+    <Compile Include="entity\ShareItem.cs" />
     <Compile Include="entity\TaokeItem.cs" />
     <Compile Include="entity\UrlItem.cs" />
     <Compile Include="entity\UserCms.cs" />
@@ -209,6 +212,7 @@
     <Compile Include="util\UnCodebase.cs" />
     <Compile Include="util\UrlHptUtil.cs" />
     <Compile Include="util\Urlitem.cs" />
+    <Compile Include="util\UrlParse.cs" />
     <Compile Include="util\UrlUtil.cs" />
     <Compile Include="util\UserUtil.cs" />
     <Compile Include="util\WeiboLogin.cs" />

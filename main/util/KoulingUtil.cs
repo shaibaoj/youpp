@@ -52,25 +52,24 @@ namespace haopintui.util
                 HttpService httpservice = cmsForm.httpService;
                 long user_id = cmsForm.appBean.user_id;
                 string app_id = cmsForm.appBean.cms_app_id;
-                String user_key = cmsForm.appBean.user_key;
+                String user_key = cmsForm.appBean.user_token;
                 String user_name = cmsForm.appBean.user_name;
                 String kouling_url = com.haopintui.Constants.kouling_url;
                 String body = httpservice.post_http(kouling_url, 
                       "user_id=" + user_id 
                     + "&app_id=" + app_id
-                    + "&user_key=" + user_key
+                    + "&member_token=" + user_key
                     + "&url=" + HttpUtility.UrlEncode(url)
                     + "&text=" + text
                     + "&pic=" + HttpUtility.UrlEncode(pic) 
-                    + "&user_token=", null);
+                    , null);
 
                 //LogUtil.log_call(cmsForm, "user_data：" + "user_id=" + user_id
                 //    + "&app_id=" + app_id
-                //    + "&user_key=" + user_key
+                //    + "&member_token=" + user_key
                 //    + "&url=" + HttpUtility.UrlEncode(url)
                 //    + "&text=" + text
-                //    + "&pic=" + HttpUtility.UrlEncode(pic)
-                //    + "&user_token=");
+                //    + "&pic=" + HttpUtility.UrlEncode(pic));
                 //LogUtil.log_call(cmsForm, "user_kouling：" + body);
                 if (body.Contains("<model>"))
                 {

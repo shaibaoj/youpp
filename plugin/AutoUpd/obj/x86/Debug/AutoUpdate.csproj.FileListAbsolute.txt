@@ -10,3 +10,8 @@ E:\haopintui\zhuzhou\Release\AutoUpdate.pdb
 E:\haopintui\zhuzhou\plugin\AutoUpd\obj\x86\Debug\AutoUpdate.exe
 E:\haopintui\zhuzhou\plugin\AutoUpd\obj\x86\Debug\AutoUpdate.pdb
 E:\haopintui\zhuzhou\plugin\AutoUpd\obj\x86\Debug\AutoUpdate.csprojFakesResolveAssemblyReference.cache
+D:\www\助手\Release\AutoUpdate.exe
+D:\www\助手\Release\AutoUpdate.pdb
+D:\www\助手\plugin\AutoUpd\obj\x86\Debug\AutoUpdate.csprojResolveAssemblyReference.cache
+D:\www\助手\plugin\AutoUpd\obj\x86\Debug\AutoUpdate.exe
+D:\www\助手\plugin\AutoUpd\obj\x86\Debug\AutoUpdate.pdb

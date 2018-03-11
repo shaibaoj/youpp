@@ -62,7 +62,7 @@ namespace haopintui.util
                 }
                 LogUtil.log_call(cmsForm, string.Concat("pid：", pid));
                 int click_status = 0;
-                if (url.Contains("activityId") && url.Contains("uland.taobao.com"))
+                if (url.Contains("activityId") && url.Contains("uland.taobao.com")&& !urlItem.ori_url.Contains("uland.taobao.com/quan/detail"))
                 {
                     LogUtil.log_call(cmsForm, string.Concat("二合一链接：", url));
                     urlItem.url_type = 4;
@@ -108,18 +108,18 @@ namespace haopintui.util
                         }
                     }
                     //LogUtil.log_call(cmsForm, string.Concat("二合一链接urlItem.m_url：", urlItem.m_url));
-                    if (qunfa_coupon>0)
-                    {
-                        string money;
-                        CouponItem couponItem = TaobaoUtil.get_coupon(cmsForm,urlItem.m_url, contentItem.num_iid, pid, out money);
-                        LogUtil.log_call(cmsForm, string.Concat("优惠券信息：", couponItem.ToString()));
-                        urlItem.couponItem = couponItem;
-                        if (couponItem == null || couponItem.leftCount < qunfa_coupon)
-                        {
-                            contentItem.status = 1;
-                            return urlItem;
-                        }
-                    }
+                    //if (qunfa_coupon>0)
+                    //{
+                    //    string money;
+                    //    CouponItem couponItem = TaobaoUtil.get_coupon(cmsForm,urlItem.m_url, contentItem.num_iid, pid, out money);
+                    //    LogUtil.log_call(cmsForm, string.Concat("优惠券信息：", couponItem.ToString()));
+                    //    urlItem.couponItem = couponItem;
+                    //    if (couponItem == null || couponItem.leftCount < qunfa_coupon)
+                    //    {
+                    //        contentItem.status = 1;
+                    //        return urlItem;
+                    //    }
+                    //}
 
                     //LogUtil.log_call(cmsForm, string.Concat("二合一链接urlItem.num_iid：", urlItem.num_iid));
                     string click_url = AppUtil.apply_taoke_url_item(cmsForm, contentItem, urlItem, urlItem.num_iid, pid, ref click_status, apply_jihua, url_type);
@@ -166,28 +166,28 @@ namespace haopintui.util
                         return urlItem;
                     }
                 }
-                else if (url.Contains("coupon") && url.Contains("taobao.com"))
-                {
-                    LogUtil.log_call(cmsForm, string.Concat("优惠券链接：", url));
-                    urlItem.url_type = 1;
-                    urlItem.url = url;
-                    urlItem.pc_url = CouponUtil.get_pc_url(url);
-                    urlItem.m_url = CouponUtil.get_m_url(url);
+                //else if ((url.Contains("coupon") && url.Contains("taobao.com")) || url.Contains("uland.taobao.com/quan/detail"))
+                //{
+                //    LogUtil.log_call(cmsForm, string.Concat("优惠券链接：", url));
+                //    urlItem.url_type = 1;
+                //    urlItem.url = url;
+                //    urlItem.pc_url = CouponUtil.get_pc_url(url);
+                //    urlItem.m_url = CouponUtil.get_m_url(url);
 
-                    if (qunfa_coupon > 0)
-                    {
-                        string money;
-                        CouponItem couponItem = TaobaoUtil.get_coupon(cmsForm, url, contentItem.num_iid, pid, out money);
-                        LogUtil.log_call(cmsForm, string.Concat("money：", money));
-                        LogUtil.log_call(cmsForm, string.Concat("优惠券信息：", couponItem.ToString()));
-                        urlItem.couponItem = couponItem;
-                        if (couponItem ==null|| couponItem.leftCount < qunfa_coupon)
-                        {
-                            contentItem.status = 1;
-                            return urlItem;
-                        }
-                    }
-                }
+                //    if (qunfa_coupon > 0)
+                //    {
+                //        string money;
+                //        CouponItem couponItem = TaobaoUtil.get_coupon(cmsForm, url, contentItem.num_iid, pid, out money);
+                //        LogUtil.log_call(cmsForm, string.Concat("money：", money));
+                //        LogUtil.log_call(cmsForm, string.Concat("优惠券信息：", couponItem.ToString()));
+                //        urlItem.couponItem = couponItem;
+                //        if (couponItem == null || couponItem.leftCount < qunfa_coupon)
+                //        {
+                //            contentItem.status = 1;
+                //            return urlItem;
+                //        }
+                //    }
+                //}
 			    else if (((url.Contains("taobao.com") 
                     || url.Contains("tmall.com") 
                     || url.Contains("yao.95095.com")) 
@@ -311,10 +311,8 @@ namespace haopintui.util
                         }
                     }
 
-                    //LogUtil.log_call(cmsForm, ":" + urlItem.num_iid);
                     string click_url = url.Replace("mm_0_0_0", pid);
                     urlItem.click_url = click_url;
-                    //if (string.IsNullOrEmpty(urlItem.click_url))
                     contentItem.market_url = url;
 
                     if (click_status == 2)
@@ -347,22 +345,22 @@ namespace haopintui.util
                         return urlItem;
                     }
 			    }
-                else if (url.Contains("shop/view_shop.htm?user_number_id="))
-				{
-					LogUtil.log_call(cmsForm, string.Concat("店铺推广链接：", url));
-                    urlItem.url_type = 3;
-                    urlItem.url = url;
-                    urlItem.user_num_id = TaobaoUtil.get_user_num_id(url);
-                    UrlUtil.remove_ali(urlItem);
-                    string click_url = AppUtil.apply_taoke_url(cmsForm, contentItem, urlItem.url, pid);
-                    urlItem.click_url = click_url;
-                    if (string.IsNullOrEmpty(urlItem.click_url))
-                    {
-                        contentItem.status = 3;
-                        return urlItem;
-                    }
+                //else if (url.Contains("shop/view_shop.htm?user_number_id="))
+                //{
+                //    LogUtil.log_call(cmsForm, string.Concat("店铺推广链接：", url));
+                //    urlItem.url_type = 3;
+                //    urlItem.url = url;
+                //    urlItem.user_num_id = TaobaoUtil.get_user_num_id(url);
+                //    UrlUtil.remove_ali(urlItem);
+                //    string click_url = AppUtil.apply_taoke_url(cmsForm, contentItem, urlItem.url, pid);
+                //    urlItem.click_url = click_url;
+                //    if (string.IsNullOrEmpty(urlItem.click_url))
+                //    {
+                //        contentItem.status = 3;
+                //        return urlItem;
+                //    }
 
-				}
+                //}
                 else if (url.Contains("temai.taobao.com"))
 				{
 					LogUtil.log_call(cmsForm, string.Concat("鹊桥链接(无法转换)：", url));
@@ -375,40 +373,40 @@ namespace haopintui.util
                     urlItem.url_type = 0;
                     urlItem.url = url;
 				}
-                else if ((url.Contains("pages.tmall.com")
-                    || url.Contains("1111.tmall.com")
-                    || url.Contains("huodong.taobao.com")
-                    || url.Contains("ju.taobao.com")
-                    ))
-				{
-                    LogUtil.log_call(cmsForm, string.Concat("活动推广链接：", url)); 
-                    urlItem.url_type = 3;
-                    urlItem.url = url;
-                    UrlUtil.remove_ali(urlItem);
-                    //LogUtil.log_call(cmsForm, string.Concat("urlItem：", urlItem.url));
-                    string click_url = AppUtil.apply_taoke_url(cmsForm, contentItem, urlItem.url, pid);
-                    urlItem.click_url = click_url;
-                    if (string.IsNullOrEmpty(urlItem.click_url))
-                    {
-                        contentItem.status = 3;
-                        return urlItem;
-                    }
-				}
-                else if ((url.Contains("alitrip.com")
-                    ))
-                {
-                    LogUtil.log_call(cmsForm, string.Concat("阿里旅游：", url));
-                    urlItem.url_type = 3;
-                    urlItem.url = url;
-                    UrlUtil.remove_ali(urlItem);
-                    string click_url = AppUtil.apply_taoke_url(cmsForm, contentItem, urlItem.url, pid);
-                    urlItem.click_url = click_url;
-                    if (string.IsNullOrEmpty(urlItem.click_url))
-                    {
-                        contentItem.status = 3;
-                        return urlItem;
-                    }
-                }
+                //else if ((url.Contains("pages.tmall.com")
+                //    || url.Contains("1111.tmall.com")
+                //    || url.Contains("huodong.taobao.com")
+                //    || url.Contains("ju.taobao.com")
+                //    ))
+                //{
+                //    LogUtil.log_call(cmsForm, string.Concat("活动推广链接：", url)); 
+                //    urlItem.url_type = 3;
+                //    urlItem.url = url;
+                //    UrlUtil.remove_ali(urlItem);
+                //    //LogUtil.log_call(cmsForm, string.Concat("urlItem：", urlItem.url));
+                //    string click_url = AppUtil.apply_taoke_url(cmsForm, contentItem, urlItem.url, pid);
+                //    urlItem.click_url = click_url;
+                //    if (string.IsNullOrEmpty(urlItem.click_url))
+                //    {
+                //        contentItem.status = 3;
+                //        return urlItem;
+                //    }
+                //}
+                //else if ((url.Contains("alitrip.com")
+                //    ))
+                //{
+                //    LogUtil.log_call(cmsForm, string.Concat("阿里旅游：", url));
+                //    urlItem.url_type = 3;
+                //    urlItem.url = url;
+                //    UrlUtil.remove_ali(urlItem);
+                //    string click_url = AppUtil.apply_taoke_url(cmsForm, contentItem, urlItem.url, pid);
+                //    urlItem.click_url = click_url;
+                //    if (string.IsNullOrEmpty(urlItem.click_url))
+                //    {
+                //        contentItem.status = 3;
+                //        return urlItem;
+                //    }
+                //}
                 else{
                     if(count>0){
                         LogUtil.log_call(cmsForm, string.Concat("一般链接(无需转换)：", url));
@@ -465,7 +463,7 @@ namespace haopintui.util
                     {
                         ori_url = match.Value.ToString()
                     };
-                    if ((urlItem.ori_url.Contains("activityId") && urlItem.ori_url.Contains("uland.taobao.com"))
+                    if ((urlItem.ori_url.Contains("activityId") && urlItem.ori_url.Contains("uland.taobao.com") && !urlItem.ori_url.Contains("uland.taobao.com/quan/detail"))
                          || (((urlItem.ori_url.Contains("taobao.com")
                             || urlItem.ori_url.Contains("tmall.com")
                             || urlItem.ori_url.Contains("yao.95095.com"))
@@ -480,7 +478,7 @@ namespace haopintui.util
                     }
                     else {
                         string str = TaobaoUtil.get_redirect_url(urlItem.ori_url, urlItem.ori_url);
-                        if ((urlItem.ori_url.Contains("activityId") && urlItem.ori_url.Contains("uland.taobao.com"))
+                        if ((urlItem.ori_url.Contains("activityId") && urlItem.ori_url.Contains("uland.taobao.com") && !urlItem.ori_url.Contains("uland.taobao.com/quan/detail"))
                         || (((urlItem.ori_url.Contains("taobao.com")
                            || urlItem.ori_url.Contains("tmall.com")
                            || urlItem.ori_url.Contains("yao.95095.com"))
@@ -505,7 +503,7 @@ namespace haopintui.util
                     {
                         ori_url = match.Value.ToString()
                     };
-                    if ((urlItem.ori_url.Contains("activityId") && urlItem.ori_url.Contains("uland.taobao.com"))
+                    if ((urlItem.ori_url.Contains("activityId") && urlItem.ori_url.Contains("uland.taobao.com") )
                          ||(
                             urlItem.ori_url.Contains("coupon") && urlItem.ori_url.Contains("taobao.com")
                          )){
@@ -533,7 +531,7 @@ namespace haopintui.util
                     {
                         ori_url = match.Value.ToString()
                     };
-                    if (!(urlItem.ori_url.Contains("activityId") && urlItem.ori_url.Contains("uland.taobao.com"))
+                    if (!(urlItem.ori_url.Contains("activityId") && urlItem.ori_url.Contains("uland.taobao.com") )
                          && !(
                             urlItem.ori_url.Contains("coupon") && urlItem.ori_url.Contains("taobao.com")
                          ))
@@ -964,12 +962,13 @@ namespace haopintui.util
             return "";
         }
 
-        public static string template_qq(CmsForm cmsForm, ContentItem contentItem, string pid, bool zhuan_pid_boolean
+        public static CouponContentSend template_qq(CmsForm cmsForm, CouponContent couponContent, string pid, bool zhuan_pid_boolean
             ,string qq_template)
         {
-            string content_send = contentItem.content_send;
+            CouponContentSend couponContentSend = new CouponContentSend();
+            couponContentSend.couponContent = couponContent;
 
-            //string content = contentItem.content_send;
+            string content_send = couponContent.content;
             string out_log;
             ContentWeixin contentWeixin = WeixinUtil.get_weixin_content(cmsForm, content_send, out out_log);
             string[] sArray = Regex.Split(contentWeixin.content_weixin, "<BR>", RegexOptions.IgnoreCase);
@@ -1004,144 +1003,76 @@ namespace haopintui.util
                     string goods_img = "";
                     string goods_type_name = "";
                     string u_land_short_url = "";
-                    if (contentItem.couponUrlItem != null
-                        && contentItem.couponUrlItem.couponItem != null)
+                    String tao_taoken = "";
+
+                    if (couponContent.coupon_money > 0)
                     {
-                        coupon_money = "" + contentItem.couponUrlItem.couponItem.money;
+                        coupon_money = "" + couponContent.coupon_money;
                     }
-                    if (contentItem.goodsUrlItem != null)
+                    if (couponContent.price>0)
                     {
-                        goods_price = "" + contentItem.goodsUrlItem.taokeItem.price;
+                        goods_price = "" + couponContent.price;
                     }
-                    if (contentItem.goodsUrlItem != null
-                        && contentItem.couponUrlItem != null
-                        && contentItem.couponUrlItem.couponItem != null)
+                    if (couponContent.get_buy_price()>0)
                     {
-                        buy_goods_price = "" + (contentItem.goodsUrlItem.taokeItem.price - contentItem.couponUrlItem.couponItem.money);
+                        buy_goods_price = "" + couponContent.get_buy_price();
                     }
-                    if (contentItem.goodsUrlItem != null)
+
+                    ShareItem shareItem = UrlParse.query_share(cmsForm, couponContent.num_iid, pid);
+
+                    if (shareItem.short_url != null)
                     {
-                        click_url = "" + contentItem.goodsUrlItem.click_url;
+                        click_url = "" + shareItem.short_url;
                     }
-                    if (contentItem.goodsUrlItem != null)
+                    if (shareItem.title != null)
                     {
-                        goods_title = "" + contentItem.goodsUrlItem.taokeItem.title;
+                        goods_title = "" + shareItem.title;
                     }
                     if (contentWeixin.imgList != null && contentWeixin.imgList.Count>0)
                     {
                         goods_img =  "<IMG src=\""+contentWeixin.imgList[0]+ "\">" ;
                     }
-                    if (contentItem.goodsUrlItem != null)
+                    if (shareItem.user_type_name != null)
                     {
-                        goods_type_name =  "1".Equals(contentItem.goodsUrlItem.taokeItem.userType)?"天猫":"淘宝";
+                        goods_type_name = shareItem.user_type_name;
+                    }
+                    if (shareItem.short_url != null)
+                    {
+                        u_land_short_url = "" + shareItem.short_url;
                     }
 
-                    if (!string.IsNullOrEmpty(pid)
-                        && !string.IsNullOrEmpty(contentItem.num_iid)
-                        && 
-                        (
-                        !string.IsNullOrEmpty(contentItem.coupon_url)
-                        ||
-                        !string.IsNullOrEmpty(contentItem.market_url)
-                        )
-                        )
+                    if (shareItem.tao_token != null)
                     {
-                        string kouling = "";
-
-                        string pc_coupon_url = "";
-                        string m_coupon_url = "";
-                        if (!string.IsNullOrEmpty(contentItem.market_url))
-                        {
-                            if (content.Contains("#淘口令#"))
-                            {
-                                string market_click_url = contentItem.market_url.Replace("mm_0_0_0", pid);
-                                kouling = PidUtil.get_kouling_call(cmsForm, market_click_url, "", content_title, "");
-                            }
-                            if (content.Contains("#二合一短网址#"))
-                            {
-                                if (cmsForm.appBean.qunfa_duanlian)
-                                {
-                                    string market_click_url = contentItem.market_url.Replace("mm_0_0_0", pid);
-                                    //u_land_short_url = ShortUrlUtil.get_url(cmsForm, uland_url);
-                                    u_land_short_url = market_click_url;
-                                }
-                            }
-                        }
-                        else { 
-                            string coupon_url = contentItem.coupon_url;
-                            coupon_url = coupon_url.Replace("seller_id=", "sellerId=").Replace("activity_id=", "activityId=");
-                            string activityId = StringUtil.subString(coupon_url, 0, "activityId=", "&");
-                            string sellerId = StringUtil.subString(coupon_url, 0, "sellerId=", "&");
-                            string uland_url = Constants.uland_url.Replace("{activityId}", activityId).Replace("{pid}", pid).Replace("{itemId}", contentItem.num_iid).Replace("{dx}", "" + contentItem.dx);
-                            //LogUtil.log_call(cmsForm, "---uland_url------" + uland_url);
-
-                            if (contentItem.goodsUrlItem != null
-                                && contentItem.goodsUrlItem.tkMktStatus==1
-                                && !string.IsNullOrEmpty(contentItem.goodsUrlItem.click_url))
-                            {
-                                uland_url = contentItem.goodsUrlItem.click_url;
-                            }
-
-                            string api_uland_url = UserUtil.query_ali_api_url(cmsForm, contentItem.num_iid,pid,activityId);
-                            if (!string.IsNullOrEmpty(api_uland_url))
-                            {
-                                uland_url = api_uland_url;
-
-                                LogUtil.log_call(cmsForm, string.Concat("高佣金接口转化链接：", api_uland_url));
-                            }
-
-                            pc_coupon_url = Constants.coupon_url_pc.Replace("{seller_id}", sellerId).Replace("{activity_id}", activityId);
-                            m_coupon_url = Constants.coupon_url_m.Replace("{seller_id}", sellerId).Replace("{activity_id}", activityId);
-
-                            if (content.Contains("#淘口令#"))
-                            {
-                                kouling = PidUtil.get_kouling_call(cmsForm, uland_url, "", content_title, "");
-                            }
-
-                            if (content.Contains("#二合一短网址#"))
-                            {
-                                //if(cmsForm.appBean.qunfa_duanlian){
-                                //    u_land_short_url = ShortUrlUtil.get_url(cmsForm, uland_url);
-                                //}
-                                u_land_short_url = UserUtil.query_short_url(cmsForm, uland_url);
-
-                                //if(string.IsNullOrEmpty(u_land_short_url)){                            
-                                //    KoulingBean koulingBean = AlimamaUtil.get_kouling(activityId, contentItem.num_iid, pid,""+ contentItem.dx, out  out_log);
-                                //    if (!string.IsNullOrEmpty(koulingBean.url))
-                                //    {
-                                //       u_land_short_url =  koulingBean.url;
-                                //    }
-                                //}
-                            }
-                        }
-
-                        content = content.Replace("\n", "<BR>");
-                        content = content.Replace("#优惠券面额#", coupon_money);
-                        content = content.Replace("#原价#", goods_price);
-                        content = content.Replace("#淘口令#", kouling);
-                        content = content.Replace("#券后价#", "" + buy_goods_price);
-                        content = content.Replace("#优惠券电脑连接#", pc_coupon_url);
-                        content = content.Replace("#优惠券手机连接#", m_coupon_url);
-                        content = content.Replace("#商品地址#", click_url);
-                        content = content.Replace("#文案#", wenan);
-                        content = content.Replace("#二合一短网址#", u_land_short_url);
-                        content = content.Replace("#商品标题#", goods_title);
-                        content = content.Replace("#主图片#", goods_img);
-                        content = content.Replace("#商品类型#", goods_type_name);
-                        content = content.Replace("#视频介绍#", "");
-
-                        content_send = content;
-
-                        ContentWeixin contentWeixin_template = WeixinUtil.get_weixin_content(cmsForm, content, out out_log);
-                        contentItem.content_weixin = contentWeixin_template.content_weixin;
-                        contentItem.content_weixin_img = contentWeixin_template.content_weixin_img;
-                        contentItem.imgList = contentWeixin_template.imgList;
-
+                        tao_taoken = "" + shareItem.tao_token;
                     }
+
+                    content = content.Replace("\n", "<BR>");
+                    content = content.Replace("#优惠券面额#", coupon_money);
+                    content = content.Replace("#原价#", goods_price);
+                    content = content.Replace("#淘口令#", tao_taoken);
+                    content = content.Replace("#券后价#", "" + buy_goods_price);
+                    content = content.Replace("#优惠券电脑连接#", "");
+                    content = content.Replace("#优惠券手机连接#", "");
+                    content = content.Replace("#商品地址#", click_url);
+                    content = content.Replace("#文案#", wenan);
+                    content = content.Replace("#二合一短网址#", u_land_short_url);
+                    content = content.Replace("#商品标题#", goods_title);
+                    content = content.Replace("#主图片#", goods_img);
+                    content = content.Replace("#商品类型#", goods_type_name);
+                    content = content.Replace("#视频介绍#", "");
+
+                    content_send = content;
+
+                    ContentWeixin contentWeixin_template = WeixinUtil.get_weixin_content(cmsForm, content, out out_log);
+                    couponContentSend.content_weixin = contentWeixin_template.content_weixin;
+                    couponContentSend.content_weixin_img = contentWeixin_template.content_weixin_img;
+                    couponContentSend.imgList = contentWeixin_template.imgList;
+
+                    couponContentSend.content_send = content_send;
 
                 }
             }
-            return content_send;
+            return couponContentSend;
         }
 
         public static KoulingBean get_koulingBean(UrlItem urlItem, string pid, int dx)

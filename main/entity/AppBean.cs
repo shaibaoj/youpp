@@ -14,7 +14,7 @@ namespace haopintui
 
         public long user_id = 0L;
         public string user_name = "";
-        public string user_key = "";
+        public string user_token = "";
 
         public string alimama_acc = "";
         public string alimama_pwd = "";

@@ -14,7 +14,7 @@ namespace haopintui.util
     public class WeiboUtil
     {
 
-        public static void send(CmsForm cmsForm, string content, string content_img, ArrayList imgList, string content_org, int url_type,int goods_type)
+        public static void send(CmsForm cmsForm, string content, string content_img, ArrayList imgList, CouponContent couponContent, int url_type, int goods_type)
         {
             string out_log = "";
             try
@@ -75,7 +75,7 @@ namespace haopintui.util
         {
             HttpService httpservice = cmsForm.httpService;
             String cms_url = "https://passport.weibo.cn/sso/login";
-            //LogUtil.log_call(cmsForm, "user_id=" + user_id + "&user_name=" + user_name + "&user_key=" + user_key + "&user_token=");
+            //LogUtil.log_call(cmsForm, "user_id=" + user_id + "&user_name=" + user_name + "&member_token=" + user_key);
 
             String body = httpservice.post_http_cookie(cms_url, "username=" + user_name
                 + "&password=" + pwd

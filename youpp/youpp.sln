@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "common", "..\common\common.csproj", "{BB76BD4C-067C-4BDB-9988-653A318F5761}"
 EndProject
@@ -28,8 +28,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BB76BD4C-067C-4BDB-9988-653A318F5761}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{BB76BD4C-067C-4BDB-9988-653A318F5761}.Debug|Mixed Platforms.ActiveCfg = Release|x86
-		{BB76BD4C-067C-4BDB-9988-653A318F5761}.Debug|Mixed Platforms.Build.0 = Release|x86
+		{BB76BD4C-067C-4BDB-9988-653A318F5761}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{BB76BD4C-067C-4BDB-9988-653A318F5761}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{BB76BD4C-067C-4BDB-9988-653A318F5761}.Debug|x86.ActiveCfg = Release|x86
 		{BB76BD4C-067C-4BDB-9988-653A318F5761}.Debug|x86.Build.0 = Release|x86
 		{BB76BD4C-067C-4BDB-9988-653A318F5761}.Release|Any CPU.ActiveCfg = Release|x86

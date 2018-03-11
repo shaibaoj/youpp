@@ -267,8 +267,6 @@ namespace haopintui
 
         public Thread thread_order_ali;
 
-        public Thread thread_coupon;
-
         private DataGridViewTextBoxColumn Column_time;
         private DataGridViewTextBoxColumn Column_from;
         private DataGridViewTextBoxColumn Column_content;
@@ -342,7 +340,6 @@ namespace haopintui
         private GroupBox groupBox25;
         private Button button28;
         private Button button29;
-        public Button button_bind;
         public string online_version;
         private GroupBox groupBox24;
         private TabPage tabPage19;
@@ -507,7 +504,7 @@ namespace haopintui
             }
             this.appBean.user_id = loginUtil.user_id;
             this.appBean.user_name = loginUtil.user_name;
-            this.appBean.user_key = loginUtil.user_key;
+            this.appBean.user_token = loginUtil.user_token;
             this.appBean.qunfa = loginUtil.qunfa;
             this.appBean.alimama_id = loginUtil.alimama_id;
             this.appBean.user_type_name = loginUtil.user_type_name;
@@ -768,7 +765,6 @@ namespace haopintui
             this.label_cms = new System.Windows.Forms.Label();
             this.panelTop = new System.Windows.Forms.Panel();
             this.button47 = new System.Windows.Forms.Button();
-            this.button_bind = new System.Windows.Forms.Button();
             this.label_user_type_name = new System.Windows.Forms.Label();
             this.label_welcome = new System.Windows.Forms.Label();
             this.label_banben = new System.Windows.Forms.Label();
@@ -1328,7 +1324,6 @@ namespace haopintui
             this.panelTop.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.panelTop.BackColor = System.Drawing.Color.DodgerBlue;
             this.panelTop.Controls.Add(this.button47);
-            this.panelTop.Controls.Add(this.button_bind);
             this.panelTop.Controls.Add(this.label_user_type_name);
             this.panelTop.Controls.Add(this.label_welcome);
             this.panelTop.Controls.Add(this.label_banben);
@@ -1359,24 +1354,13 @@ namespace haopintui
             // 
             this.button47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.button47.ForeColor = System.Drawing.Color.Red;
-            this.button47.Location = new System.Drawing.Point(326, 5);
+            this.button47.Location = new System.Drawing.Point(248, 5);
             this.button47.Name = "button47";
             this.button47.Size = new System.Drawing.Size(75, 23);
             this.button47.TabIndex = 9;
             this.button47.Text = "高佣授权";
             this.button47.UseVisualStyleBackColor = false;
             this.button47.Click += new System.EventHandler(this.button47_Click);
-            // 
-            // button_bind
-            // 
-            this.button_bind.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_bind.Location = new System.Drawing.Point(251, 5);
-            this.button_bind.Name = "button_bind";
-            this.button_bind.Size = new System.Drawing.Size(75, 23);
-            this.button_bind.TabIndex = 8;
-            this.button_bind.Text = "账号认证";
-            this.button_bind.UseVisualStyleBackColor = true;
-            this.button_bind.Click += new System.EventHandler(this.button2_Click_3);
             // 
             // label_user_type_name
             // 
@@ -6006,24 +5990,20 @@ namespace haopintui
                 LogUtil.log_call(this, "[initWbSndContent]出错：" + exception.ToString());
             }
 
-            try
-            {
-                if(!string.IsNullOrEmpty(this.appBean.qunfa)
-                    && int.Parse(this.appBean.qunfa)>0)
-                {
-                    this.thread_user_info = new Thread(new ParameterizedThreadStart(UserUtil.updata_user_info));
-                    this.thread_user_info.IsBackground = true;
-                    this.thread_user_info.Start(this);
-                }
-            }
-            catch (Exception)
-            {
+            //try
+            //{
+            //    if(!string.IsNullOrEmpty(this.appBean.qunfa)
+            //        && int.Parse(this.appBean.qunfa)>0)
+            //    {
+            //        this.thread_user_info = new Thread(new ParameterizedThreadStart(UserUtil.updata_user_info));
+            //        this.thread_user_info.IsBackground = true;
+            //        this.thread_user_info.Start(this);
+            //    }
+            //}
+            //catch (Exception)
+            //{
                 
-            }
-
-            this.thread_coupon = new Thread(new ParameterizedThreadStart(CouponUtil.check_coupon));
-            this.thread_coupon.IsBackground = true;
-            this.thread_coupon.Start(this);
+            //}
 
         }
         #endregion
@@ -6640,6 +6620,8 @@ namespace haopintui
 
         private void button_cms_click_apply_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("平台高佣金授权即可，无需再开转化链接！");
+            return;
 
             if (this.appBean.apply_taoke_url_status == false)
             {
@@ -7631,8 +7613,20 @@ namespace haopintui
 
                     content = UrlUtil.parseContentWenan(this, content);
                     content = UrlUtil.copyImgContent(this, content, sendItem.create_date_str);
-                    ContentItem contentItem = UrlUtil.parseContent(this, content,null, this.checkBox_qunfa_pid.Checked,true,0);
-                    if ((contentItem.urlList == null || contentItem.urlList.Count == 0)
+                    //ContentItem contentItem = UrlUtil.parseContent(this, content,null, this.checkBox_qunfa_pid.Checked,true,0);
+                    //if ((contentItem.urlList == null || contentItem.urlList.Count == 0)
+                    //    && this.checkBox_qunfa_link.Checked)
+                    //{
+                    //    LogUtil.log_call(this, "没有连接，跳过发送！");
+                    //    this.remove_send(sendItem.create_date_str);
+                    //    return false;
+                    //}
+
+                    LogUtil.log_call(this, "---------------1-----------");
+                    CouponContent couponContent = UrlParse.parseContent(this,content,null);
+
+                   
+                    if ((couponContent.num_iid == null || couponContent.num_iid.Length == 0)
                         && this.checkBox_qunfa_link.Checked)
                     {
                         LogUtil.log_call(this, "没有连接，跳过发送！");
@@ -7640,16 +7634,17 @@ namespace haopintui
                         return false;
                     }
 
-                    if (contentItem.status<1)
+                    if (couponContent.status < 1)
                     {
-                        if(!UrlUtil.isPrice(this,contentItem.get_buy_price())){
-                            contentItem.status = 5;
+                        if (!UrlUtil.isPrice(this, couponContent.get_buy_price()))
+                        {
+                            couponContent.status = 5;
                         }
                     }
 
-                    if (contentItem.status < 1)
+                    if (couponContent.status < 1)
                     {
-                        if (!string.IsNullOrEmpty(contentItem.num_iid))
+                        if (!string.IsNullOrEmpty(couponContent.num_iid))
                         {
                             string out_log = "";
                             int hours =1;
@@ -7658,7 +7653,7 @@ namespace haopintui
 		                        hours = int.Parse(this.textBox_qunfa_times.Text.Trim());
 	                        }
 	                        catch (Exception){	                    }
-                            ArrayList arrayList = this.sendSqlUtil.query_send_item(contentItem.num_iid, hours, out out_log);
+                            ArrayList arrayList = this.sendSqlUtil.query_send_item(couponContent.num_iid, hours, out out_log);
                             if(arrayList.Count>0){
                                 LogUtil.log_call(this, hours+"小时内，已经发送过该商品了，跳过发送！");
                                 this.remove_send(sendItem.create_date_str);
@@ -7668,61 +7663,63 @@ namespace haopintui
                         if (this.checkBox_qunfa_qq_boolean.Checked) //开启了qq发送
                         {
                             LogUtil.log_call(this, "开始qq群的发送1！");
-                            string content_send = contentItem.content_send;
-                            content_send = UrlUtil.template_qq(this, contentItem, PidUtil.get_qq_com_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.qq_template);
+                            CouponContentSend couponContentSend = UrlUtil.template_qq(this, couponContent, PidUtil.get_qq_com_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.qq_template);
+                            //string content_send = contentItem.content_send;
+                            //content_send = UrlUtil.template_qq(this, contentItem, PidUtil.get_qq_com_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.qq_template);
                             LogUtil.log_call(this, "发送开始！");
                             //if (this.checkBox_qunfa_qq_kouling_boolean.Checked==true)
                             //{
                             //    string kouling = UrlUtil.parseContent_kouling(this, contentItem, PidUtil.get_qq_com_pid(this, this.appBean.member_id), true);
                             //    content_send = content_send + kouling;
                             //}
-                            QqUtil.send(this, content_send, content, contentItem.url_type, sendItem.type);
+                            QqUtil.send(this, couponContentSend, couponContentSend.url_type, sendItem.type);
                         }
                         if (this.checkBox_qunfa_weixin_boolean.Checked) //开启了qq发送
                         {
-                            UrlUtil.parseContent_weixin(this, contentItem, PidUtil.get_weixin_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked);
+                            //UrlUtil.parseContent_weixin(this, contentItem, PidUtil.get_weixin_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked);
 
-                            UrlUtil.template_qq(this, contentItem, PidUtil.get_weixin_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.weixin_template);
+                            CouponContentSend couponContentSend = UrlUtil.template_qq(this, couponContent, PidUtil.get_weixin_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.weixin_template);
                     
                             LogUtil.log_call(this, "开始微信群的发送！");
-                            WeixinUtil.send(this, contentItem.content_weixin, contentItem.content_weixin_img, contentItem.imgList, content, contentItem.url_type, sendItem.type);
+                            WeixinUtil.send(this, couponContentSend.content_weixin, couponContentSend.content_weixin_img, couponContentSend.imgList, couponContent, couponContentSend.url_type, sendItem.type);
                         }
 
                         if (this.checkBox_qunfa_weibo_boolean.Checked) //开启了qq发送
                         {
-                            UrlUtil.parseContent_weixin(this, contentItem, PidUtil.get_weibo_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked);
+                            //UrlUtil.parseContent_weixin(this, contentItem, PidUtil.get_weibo_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked);
 
-                            UrlUtil.template_qq(this, contentItem, PidUtil.get_weibo_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.weibo_template);
+                            CouponContentSend couponContentSend  = UrlUtil.template_qq(this, couponContent, PidUtil.get_weibo_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.weibo_template);
 
                             LogUtil.log_call(this, "开始微博的发送！");
-                            WeiboUtil.send(this, contentItem.content_weixin, contentItem.content_weixin_img, contentItem.imgList, content, contentItem.url_type, sendItem.type);
+                            WeiboUtil.send(this, couponContentSend.content_weixin, couponContentSend.content_weixin_img, couponContentSend.imgList, couponContent, couponContentSend.url_type, sendItem.type);
                         }
 
-                        if(!string.IsNullOrEmpty(contentItem.num_iid)){
+                        if (!string.IsNullOrEmpty(couponContent.num_iid))
+                        {
                             string out_log = "";
-                            this.sendSqlUtil.insert_item(contentItem.num_iid, out out_log);
+                            this.sendSqlUtil.insert_item(couponContent.num_iid, out out_log);
                         }
                     }
-                    else if (contentItem.status == 1)
+                    else if (couponContent.status == 1)
                     {
                         LogUtil.log_call(this, "优惠券小于最低优惠券要求，跳过发送！");
                         this.remove_send(sendItem.create_date_str);
                         return false;
                     }
-                    else if (contentItem.status == 2)
+                    else if (couponContent.status == 2)
                     {
                         LogUtil.log_call(this, "佣金比例小于设置的最低比例，跳过发送！");
                         this.remove_send(sendItem.create_date_str);
                         return false;
                     }
 
-                    else if (contentItem.status == 3)
+                    else if (couponContent.status == 3)
                     {
                         LogUtil.log_call(this, "所发的链接转换失败，跳过发送！");
                         this.remove_send(sendItem.create_date_str);
                         return false;
                     }
-                    else if (contentItem.status == 4)
+                    else if (couponContent.status == 4)
                     {
                         int hours = 1;
                         try
@@ -7734,7 +7731,7 @@ namespace haopintui
                         this.remove_send(sendItem.create_date_str);
                         return false;
                     }
-                    else if (contentItem.status == 5)
+                    else if (couponContent.status == 5)
                     {
                         LogUtil.log_call(this, "产品价格不在区间内，跳过发送！");
                         this.remove_send(sendItem.create_date_str);
@@ -7758,10 +7755,19 @@ namespace haopintui
                         return false;
                     }
 
-                    content = UrlUtil.parseContentWenan(this, content);
-                    content = UrlUtil.copyImgContent(this, content, sendItem.create_date_str);
-                    ContentItem contentItem = UrlHptUtil.parseContent(this, content, null, this.checkBox_qunfa_pid.Checked, true, 0);
-                    if ((contentItem.urlList == null || contentItem.urlList.Count == 0)
+                    //content = UrlUtil.parseContentWenan(this, content);
+                    //content = UrlUtil.copyImgContent(this, content, sendItem.create_date_str);
+                    //ContentItem contentItem = UrlHptUtil.parseContent(this, content, null, this.checkBox_qunfa_pid.Checked, true, 0);
+                    //if ((contentItem.urlList == null || contentItem.urlList.Count == 0)
+                    //    && this.checkBox_qunfa_link.Checked)
+                    //{
+                    //    LogUtil.log_call(this, "没有连接，跳过发送！");
+                    //    this.remove_send(sendItem.create_date_str);
+                    //    return false;
+                    //}
+
+                    CouponContent couponContent = UrlParse.parseContent(this, content, null);
+                    if ((couponContent.num_iid == null || couponContent.num_iid.Length == 0)
                         && this.checkBox_qunfa_link.Checked)
                     {
                         LogUtil.log_call(this, "没有连接，跳过发送！");
@@ -7769,9 +7775,10 @@ namespace haopintui
                         return false;
                     }
 
-                    if (contentItem.status < 1)
+
+                    if (couponContent.status < 1)
                     {
-                        if (!string.IsNullOrEmpty(contentItem.num_iid))
+                        if (!string.IsNullOrEmpty(couponContent.num_iid))
                         {
                             string out_log = "";
                             int hours = 1;
@@ -7780,7 +7787,7 @@ namespace haopintui
                                 hours = int.Parse(this.textBox_qunfa_times.Text.Trim());
                             }
                             catch (Exception) { }
-                            ArrayList arrayList = this.sendSqlUtil.query_send_item(contentItem.num_iid, hours, out out_log);
+                            ArrayList arrayList = this.sendSqlUtil.query_send_item(couponContent.num_iid, hours, out out_log);
                             if (arrayList.Count > 0)
                             {
                                 LogUtil.log_call(this, hours + "小时内，已经发送过该商品了，跳过发送！");
@@ -7791,35 +7798,39 @@ namespace haopintui
                         if (this.checkBox_qunfa_qq_boolean.Checked) //开启了qq发送
                         {
                             LogUtil.log_call(this, "开始qq群的发送1！");
-                            string content_send = contentItem.content_send;
+                            //string content_send = contentItem.content_send;
                             //content_send = UrlUtil.template_qq(this, contentItem, PidUtil.get_qq_com_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.qq_template);
+                            CouponContentSend couponContentSend = UrlUtil.template_qq(this, couponContent, PidUtil.get_weixin_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.weixin_template);
+
                             LogUtil.log_call(this, "发送开始！");
-                            QqUtil.send(this, content_send, content, contentItem.url_type, sendItem.type);
+                            QqUtil.send(this, couponContentSend, couponContentSend.url_type, sendItem.type);
                         }
                         if (this.checkBox_qunfa_weixin_boolean.Checked) //开启了qq发送
                         {
-                            UrlUtil.parseContent_weixin(this, contentItem, PidUtil.get_weixin_pid_call(this, this.appBean.member_id), false);
+                            //UrlUtil.parseContent_weixin(this, contentItem, PidUtil.get_weixin_pid_call(this, this.appBean.member_id), false);
 
                             //UrlUtil.template_qq(this, contentItem, PidUtil.get_weixin_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.weixin_template);
-
+                            CouponContentSend couponContentSend = UrlUtil.template_qq(this, couponContent, PidUtil.get_weixin_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.weixin_template);
+                    
                             LogUtil.log_call(this, "开始微信群的发送！");
-                            WeixinUtil.send(this, contentItem.content_send, contentItem.content_weixin_img, contentItem.imgList, content, contentItem.url_type, sendItem.type);
+                            WeixinUtil.send(this, couponContentSend.content_send, couponContentSend.content_weixin_img, couponContentSend.imgList, couponContent, couponContentSend.url_type, sendItem.type);
                         }
 
                         if (this.checkBox_qunfa_weibo_boolean.Checked) //开启了qq发送
                         {
-                            UrlUtil.parseContent_weixin(this, contentItem, PidUtil.get_weibo_pid_call(this, this.appBean.member_id), false);
+                            //UrlUtil.parseContent_weixin(this, contentItem, PidUtil.get_weibo_pid_call(this, this.appBean.member_id), false);
 
                             //UrlUtil.template_qq(this, contentItem, PidUtil.get_weibo_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.weibo_template);
+                            CouponContentSend couponContentSend = UrlUtil.template_qq(this, couponContent, PidUtil.get_weibo_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.weibo_template);
 
                             LogUtil.log_call(this, "开始微博的发送！");
-                            WeiboUtil.send(this, contentItem.content_send, contentItem.content_weixin_img, contentItem.imgList, content, contentItem.url_type, sendItem.type);
+                            WeiboUtil.send(this, couponContentSend.content_send, couponContentSend.content_weixin_img, couponContentSend.imgList, couponContent, couponContentSend.url_type, sendItem.type);
                         }
 
-                        if (!string.IsNullOrEmpty(contentItem.num_iid))
+                        if (!string.IsNullOrEmpty(couponContent.num_iid))
                         {
                             string out_log = "";
-                            this.sendSqlUtil.insert_item(contentItem.num_iid, out out_log);
+                            this.sendSqlUtil.insert_item(couponContent.num_iid, out out_log);
                         }
                     }
                     //else if (contentItem.status == 1)
@@ -7828,19 +7839,19 @@ namespace haopintui
                     //    this.remove_send(sendItem.create_date_str);
                     //    return false;
                     //}
-                    else if (contentItem.status == 2)
+                    else if (couponContent.status == 2)
                     {
                         LogUtil.log_call(this, "佣金比例小于设置的最低比例，跳过发送！");
                         this.remove_send(sendItem.create_date_str);
                         return false;
                     }
-                    else if (contentItem.status == 3)
+                    else if (couponContent.status == 3)
                     {
                         LogUtil.log_call(this, "所发的链接转换失败，跳过发送！");
                         this.remove_send(sendItem.create_date_str);
                         return false;
                     }
-                    else if (contentItem.status == 4)
+                    else if (couponContent.status == 4)
                     {
                         int hours = 1;
                         try

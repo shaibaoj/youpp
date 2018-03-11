@@ -12,7 +12,7 @@ namespace haopintui
 {
     public class QqUtil
     {
-        public static void send(CmsForm cmsForm, string content, string content_org, int user_type,int goods_type)
+        public static void send(CmsForm cmsForm, CouponContentSend couponContentSend, int user_type, int goods_type)
         {
             try
             {
@@ -23,7 +23,7 @@ namespace haopintui
                     string out_log = "";
                     //CommonUtil.clipboard(string.Concat(content, QqUtil.weiba(cmsForm, out out_log)), out out_log);
                     //LogUtil.log_call(cmsForm, out_log);
-                    QqUtil.copy_content(cmsForm, string.Concat(content, QqUtil.weiba(cmsForm, out out_log)).ToString(), out out_log);
+                    QqUtil.copy_content(cmsForm, string.Concat(couponContentSend.content_send, QqUtil.weiba(cmsForm, out out_log)).ToString(), out out_log);
                     //CommonUtil.clipboard_brows(cmsForm,string.Concat(content, QqUtil.weiba(cmsForm, out out_log)), out out_log);
                     //LogUtil.log_call(cmsForm, out_log);
                 }
@@ -40,24 +40,30 @@ namespace haopintui
                         if (!string.IsNullOrEmpty(qq_pid))
                         {
                             string content_send = "";
-                            if (goods_type != 2)
-                            {
-                                ContentItem contentItem_qun = UrlUtil.parseContent(cmsForm, content_org, qq_pid, cmsForm.checkBox_qunfa_pid.Checked,false,user_type);
-                                content_send = contentItem_qun.content_send;
-                                content_send = UrlUtil.template_qq(cmsForm, contentItem_qun, qq_pid, cmsForm.checkBox_qunfa_pid.Checked, cmsForm.appBean.qq_template);
+                            //if (goods_type != 2)
+                            //{
 
-                            }
-                            else {
-                                ContentItem contentItem_qun = UrlHptUtil.parseContent(cmsForm, content_org, qq_pid, cmsForm.checkBox_qunfa_pid.Checked, false, user_type);
-                                content_send = contentItem_qun.content_send;
-                            }
+                                //ContentItem contentItem_qun = UrlUtil.parseContent(cmsForm, content_org, qq_pid, cmsForm.checkBox_qunfa_pid.Checked,false,user_type);
+                                //content_send = contentItem_qun.content_send;
+                                //content_send = UrlUtil.template_qq(cmsForm, contentItem_qun, qq_pid, cmsForm.checkBox_qunfa_pid.Checked, cmsForm.appBean.qq_template);
+
+                            //}
+                            //else {
+                            //    ContentItem contentItem_qun = UrlHptUtil.parseContent(cmsForm, content_org, qq_pid, cmsForm.checkBox_qunfa_pid.Checked, false, user_type);
+                            //    content_send = contentItem_qun.content_send;
+                            //}
+                            LogUtil.log_call(cmsForm, "分群pid转化链接,pid:" + qq_pid);
+
+                            couponContentSend = UrlUtil.template_qq(cmsForm, couponContentSend.couponContent, qq_pid, cmsForm.checkBox_qunfa_pid.Checked, cmsForm.appBean.qq_template);
+
+
                             string out_log = "";
-                            QqUtil.copy_content(cmsForm, string.Concat(content_send, weiba).ToString(), out out_log);
+                            QqUtil.copy_content(cmsForm, string.Concat(couponContentSend.content_send, weiba).ToString(), out out_log);
                         }
                         else
                         {
                             string out_log = "";
-                            QqUtil.copy_content(cmsForm, string.Concat(content, QqUtil.weiba(cmsForm, out out_log)).ToString(), out out_log);
+                            QqUtil.copy_content(cmsForm, string.Concat(couponContentSend.content_send, QqUtil.weiba(cmsForm, out out_log)).ToString(), out out_log);
                         }
 					    IntPtr intPtr =CmsForm.FindWindow(null, item);
                         if (intPtr == IntPtr.Zero)
