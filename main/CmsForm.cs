@@ -503,6 +503,7 @@ namespace haopintui
                 Environment.Exit(Environment.ExitCode);
             }
             this.appBean.user_id = loginUtil.user_id;
+            this.appBean.cms_app_id = loginUtil.app_id;
             this.appBean.user_name = loginUtil.user_name;
             this.appBean.user_token = loginUtil.user_token;
             this.appBean.qunfa = loginUtil.qunfa;

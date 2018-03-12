@@ -685,11 +685,11 @@ namespace haopintui
             {
                 cmsForm.appBean.cms_adzoneid = selectedItem_pos.getId().ToString();
             }
-            SelectedItem selectedItem_cms = (SelectedItem)cmsForm.comboBoxCmsList.SelectedItem;
-            if (selectedItem_cms != null)
-            {
-                cmsForm.appBean.cms_app_id = selectedItem_cms.getId().ToString();
-            }
+            //SelectedItem selectedItem_cms = (SelectedItem)cmsForm.comboBoxCmsList.SelectedItem;
+            //if (selectedItem_cms != null)
+            //{
+            //    cmsForm.appBean.cms_app_id = selectedItem_cms.getId().ToString();
+            //}
 
             SelectedItem selectedItem_tongyong_duanyuan = (SelectedItem)cmsForm.comboBox_qq_tongyong_danyuan.SelectedItem;
             if (selectedItem_tongyong_duanyuan != null)

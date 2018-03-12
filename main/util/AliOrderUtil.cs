@@ -219,9 +219,10 @@ namespace haopintui.util
 
                     );
                     writer.WriteLine(datastr);
-                    LogUtil.log_cms_call(cmsForm, item.num_iid);
                     update_arrayLists.Add(item);
                 }
+                //LogUtil.log_cms_call(cmsForm, item.num_iid);
+
             }
             writer.Flush();
             writer.Close();
@@ -234,13 +235,13 @@ namespace haopintui.util
             File.Delete(upload_file);
 
 
-            for (int i = 0; i < update_arrayLists.Count; i++)
-            {
-                AliOrderBean item = (AliOrderBean)update_arrayLists[i];
-                String out_log;
-                bool s = cmsForm.sendSqlUtil.insert_order_item(item.order_no, item.num_iid, item.status + item.settlement_date, out out_log);
-                //LogUtil.log_cms_call(cmsForm, "" + s);
-            }
+            //for (int i = 0; i < update_arrayLists.Count; i++)
+            //{
+            //    AliOrderBean item = (AliOrderBean)update_arrayLists[i];
+            //    String out_log;
+            //    bool s = cmsForm.sendSqlUtil.insert_order_item(item.order_no, item.num_iid, item.status + item.settlement_date, out out_log);
+            //    //LogUtil.log_cms_call(cmsForm, "" + s);
+            //}
 
             return true;
         }

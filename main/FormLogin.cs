@@ -33,6 +33,7 @@ namespace haopintui
 
         public Hashtable hashtable_0 = new Hashtable();
         public long user_id = 0L;
+        public string app_id = "";
         public HttpService httpService = new HttpService(); 
         public bool login_status = false;
 
@@ -140,6 +141,7 @@ namespace haopintui
                             this.alimama_id = jo["data"]["item"]["alimama_id"].ToString();
                             this.qunfa_date = jo["data"]["item"]["qunfa_date"].ToString();
                             this.user_type_name = jo["data"]["item"]["user_type_name"].ToString();
+                            this.app_id = jo["data"]["item"]["app_id"].ToString();
 
                             this.login_status = true;
                             base.Close();

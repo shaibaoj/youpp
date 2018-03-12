@@ -462,7 +462,7 @@ namespace haopintui
 
                 cmsForm.appBean.cms_siteid = (String)selectedItem_unit.getId();
                 cmsForm.appBean.cms_adzoneid = (String)selectedItem_pos.getId();
-                cmsForm.appBean.cms_app_id = (String)selectedItem_cms.getId();
+                //cmsForm.appBean.cms_app_id = (String)selectedItem_cms.getId();
 
                 //Thread thread = new Thread(new ParameterizedThreadStart(CmsUtil.apply_cms_url));
                 //thread.IsBackground = true;

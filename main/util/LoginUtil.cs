@@ -31,6 +31,7 @@ namespace haopintui
         public string qunfa = "";
         public string alimama_id = "";
         public string md5 = "";
+        public string app_id = "";
 
         public string qunfa_date = "";
         public string user_type_name = "";
@@ -44,6 +45,7 @@ namespace haopintui
             form.login_url = this.login_url;
             form.ShowDialog();
             this.user_id = form.user_id;
+            this.app_id = form.app_id;
             this.user_token = form.user_token;
             this.user_name = form.user_name;
             this.feetype = form.feetype;
