@@ -477,6 +477,8 @@ namespace haopintui
         private Label label72;
         private Button button47;
         private Button button48;
+        private Label create_pid;
+        public TextBox textBoxCreatePid;
 
         private Thread thread_zhuan_copy;
 
@@ -1098,7 +1100,9 @@ namespace haopintui
             this.webBrowser_zhuanhua = new System.Windows.Forms.WebBrowser();
             this.contextMenuStripTool = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tabPage14 = new System.Windows.Forms.TabPage();
+            this.create_pid = new System.Windows.Forms.Label();
             this.button_tools_test_get_cookie = new System.Windows.Forms.Button();
+            this.textBoxCreatePid = new System.Windows.Forms.TextBox();
             this.textBoxAlimamaCookieUrl = new System.Windows.Forms.TextBox();
             this.tabPage25 = new System.Windows.Forms.TabPage();
             this.groupBox34 = new System.Windows.Forms.GroupBox();
@@ -5112,32 +5116,51 @@ namespace haopintui
             // 
             // tabPage14
             // 
+            this.tabPage14.Controls.Add(this.create_pid);
             this.tabPage14.Controls.Add(this.button_tools_test_get_cookie);
+            this.tabPage14.Controls.Add(this.textBoxCreatePid);
             this.tabPage14.Controls.Add(this.textBoxAlimamaCookieUrl);
             this.tabPage14.Location = new System.Drawing.Point(4, 28);
             this.tabPage14.Name = "tabPage14";
             this.tabPage14.Size = new System.Drawing.Size(850, 385);
             this.tabPage14.TabIndex = 1;
-            this.tabPage14.Text = "测试功能";
+            this.tabPage14.Text = "广告位自动创建";
             this.tabPage14.UseVisualStyleBackColor = true;
+            // 
+            // create_pid
+            // 
+            this.create_pid.AutoSize = true;
+            this.create_pid.Location = new System.Drawing.Point(529, 72);
+            this.create_pid.Name = "create_pid";
+            this.create_pid.Size = new System.Drawing.Size(106, 19);
+            this.create_pid.TabIndex = 2;
+            this.create_pid.Text = "填写一个参考pid";
             // 
             // button_tools_test_get_cookie
             // 
             this.button_tools_test_get_cookie.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button_tools_test_get_cookie.Location = new System.Drawing.Point(181, 67);
+            this.button_tools_test_get_cookie.Location = new System.Drawing.Point(29, 111);
             this.button_tools_test_get_cookie.Name = "button_tools_test_get_cookie";
-            this.button_tools_test_get_cookie.Size = new System.Drawing.Size(105, 30);
+            this.button_tools_test_get_cookie.Size = new System.Drawing.Size(105, 38);
             this.button_tools_test_get_cookie.TabIndex = 1;
-            this.button_tools_test_get_cookie.Text = "跟踪cookies";
+            this.button_tools_test_get_cookie.Text = "开始创建";
             this.button_tools_test_get_cookie.UseVisualStyleBackColor = false;
             this.button_tools_test_get_cookie.Click += new System.EventHandler(this.button_tools_test_get_cookie_Click);
             // 
+            // textBoxCreatePid
+            // 
+            this.textBoxCreatePid.Location = new System.Drawing.Point(9, 69);
+            this.textBoxCreatePid.Name = "textBoxCreatePid";
+            this.textBoxCreatePid.Size = new System.Drawing.Size(495, 25);
+            this.textBoxCreatePid.TabIndex = 0;
+            // 
             // textBoxAlimamaCookieUrl
             // 
-            this.textBoxAlimamaCookieUrl.Location = new System.Drawing.Point(3, 17);
+            this.textBoxAlimamaCookieUrl.Location = new System.Drawing.Point(9, 22);
             this.textBoxAlimamaCookieUrl.Name = "textBoxAlimamaCookieUrl";
             this.textBoxAlimamaCookieUrl.Size = new System.Drawing.Size(495, 25);
             this.textBoxAlimamaCookieUrl.TabIndex = 0;
+            this.textBoxAlimamaCookieUrl.Visible = false;
             // 
             // tabPage25
             // 
@@ -6598,7 +6621,7 @@ namespace haopintui
         {
             if (this.appBean.alimama_cookie_put_url_status == false)
             {
-                this.button_tools_test_get_cookie.Text = "停止跟踪";
+                this.button_tools_test_get_cookie.Text = "停止创建";
                 this.button_tools_test_get_cookie.BackColor = System.Drawing.Color.Gray;
                 this.button_tools_test_get_cookie.ForeColor = System.Drawing.Color.Black;
 
@@ -6610,7 +6633,7 @@ namespace haopintui
             }
             else
             {
-                this.button_tools_test_get_cookie.Text = "开始跟踪cookie";
+                this.button_tools_test_get_cookie.Text = "开始创建";
                 this.button_tools_test_get_cookie.UseVisualStyleBackColor = true;
                 this.button_tools_test_get_cookie.BackColor = System.Drawing.Color.Green;
                 this.button_tools_test_get_cookie.ForeColor = System.Drawing.Color.White;
