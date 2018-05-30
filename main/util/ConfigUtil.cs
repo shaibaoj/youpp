@@ -163,6 +163,7 @@ namespace haopintui
                 writer.WriteLine("qunfa_erheyi=" + (cmsForm.checkBox_qunfa_erheyi.Checked ? "1" : "0"));
 
                 writer.WriteLine("alimama_cookie_url=" + cmsForm.textBoxAlimamaCookieUrl.Text.Trim());
+                writer.WriteLine("alimama_create_pid=" + cmsForm.textBoxCreatePid.Text.Trim());
 
                 writer.WriteLine("setting_app_ben=" + (cmsForm.radioButtonsetting_app_ben.Checked ? "1" : "0"));
 
@@ -532,6 +533,7 @@ namespace haopintui
                 cmsForm.checkBox_qunfa_erheyi.Checked = "1".Equals((string)appBean.hashtable_config["qunfa_erheyi"]);
 
                 cmsForm.textBoxAlimamaCookieUrl.Text = (string)appBean.hashtable_config["alimama_cookie_url"];
+                cmsForm.textBoxCreatePid.Text = (string)appBean.hashtable_config["alimama_create_pid"];
 
                 cmsForm.checkBox_qunfa_qq_kouling_boolean.Checked = "1".Equals((string)appBean.hashtable_config["qunfa_qq_kouling_boolean"]);
 

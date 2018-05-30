@@ -1020,9 +1020,9 @@ namespace haopintui.util
 
                     ShareItem shareItem = UrlParse.query_share(cmsForm, couponContent.num_iid, pid);
 
-                    if (shareItem.short_url != null)
+                    if (shareItem.uland_url != null)
                     {
-                        click_url = "" + shareItem.short_url;
+                        click_url = "" + shareItem.uland_url;
                     }
                     if (shareItem.title != null)
                     {
