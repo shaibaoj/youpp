@@ -36,6 +36,10 @@ namespace haopintui
         public string qunfa_date = "";
         public string user_type_name = "";
 
+        public string platform_id = "";
+        public string platform_name = "";
+        public string platform_url = "";
+
         public bool login(string softwarename, string main_exe, string version)
         {
             this.softwarename = softwarename;
@@ -43,6 +47,11 @@ namespace haopintui
             this.version = version;
             FormLogin form = new FormLogin(softwarename, version);
             form.login_url = this.login_url;
+
+            form.platform_id = this.platform_id;
+            form.platform_name = this.platform_name;
+            form.platform_url = this.platform_url;
+
             form.ShowDialog();
             this.user_id = form.user_id;
             this.app_id = form.app_id;

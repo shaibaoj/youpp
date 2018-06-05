@@ -128,6 +128,46 @@ namespace haopintui
             }
         }
 
+        public static void log_pid_str(CmsForm cmsForm, String content)
+        {
+            try
+            {
+                string text = cmsForm.richTextBoxPid.Text;
+                //if (text.Length > 0x1388)
+                //{
+                //    cmsForm.richTextBoxCms.Text = DateTime.Now.ToString("yyyy年MM月dd日 HH:mm:ss") + "----" + content + "\n" + text.Substring(0, 0x7d0);
+                //}
+                //else
+                //{
+                cmsForm.richTextBoxPid.Text = DateTime.Now.ToString("yyyy年MM月dd日 HH:mm:ss") + "----" + content + "\n" + text;
+                //}
+            }
+            catch
+            {
+                LogUtil.log_pid_call(cmsForm, content);
+            }
+        }
+
+        public static void log_pid_call(CmsForm cmsForm, String content)
+        {
+            try
+            {
+                if (cmsForm.richTextBoxPid.InvokeRequired)
+                {
+                    log method = new log(LogUtil.log_pid_call);
+                    cmsForm.BeginInvoke(method, new object[] { cmsForm, content });
+                }
+                else
+                {
+                    LogUtil.log_pid_str(cmsForm, content);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("[messageForThread]出错：" + exception.ToString());
+            }
+        }
+
 
     }
 }

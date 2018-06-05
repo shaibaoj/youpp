@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Windows.Forms;
 
 namespace haopintui
 {
@@ -989,6 +990,63 @@ namespace haopintui
             string content = cmsForm.appBean.taoke_cookie;
             UtilFile.write(ini_taoke_cookie_path, content);
         }
+
+
+        public static void init_platform(CmsForm cmsForm)
+        {
+            try
+            {
+                AppBean appBean = cmsForm.appBean;
+                if (!Directory.Exists(cmsForm.app_path + "/config"))
+                {
+                    Directory.CreateDirectory(cmsForm.app_path + "/config");
+                }
+                appBean.platform_ini = cmsForm.app_path + Constants.platform_ini;
+                if (!File.Exists(appBean.platform_ini))
+                {
+                    FileStream stream = File.Create(appBean.platform_ini);
+                    stream.Close();
+                    stream.Dispose();
+                }
+                StreamReader reader = new StreamReader(appBean.platform_ini, Encoding.GetEncoding("GB2312"));
+                string str = null;
+                while ((str = reader.ReadLine()) != null)
+                {
+                    if (!appBean.hashtable_platform.ContainsKey(str.Split(new char[] { '=' })[0]))
+                    {
+                        string keyname = str.Split(new char[] { '=' })[0];
+                        string valuename = "";
+                        string[] strLen = str.Split(new char[] { '=' });
+                        for (int i = 0; i < strLen.Length; i++)
+                        {
+                            if (i > 1)
+                            {
+                                valuename = valuename + "=";
+                            }
+                            if (i > 0)
+                            {
+                                valuename = valuename + strLen[i];
+                            }
+                        }
+                        appBean.hashtable_platform.Add(keyname, valuename);
+                    }
+                }
+                reader.Close();
+                reader.Dispose();
+
+                appBean.platform_id = (string)appBean.hashtable_platform["platform_id"];
+                appBean.platform_name = (string)appBean.hashtable_platform["platform_name"];
+                appBean.platform_url = (string)appBean.hashtable_platform["platform_url"];
+            }
+            catch (Exception exception)
+            {
+               // LogUtil.log_call(cmsForm, "[init_config]" + exception.ToString());
+
+            }
+
+        }
+
+       
 
     }
 }

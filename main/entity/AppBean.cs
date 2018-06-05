@@ -12,6 +12,9 @@ namespace haopintui
         public Hashtable hashtable_config = new Hashtable();
         public Hashtable hashtable_weibo = new Hashtable();
 
+        public string platform_ini = "";
+        public Hashtable hashtable_platform = new Hashtable();
+
         public long user_id = 0L;
         public string user_name = "";
         public string user_token = "";
@@ -127,7 +130,13 @@ namespace haopintui
         public int qun_price2 = 0;
 
 
-        public Queue<TaokeItem> listTaokeItemQueue = new Queue<TaokeItem>();  
+        public Queue<TaokeItem> listTaokeItemQueue = new Queue<TaokeItem>();
+
+        public string platform_id = "";
+        public string platform_name = "";
+        public string platform_url = "";
+
+
 
     }
 }

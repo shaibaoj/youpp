@@ -11,7 +11,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>haopintui</RootNamespace>
-    <AssemblyName>好品推助手</AssemblyName>
+    <AssemblyName>助手</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -54,7 +54,12 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LitJson, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -307,6 +312,9 @@
     <None Include="bin\Debug\Res\icon\tools.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bitbug_favicon %281%29.ico" />
+    <Content Include="bitbug_favicon.ico" />
+    <Content Include="bitbug_faviconww.ico" />
     <Content Include="favicon.ico" />
     <None Include="Resources\tools1.png" />
     <None Include="Resources\setting1.png" />

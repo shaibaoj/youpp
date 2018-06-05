@@ -15,7 +15,7 @@ namespace com.haopintui
         public static int version = 188; //版本 更新判断
         public static string version_str = "2.0"; //显示的版本编号
 
-        public static string main_exe = "好品推助手.exe";
+        public static string main_exe = "助手.exe";
         public static string auto_update_exe = "AutoUpdate.exe";
         public static string alimama_login_exe = "AliLogin.exe";
         public static string alimama_login_exe_name = "AliLogin";
@@ -72,6 +72,8 @@ namespace com.haopintui
         public static string config_qun_template_ini_del = "/config/qun_template_del.txt";
 
         public static string config_taoke_cookie = "/config/taoke_cookie.txt";
+
+        public static string platform_ini = "/config/platform.ini";
 
         public static string regex_url = "((http|ftp|https)://)(([a-zA-Z0-9\\._-]+\\.[a-zA-Z]{2,6})|([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}))(:[0-9]{1,4})*(/[a-zA-Z0-9\\&%_\\./-~-]*)?";
 

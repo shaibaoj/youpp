@@ -37,6 +37,10 @@ namespace haopintui
         public HttpService httpService = new HttpService(); 
         public bool login_status = false;
 
+        public string platform_id = "";
+        public string platform_name = "";
+        public string platform_url = "";
+
 
         #region Constructor
         public FormLogin(string softwarename, string version)
@@ -101,7 +105,7 @@ namespace haopintui
                 Hashtable hashtable = new Hashtable();
                 this.user_name = this.textBoxUser.Text.Trim().Replace("'", "").Replace(" or ", "");
                 string password = this.textBoxPwd.Text.Trim().Replace("'", "").Replace(" or ", "");
-                string str2 = StringUtil.login(this.httpService, this.login_url, "softwarename=" + this.softwarename + "&type=login&user=" + this.user_name + "&password=" + password + "&version=" + this.version);
+                string str2 = StringUtil.login(this.httpService, this.login_url, "hpt_platform_id=" + this.platform_id + "&softwarename=" + this.softwarename + "&type=login&user=" + this.user_name + "&password=" + password + "&version=" + this.version);
                 str2 = str2.Trim();
 
               //  MessageBox.Show("" + str2);
@@ -206,7 +210,7 @@ namespace haopintui
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://www.haopintui.com/");
+            Process.Start(this.platform_url);
         }
 
         private void button2_Click(object sender, EventArgs e)

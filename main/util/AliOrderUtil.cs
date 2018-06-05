@@ -15,7 +15,7 @@ namespace haopintui.util
         public static void putOrder(CmsForm cmsForm) {
 
             ArrayList aliOrderList = ExeclUtil.query_order(cmsForm, cmsForm.appBean.taoke_cookie,0);
-            LogUtil.log_cms_call(cmsForm, "aliOrderList:" + aliOrderList.Count);
+            LogUtil.log_pid_call(cmsForm, "aliOrderList:" + aliOrderList.Count);
             if (aliOrderList.Count>0)
             {
                 //AliOrderUtil.submit_order_items(cmsForm, aliOrderList);
