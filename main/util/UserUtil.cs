@@ -420,7 +420,7 @@ namespace haopintui
             String user_qunfa_url = Constants.user_qunfa_url;
             //LogUtil.log_str(cmsForm, "user_id=" + user_id + "&app_id=" + app_id + "&member_token=" + user_key);
             String body = httpservice.post_http(user_qunfa_url, "user_id=" + user_id + "&app_id=" + app_id + "&member_token=" + user_key, null);
-           // LogUtil.log_call(cmsForm, "query_taoke_item_list：" + body);
+            //LogUtil.log_call(cmsForm, "query_taoke_item_list：" + body);
 
             ArrayList list = new ArrayList();
             for (int i = body.IndexOf("items"); (i = body.IndexOf("\"create_date_str\"", i)) != -1; i++)

@@ -3550,7 +3550,7 @@ namespace haopintui
             this.radioButton_qunfa_duanlian_hpt.Size = new System.Drawing.Size(105, 23);
             this.radioButton_qunfa_duanlian_hpt.TabIndex = 1;
             this.radioButton_qunfa_duanlian_hpt.TabStop = true;
-            this.radioButton_qunfa_duanlian_hpt.Text = "好品推短连接";
+            this.radioButton_qunfa_duanlian_hpt.Text = "短连接";
             this.radioButton_qunfa_duanlian_hpt.UseVisualStyleBackColor = true;
             // 
             // checkBox_qunfa_duanlian
@@ -5231,8 +5231,8 @@ namespace haopintui
             // notifyIcon_task
             // 
             this.notifyIcon_task.ContextMenuStrip = this.contextMenuStripTask;
-            this.notifyIcon_task.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon_task.Icon")));
-            this.notifyIcon_task.Text = "好品推助手";
+           // this.notifyIcon_task.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon_task1.Icon")));
+            this.notifyIcon_task.Text = "助手";
             this.notifyIcon_task.Visible = true;
             this.notifyIcon_task.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
             this.notifyIcon_task.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
@@ -5540,9 +5540,9 @@ namespace haopintui
             this.Controls.Add(this.panelTop);
             this.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+           // this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this1888.Icon")));
             this.Name = "CmsForm";
-            this.Text = "好品推助手";
+            this.Text = "助手";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormEx_FormClosing);
             this.Load += new System.EventHandler(this.FormEx_Load);
             this.SizeChanged += new System.EventHandler(this.FormEx_SizeChanged);

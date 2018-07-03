@@ -10,7 +10,6 @@ E:\haopintui\zhuzhou\Release\好品推助手.exe.config
 E:\haopintui\zhuzhou\Release\好品推助手.exe
 E:\haopintui\zhuzhou\main\obj\x86\Debug\main.csprojResolveAssemblyReference.cache
 E:\haopintui\zhuzhou\main\obj\x86\Debug\好品推助手.exe
-D:\www\助手\Release\好品推助手.exe
 D:\www\助手\main\obj\x86\Debug\main.csprojResolveAssemblyReference.cache
 D:\www\助手\main\obj\x86\Debug\haopintui.BaseForm.resources
 D:\www\助手\main\obj\x86\Debug\haopintui.CmsForm.resources

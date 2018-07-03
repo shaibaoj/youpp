@@ -17,3 +17,4 @@ D:\www\助手\jiangkong\jiankong\obj\Debug\jiankong.jk.Properties.Resources.reso
 D:\www\助手\jiangkong\jiankong\obj\Debug\jiankong.csproj.GenerateResource.Cache
 D:\www\助手\jiangkong\jiankong\obj\Debug\jiankong.exe
 D:\www\助手\jiangkong\jiankong\obj\Debug\jiankong.pdb
+D:\www\助手\jiangkong\jiankong\obj\Debug\jiankong.csprojResolveAssemblyReference.cache
