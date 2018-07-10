@@ -178,7 +178,8 @@ namespace haopintui.util
                 try
                 {
                     string out_log;
-                    arrayLists = ExeclUtil.query_order_list(cmsForm, str1, out out_log, type);
+                    bool logined = true;
+                    arrayLists = ExeclUtil.query_order_list(cmsForm, str1, out out_log, type,out logined);
                     //System.Data.DataTable dt = ExeclUtil.GetExcelData(str1);
                     //LogUtil.log_call(cmsForm, "dt.Rows.Count：" + dt.Rows.Count);
                     //foreach(DataRow dr in dt.Rows)        
@@ -186,12 +187,15 @@ namespace haopintui.util
                     //     object value = dr["ColumnsName"];
 
                     //     LogUtil.log_call(cmsForm,"value"+ value.ToString());
-                    //}     
+                    //}  
+                     if(logined==false){
+                         AlimamaLogin.login(cmsForm, 1);
+                     }
 
                 }
                 catch (Exception exception)
                 {
-                    LogUtil.log_call(cmsForm, "[DataTable]出错！" + exception.ToString());
+                    LogUtil.log_call(cmsForm, "[--------DataTable]出错！" + exception.ToString());
                 }
 
                File.Delete(str1);
@@ -247,9 +251,10 @@ namespace haopintui.util
             return flag;
         }
 
-        public static ArrayList query_order_list(CmsForm cmsForm,string string_0, out string out_log,int type)
+        public static ArrayList query_order_list(CmsForm cmsForm,string string_0, out string out_log,int type,out bool logined)
         {
             out_log = "";
+            logined = true;
             ArrayList arrayLists = new ArrayList();
             HSSFWorkbook hSSFWorkbook = null;
             try
@@ -336,6 +341,7 @@ namespace haopintui.util
                 }
                 catch (Exception exception)
                 {
+                    logined = false;
                     LogUtil.log_call(cmsForm, "exception" + exception.ToString());
                 }
             }

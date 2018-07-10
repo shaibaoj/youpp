@@ -12,7 +12,7 @@ namespace com.haopintui
         public static string put_tools_url = "http://put.tools.youdanhui.com";
 
         public static string product_code = "zhushou";
-        public static int version = 189; //版本 更新判断
+        public static int version = 191; //版本 更新判断
         public static string version_str = "2.0"; //显示的版本编号
 
         public static string main_exe = "助手.exe";

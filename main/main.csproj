@@ -54,8 +54,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Resources\%24this.Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <Win32Resource>
@@ -236,15 +235,17 @@
     </Compile>
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CmsForm.resx">
       <DependentUpon>CmsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -255,6 +256,7 @@
     </Compile>
     <EmbeddedResource Include="ShowFwSndForm.resx">
       <DependentUpon>ShowFwSndForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowQqForm.resx">
       <DependentUpon>ShowQqForm.cs</DependentUpon>
@@ -288,16 +290,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\%24this.new_icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\%24this.Icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="bin\Debug\Res\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\%24this.Icon1.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Res\icon\qunfa.png" />
@@ -312,10 +305,13 @@
     <None Include="bin\Debug\Res\icon\tools.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bitbug_favicon %281%29.ico" />
     <Content Include="bitbug_favicon.ico" />
     <Content Include="bitbug_faviconww.ico" />
     <Content Include="favicon.ico" />
+    <None Include="Resources\favicon.ico" />
+    <None Include="Resources\%24this.Icon.bmp" />
+    <None Include="Resources\%24this.Icon.ico" />
+    <None Include="Resources\icon.bmp" />
     <None Include="Resources\tools1.png" />
     <None Include="Resources\setting1.png" />
     <None Include="Resources\qunfa1.png" />
