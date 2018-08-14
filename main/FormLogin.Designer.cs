@@ -47,9 +47,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(107, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 33);
+            this.label1.Size = new System.Drawing.Size(147, 33);
             this.label1.TabIndex = 0;
-            this.label1.Text = "好品推助手";
+            this.label1.Text = "助手工具";
             // 
             // textBoxUser
             // 

@@ -6,3 +6,7 @@ E:\work\cs\好品推\bin\common.pdb
 E:\work\cs\好品推\common\obj\x86\Debug\common.csprojResolveAssemblyReference.cache
 E:\work\cs\好品推\common\obj\x86\Debug\common.dll
 E:\work\cs\好品推\common\obj\x86\Debug\common.pdb
+D:\www\助手\bin\common.dll
+D:\www\助手\bin\common.pdb
+D:\www\助手\common\obj\x86\Debug\common.dll
+D:\www\助手\common\obj\x86\Debug\common.pdb

@@ -117,29 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA
-        AAAAaP8iAGf/vwBl+/EAX/TxAF/08QBi+PEAXvPxAGP58QBn/u8AZ//vAGf/7wBl/PEAYfbxAGX88QBn
-        /78AaP8iAHT8wVaj/P9qr/z/LI/7/wB7+/9Wo/z/aq/8/yyP+/9Wo/z/aq/8/yyP+/8Ae/v/Spz8/2qv
-        /P81lfv/AHT8wQBy/PHR4f7//////+Ls/v/R4f7/9Pj+//////9qr/z/0eH+///////i7P7/0eH+/+70
-        /v//////f739/wBy/PEAc/zv0eH+////////////////////////////aq/8/9Hh/v//////////////
-        /////////////3+9/f8Ac/zvAHT879Hh/v//////hrr8/zOO+//X5f7//////2qv/P/R4f7//////4a6
-        /P8zjvv/vtf9//////9/vf3/AHT87wB1/O/R4f7//////2qv/P8Ae/v/0eH+//////9qr/z/0eH+////
-        //9qr/z/AHv7/7PQ/f//////f739/wB1/O8Advvv0eH+///////R4v7/s9D9/+70/v//////aq/8/9Hh
-        /v//////0eL+/7PQ/f/k7v7//////3+9/f8AdvvvAHf779Hh/v///////////////////////////2qv
-        /P/R4f7///////////////////////////9/vf3/AHf77wB3++9Cl/v/UZ/8/1Gf/P9Rn/z/UZ/8/1Gf
-        /P8hifv/Qpf7/1Gf/P9Rn/z/UZ/8/1Gf/P9Rn/z/KI37/wB3++8AePvvAHv7/2iu/P/R4f7/0eH+/9Hh
-        /v/R4f7/0eH+/9Hh/v/R4f7/0eH+/9Hh/v/R4f7/Qpf7/wB7+/8AePvvAHn77wB7+/9/vf3/////////
-        /////////////////////////////////////////////1Gf/P8Ae/v/AHn77wB6++8Ae/v/f739////
-        ////////UZ/8/1Gf/P9Rn/z/UZ/8/1Gf/P+Gufz///////////9Rn/z/AHv7/wB6++8Ae/vvAHv7/3+9
-        /f///////////1Gf/P9Rn/z/UZ/8/1Gf/P9Rn/z/hrn8////////////UZ/8/wB7+/8Ae/vvAHz68QB7
-        +/9/vf3//////////////////////////////////////////////////////1Gf/P8Ae/v/AHz68QB8
-        +sEAe/v/aK78/9Hh/v/R4f7/0eH+/9Hh/v/R4f7/0eH+/9Hh/v/R4f7/0eH+/9Hh/v9Cl/v/AHv7/wB8
-        +sEAf/oiAH/6vwB/+vEAf/rvAH/67wB/+u8Af/rvAH/67wB/+u8Af/rvAH/67wB/+u8Af/rvAH/68QB/
-        +r8Af/oigAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAgAEAAA==
-</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\favicon.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -19,7 +19,7 @@ namespace haopintui
 
         public string user_name = "";
         public string softwarename = "";
-        public string user_key = "";
+        public string user_token = "";
         public string version = "";
         public string feetype = "";
         public string expiredate = "";
@@ -33,8 +33,13 @@ namespace haopintui
 
         public Hashtable hashtable_0 = new Hashtable();
         public long user_id = 0L;
+        public string app_id = "";
         public HttpService httpService = new HttpService(); 
         public bool login_status = false;
+
+        public string platform_id = "";
+        public string platform_name = "";
+        public string platform_url = "";
 
 
         #region Constructor
@@ -100,19 +105,19 @@ namespace haopintui
                 Hashtable hashtable = new Hashtable();
                 this.user_name = this.textBoxUser.Text.Trim().Replace("'", "").Replace(" or ", "");
                 string password = this.textBoxPwd.Text.Trim().Replace("'", "").Replace(" or ", "");
-                string str2 = StringUtil.login(this.httpService, this.login_url, "softwarename=" + this.softwarename + "&type=login&user=" + this.user_name + "&password=" + password + "&version=" + this.version);
+                string str2 = StringUtil.login(this.httpService, this.login_url, "hpt_platform_id=" + this.platform_id + "&softwarename=" + this.softwarename + "&type=login&user=" + this.user_name + "&password=" + password + "&version=" + this.version);
                 str2 = str2.Trim();
 
-                //MessageBox.Show("" + str2);
+              //  MessageBox.Show("" + str2);
 
                 try
                 {
                     JsonData jo = JsonMapper.ToObject(str2);
-                    if (jo["result"]!=null
-                        && jo["result"]["map"] != null
-                        && jo["result"]["map"]["item"] != null)
+                    if (jo["data"] != null
+                        && jo["data"]["item"] != null)
                     {
-                        string msg = jo["result"]["map"]["item"]["msg"].ToString();
+                        string msg = jo["data"]["item"]["msg"].ToString();
+
                         if ("error".Equals(msg))
                         {
                             MessageBox.Show("发生错误请重试！");
@@ -132,14 +137,15 @@ namespace haopintui
                         else if (msg.Equals("ok"))
                         {
 
-                            this.feetype = jo["result"]["map"]["item"]["feetype"].ToString();
-                            this.expiredate = jo["result"]["map"]["item"]["expiredate"].ToString();
-                            this.user_id = long.Parse(jo["result"]["map"]["item"]["user_id"].ToString());
-                            this.user_key = jo["result"]["map"]["item"]["user_key"].ToString();
-                            this.qunfa = jo["result"]["map"]["item"]["qunfa"].ToString();
-                            this.alimama_id = jo["result"]["map"]["item"]["alimama_id"].ToString();
-                            this.qunfa_date = jo["result"]["map"]["item"]["qunfa_date"].ToString();
-                            this.user_type_name = jo["result"]["map"]["item"]["user_type_name"].ToString();
+                            this.feetype = jo["data"]["item"]["feetype"].ToString();
+                            this.expiredate = jo["data"]["item"]["expiredate"].ToString();
+                            this.user_id = long.Parse(jo["data"]["item"]["user_id"].ToString());
+                            this.user_token = jo["data"]["item"]["user_token"].ToString();
+                            this.qunfa = jo["data"]["item"]["qunfa"].ToString();
+                            this.alimama_id = jo["data"]["item"]["alimama_id"].ToString();
+                            this.qunfa_date = jo["data"]["item"]["qunfa_date"].ToString();
+                            this.user_type_name = jo["data"]["item"]["user_type_name"].ToString();
+                            this.app_id = jo["data"]["item"]["app_id"].ToString();
 
                             this.login_status = true;
                             base.Close();
@@ -159,9 +165,9 @@ namespace haopintui
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception ee)
                 {
-                    MessageBox.Show("哪里不对了，好像您的网络不通哦，请重新启动本程序！");
+                    MessageBox.Show("哪里不对了，好像您的网络不通哦，请重新启动本程序！"+ee.ToString());
                 }
             }
         }
@@ -204,7 +210,7 @@ namespace haopintui
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://www.haopintui.com/");
+            Process.Start(this.platform_url);
         }
 
         private void button2_Click(object sender, EventArgs e)

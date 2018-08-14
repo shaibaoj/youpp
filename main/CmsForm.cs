@@ -42,34 +42,12 @@ namespace haopintui
         private Label tool_name;
         private Label label1;
         private Label label_version;
-        private PictureBox pictureBox1;
         private Panel panel1;
-        private Label label_cms;
         private Label label_qunfa;
         private Label label_tools;
         private Label label_setting;
         private Panel panel_content;
         public TabControl tabControlMain;
-        private TabPage tabPage1;
-        private Panel panel_cms;
-        private GroupBox groupBox1;
-        public RichTextBox richTextBoxCms;
-        private GroupBox groupBox_cms;
-        public Button button_cms_click_apply;
-        private Label label7;
-        private Label label6;
-        private Label label5;
-        private Label label4;
-        private Label label3;
-        private Label label2;
-        public ComboBox comboBoxCmsList;
-        public ComboBox comboBoxCmPPos;
-        public ComboBox comboBoxCmPUnit;
-        private RadioButton radioButtonCmMOth;
-        private RadioButton radioButtonCmMApp;
-        private RadioButton radioButtonCmMWeb;
-        private TrackBar trackBarAlimama;
-        private Panel panel2;
         private TabPage tabPage2;
         private TabPage tabPage4;
         private TabPage tabPage3;
@@ -201,8 +179,6 @@ namespace haopintui
         private Button button_tools_zhuanhua_tianjia_zhushou;
         private Button button_tools_zhuanhua_copy;
         private Button button_tools_qingkong;
-        private Label label39;
-        public TextBox textBoxAppCmsReson;
         private NotifyIcon notifyIcon_task;
         private IContainer components;
         private ContextMenuStrip contextMenuStripTask;
@@ -219,16 +195,10 @@ namespace haopintui
         public AdzoneBean adzoneBean = null;
 
         public WebClient webClient = new WebClient();
-        private LinkLabel linkLabelGetPromot;
         public WebBrowser webBrowserQuanAlimama;
-        private LinkLabel linkLabel1;
-        private LinkLabel linkLabel2;
         private TabPage tabPage14;
         public TextBox textBoxAlimamaCookieUrl;
         private Button button_tools_test_get_cookie;
-        private GroupBox groupBox16;
-        public Label label_tongji_all;
-        public Label label_tongji_have;
         public HttpService httpService = null;
         public char[] char_message = new char[0x1388];
         private System.Windows.Forms.Timer timer_kouling;
@@ -237,7 +207,6 @@ namespace haopintui
         public TextBox textBox_setting_appKey;
         private Label label9;
         public TextBox textBox_setting_appId;
-        private LinkLabel linkLabel3;
         private ContextMenuStrip contextMenuStripCouponPage;
         private Label label_banben;
         private Label label_welcome;
@@ -267,16 +236,12 @@ namespace haopintui
 
         public Thread thread_order_ali;
 
-        public Thread thread_coupon;
-
         private DataGridViewTextBoxColumn Column_time;
         private DataGridViewTextBoxColumn Column_from;
         private DataGridViewTextBoxColumn Column_content;
         private DataGridViewTextBoxColumn Column_status;
         public RadioButton radioButtonsetting_app_haopintui;
-        public RadioButton radioButtonsetting_app_ben;
         private Label label10;
-        private Label label11;
         private ContextMenuStrip contextMenuStripTool;
         private TabPage tabPage15;
         public CheckBox checkBox_qunfa_weibo_boolean;
@@ -318,7 +283,6 @@ namespace haopintui
         private Button button25;
         private Button button26;
         private Button button27;
-        private LinkLabel linkLabel6;
         private System.Windows.Forms.Timer timer_caiji;
 
         public Thread thread_online;
@@ -342,7 +306,6 @@ namespace haopintui
         private GroupBox groupBox25;
         private Button button28;
         private Button button29;
-        public Button button_bind;
         public string online_version;
         private GroupBox groupBox24;
         private TabPage tabPage19;
@@ -381,7 +344,6 @@ namespace haopintui
 
         private Thread thread_alimama_income;
         private TabPage tabPage22;
-        public CheckBox checkBox_cmslist_jihua;
         private Label label51;
         private GroupBox groupBox32;
         private LinkLabel linkLabel_get_weibo_guanggao;
@@ -460,8 +422,6 @@ namespace haopintui
         public TextBox textBox_weibo_template;
         private Label label_user_type_name;
         private Label label66;
-        private Label label67;
-        public CheckBox checkBox_cmslist_xianshi;
         private TabPage tabPage25;
         private GroupBox groupBox34;
         private Label label68;
@@ -480,6 +440,37 @@ namespace haopintui
         private Label label72;
         private Button button47;
         private Button button48;
+        private Label create_pid;
+        public TextBox textBoxCreatePid;
+        public RichTextBox richTextBoxPid;
+        private GroupBox groupBox16;
+        public Label label_tongji_all;
+        public Label label_tongji_have;
+        private Label label67;
+        private GroupBox groupBox_cms;
+        private TrackBar trackBarAlimama;
+        private RadioButton radioButtonCmMWeb;
+        private RadioButton radioButtonCmMApp;
+        private RadioButton radioButtonCmMOth;
+        public ComboBox comboBoxCmPUnit;
+        public ComboBox comboBoxCmPPos;
+        public ComboBox comboBoxCmsList;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+        public Button button_cms_click_apply;
+        private Label label39;
+        public TextBox textBoxAppCmsReson;
+        private LinkLabel linkLabelGetPromot;
+        private LinkLabel linkLabel6;
+        public CheckBox checkBox_cmslist_jihua;
+        public CheckBox checkBox_cmslist_xianshi;
+        private GroupBox groupBox1;
+        public RichTextBox richTextBoxCms;
+        public RadioButton radioButtonsetting_app_ben;
 
         private Thread thread_zhuan_copy;
 
@@ -501,13 +492,21 @@ namespace haopintui
             this.loginUtil = new LoginUtil();
             this.loginUtil.visits = 0;
             this.loginUtil.login_url = Constants.login_url;
+
+            ConfigUtil.init_platform(this);
+
+            this.loginUtil.platform_id = this.appBean.platform_id;
+            this.loginUtil.platform_name = this.appBean.platform_name;
+            this.loginUtil.platform_url = this.appBean.platform_url;
+
             if (!this.loginUtil.login(Constants.product_code, Constants.main_exe, Constants.version + ""))
             {
                 Environment.Exit(Environment.ExitCode);
             }
             this.appBean.user_id = loginUtil.user_id;
+            this.appBean.cms_app_id = loginUtil.app_id;
             this.appBean.user_name = loginUtil.user_name;
-            this.appBean.user_key = loginUtil.user_key;
+            this.appBean.user_token = loginUtil.user_token;
             this.appBean.qunfa = loginUtil.qunfa;
             this.appBean.alimama_id = loginUtil.alimama_id;
             this.appBean.user_type_name = loginUtil.user_type_name;
@@ -757,61 +756,52 @@ namespace haopintui
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CmsForm));
-            this.richTextBoxLogs = new System.Windows.Forms.RichTextBox();
-            this.layout_menu = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label_setting = new System.Windows.Forms.Label();
-            this.label_tools = new System.Windows.Forms.Label();
-            this.label_qunfa = new System.Windows.Forms.Label();
-            this.label_cms = new System.Windows.Forms.Label();
-            this.panelTop = new System.Windows.Forms.Panel();
-            this.button47 = new System.Windows.Forms.Button();
-            this.button_bind = new System.Windows.Forms.Button();
-            this.label_user_type_name = new System.Windows.Forms.Label();
-            this.label_welcome = new System.Windows.Forms.Label();
-            this.label_banben = new System.Windows.Forms.Label();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.webBrowserQuanAlimama = new System.Windows.Forms.WebBrowser();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon_task.Icon")));
+
             this.contextMenuStripCouponPage = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label_version = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tool_name = new System.Windows.Forms.Label();
-            this.panel_content = new System.Windows.Forms.Panel();
-            this.tabControlMain = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panel_cms = new System.Windows.Forms.Panel();
+            this.contextMenuStripFwSnd = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStripCtEdit = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip_weibo = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip_pid_qq = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip_pid_weixin = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStripTool = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.notifyIcon_task = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStripTask = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer_kouling = new System.Windows.Forms.Timer(this.components);
+            this.timer_caiji = new System.Windows.Forms.Timer(this.components);
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.label_tongji_all = new System.Windows.Forms.Label();
+            this.label_tongji_have = new System.Windows.Forms.Label();
+            this.label67 = new System.Windows.Forms.Label();
+            this.groupBox_cms = new System.Windows.Forms.GroupBox();
+            this.trackBarAlimama = new System.Windows.Forms.TrackBar();
+            this.radioButtonCmMWeb = new System.Windows.Forms.RadioButton();
+            this.radioButtonCmMApp = new System.Windows.Forms.RadioButton();
+            this.radioButtonCmMOth = new System.Windows.Forms.RadioButton();
+            this.comboBoxCmPUnit = new System.Windows.Forms.ComboBox();
+            this.comboBoxCmPPos = new System.Windows.Forms.ComboBox();
+            this.comboBoxCmsList = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button_cms_click_apply = new System.Windows.Forms.Button();
+            this.label39 = new System.Windows.Forms.Label();
+            this.textBoxAppCmsReson = new System.Windows.Forms.TextBox();
+            this.linkLabelGetPromot = new System.Windows.Forms.LinkLabel();
+            this.linkLabel6 = new System.Windows.Forms.LinkLabel();
+            this.checkBox_cmslist_jihua = new System.Windows.Forms.CheckBox();
+            this.checkBox_cmslist_xianshi = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.richTextBoxCms = new System.Windows.Forms.RichTextBox();
-            this.groupBox_cms = new System.Windows.Forms.GroupBox();
-            this.checkBox_cmslist_xianshi = new System.Windows.Forms.CheckBox();
-            this.checkBox_cmslist_jihua = new System.Windows.Forms.CheckBox();
-            this.linkLabel6 = new System.Windows.Forms.LinkLabel();
-            this.linkLabelGetPromot = new System.Windows.Forms.LinkLabel();
-            this.textBoxAppCmsReson = new System.Windows.Forms.TextBox();
-            this.label39 = new System.Windows.Forms.Label();
-            this.button_cms_click_apply = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBoxCmsList = new System.Windows.Forms.ComboBox();
-            this.comboBoxCmPPos = new System.Windows.Forms.ComboBox();
-            this.comboBoxCmPUnit = new System.Windows.Forms.ComboBox();
-            this.radioButtonCmMOth = new System.Windows.Forms.RadioButton();
-            this.radioButtonCmMApp = new System.Windows.Forms.RadioButton();
-            this.radioButtonCmMWeb = new System.Windows.Forms.RadioButton();
-            this.trackBarAlimama = new System.Windows.Forms.TrackBar();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label67 = new System.Windows.Forms.Label();
-            this.groupBox16 = new System.Windows.Forms.GroupBox();
-            this.label_tongji_have = new System.Windows.Forms.Label();
-            this.label_tongji_all = new System.Windows.Forms.Label();
+            this.panel_content = new System.Windows.Forms.Panel();
+            this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl_qunfa = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -851,7 +841,6 @@ namespace haopintui
             this.Column_from = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_content = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStripFwSnd = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.checkBox_qunfa_qq_kouling_boolean = new System.Windows.Forms.CheckBox();
@@ -907,7 +896,6 @@ namespace haopintui
             this.button_qunfa_shoudong_qingkong = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.webBrowser_send_content = new System.Windows.Forms.WebBrowser();
-            this.contextMenuStripCtEdit = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tabPage15 = new System.Windows.Forms.TabPage();
             this.groupBox28 = new System.Windows.Forms.GroupBox();
             this.button_weibo = new System.Windows.Forms.Button();
@@ -919,7 +907,6 @@ namespace haopintui
             this.dataGridView_weibo = new System.Windows.Forms.DataGridView();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip_weibo = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tabPage19 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage20 = new System.Windows.Forms.TabPage();
@@ -952,7 +939,6 @@ namespace haopintui
             this.dataGridView_fenqun_qq = new System.Windows.Forms.DataGridView();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip_pid_qq = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tabPage24 = new System.Windows.Forms.TabPage();
             this.groupBox31 = new System.Windows.Forms.GroupBox();
             this.textBox_fenqun_weixin_weiba = new System.Windows.Forms.TextBox();
@@ -966,7 +952,6 @@ namespace haopintui
             this.dataGridView_fenqun_weixin = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip_pid_weixin = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label59 = new System.Windows.Forms.Label();
@@ -1089,6 +1074,21 @@ namespace haopintui
             this.tabControl_tools = new System.Windows.Forms.TabControl();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.tabControl_tools_common = new System.Windows.Forms.TabControl();
+            this.tabPage25 = new System.Windows.Forms.TabPage();
+            this.richTextBoxPid = new System.Windows.Forms.RichTextBox();
+            this.groupBox34 = new System.Windows.Forms.GroupBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.comboBox_ali_order_days = new System.Windows.Forms.ComboBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.button46 = new System.Windows.Forms.Button();
+            this.label69 = new System.Windows.Forms.Label();
+            this.label68 = new System.Windows.Forms.Label();
+            this.comboBox_ali_order_pinlv = new System.Windows.Forms.ComboBox();
+            this.tabPage14 = new System.Windows.Forms.TabPage();
+            this.create_pid = new System.Windows.Forms.Label();
+            this.button_tools_test_get_cookie = new System.Windows.Forms.Button();
+            this.textBoxCreatePid = new System.Windows.Forms.TextBox();
+            this.textBoxAlimamaCookieUrl = new System.Windows.Forms.TextBox();
             this.tabPage13 = new System.Windows.Forms.TabPage();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.button_tools_qingkong = new System.Windows.Forms.Button();
@@ -1099,19 +1099,6 @@ namespace haopintui
             this.checkBox_tools_qingkong = new System.Windows.Forms.CheckBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.webBrowser_zhuanhua = new System.Windows.Forms.WebBrowser();
-            this.contextMenuStripTool = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tabPage14 = new System.Windows.Forms.TabPage();
-            this.button_tools_test_get_cookie = new System.Windows.Forms.Button();
-            this.textBoxAlimamaCookieUrl = new System.Windows.Forms.TextBox();
-            this.tabPage25 = new System.Windows.Forms.TabPage();
-            this.groupBox34 = new System.Windows.Forms.GroupBox();
-            this.label71 = new System.Windows.Forms.Label();
-            this.comboBox_ali_order_days = new System.Windows.Forms.ComboBox();
-            this.label70 = new System.Windows.Forms.Label();
-            this.button46 = new System.Windows.Forms.Button();
-            this.label69 = new System.Windows.Forms.Label();
-            this.label68 = new System.Windows.Forms.Label();
-            this.comboBox_ali_order_pinlv = new System.Windows.Forms.ComboBox();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button_tools_bt_changgui = new System.Windows.Forms.Button();
@@ -1127,11 +1114,9 @@ namespace haopintui
             this.textBoxUUUsername = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.radioButtonsetting_app_haopintui = new System.Windows.Forms.RadioButton();
             this.radioButtonsetting_app_ben = new System.Windows.Forms.RadioButton();
-            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox_setting_appKey = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -1147,24 +1132,24 @@ namespace haopintui
             this.textBoxAlimamaPwd = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxAlimamaAcc = new System.Windows.Forms.TextBox();
-            this.notifyIcon_task = new System.Windows.Forms.NotifyIcon(this.components);
-            this.contextMenuStripTask = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.timer_kouling = new System.Windows.Forms.Timer(this.components);
-            this.timer_caiji = new System.Windows.Forms.Timer(this.components);
-            this.layout_menu.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panelTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.layout_menu = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label_setting = new System.Windows.Forms.Label();
+            this.label_tools = new System.Windows.Forms.Label();
+            this.label_qunfa = new System.Windows.Forms.Label();
+            this.richTextBoxLogs = new System.Windows.Forms.RichTextBox();
+            this.panelTop = new System.Windows.Forms.Panel();
+            this.button47 = new System.Windows.Forms.Button();
+            this.label_user_type_name = new System.Windows.Forms.Label();
+            this.label_welcome = new System.Windows.Forms.Label();
+            this.label_banben = new System.Windows.Forms.Label();
+            this.webBrowserQuanAlimama = new System.Windows.Forms.WebBrowser();
+            this.label_version = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tool_name = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarAlimama)).BeginInit();
             this.panel_content.SuspendLayout();
             this.tabControlMain.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.panel_cms.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox_cms.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarAlimama)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.groupBox16.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabControl_qunfa.SuspendLayout();
             this.tabPage5.SuspendLayout();
@@ -1229,368 +1214,127 @@ namespace haopintui
             this.tabControl_tools.SuspendLayout();
             this.tabPage11.SuspendLayout();
             this.tabControl_tools_common.SuspendLayout();
+            this.tabPage25.SuspendLayout();
+            this.groupBox34.SuspendLayout();
+            this.tabPage14.SuspendLayout();
             this.tabPage13.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox13.SuspendLayout();
-            this.tabPage14.SuspendLayout();
-            this.tabPage25.SuspendLayout();
-            this.groupBox34.SuspendLayout();
             this.panel6.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox_dama.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTest)).BeginInit();
             this.groupBox17.SuspendLayout();
             this.groupBox_alimama.SuspendLayout();
+            this.layout_menu.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panelTop.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // richTextBoxLogs
-            // 
-            this.richTextBoxLogs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.richTextBoxLogs.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.richTextBoxLogs.Font = new System.Drawing.Font("新宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.richTextBoxLogs.Location = new System.Drawing.Point(0, 590);
-            this.richTextBoxLogs.Name = "richTextBoxLogs";
-            this.richTextBoxLogs.Size = new System.Drawing.Size(980, 60);
-            this.richTextBoxLogs.TabIndex = 0;
-            this.richTextBoxLogs.Text = "";
-            // 
-            // layout_menu
-            // 
-            this.layout_menu.BackColor = System.Drawing.Color.White;
-            this.layout_menu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.layout_menu.Controls.Add(this.panel1);
-            this.layout_menu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.layout_menu.Location = new System.Drawing.Point(0, 60);
-            this.layout_menu.Name = "layout_menu";
-            this.layout_menu.Size = new System.Drawing.Size(100, 530);
-            this.layout_menu.TabIndex = 2;
-            this.layout_menu.Paint += new System.Windows.Forms.PaintEventHandler(this.layout_menu_Paint);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label_setting);
-            this.panel1.Controls.Add(this.label_tools);
-            this.panel1.Controls.Add(this.label_qunfa);
-            this.panel1.Controls.Add(this.label_cms);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(96, 476);
-            this.panel1.TabIndex = 0;
-            // 
-            // label_setting
-            // 
-            this.label_setting.Image = global::haopintui.Properties.Resources.setting;
-            this.label_setting.Location = new System.Drawing.Point(2, 252);
-            this.label_setting.Name = "label_setting";
-            this.label_setting.Size = new System.Drawing.Size(91, 80);
-            this.label_setting.TabIndex = 0;
-            this.label_setting.Text = "软件设置";
-            this.label_setting.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.label_setting.Click += new System.EventHandler(this.label11_Click);
-            // 
-            // label_tools
-            // 
-            this.label_tools.Image = global::haopintui.Properties.Resources.tools;
-            this.label_tools.Location = new System.Drawing.Point(3, 168);
-            this.label_tools.Name = "label_tools";
-            this.label_tools.Size = new System.Drawing.Size(91, 80);
-            this.label_tools.TabIndex = 0;
-            this.label_tools.Text = "实用工具";
-            this.label_tools.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.label_tools.Click += new System.EventHandler(this.label10_Click);
-            // 
-            // label_qunfa
-            // 
-            this.label_qunfa.Image = global::haopintui.Properties.Resources.qunfa;
-            this.label_qunfa.Location = new System.Drawing.Point(2, 86);
-            this.label_qunfa.Name = "label_qunfa";
-            this.label_qunfa.Size = new System.Drawing.Size(91, 80);
-            this.label_qunfa.TabIndex = 0;
-            this.label_qunfa.Text = "群发功能";
-            this.label_qunfa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.label_qunfa.Click += new System.EventHandler(this.label9_Click);
-            // 
-            // label_cms
-            // 
-            this.label_cms.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label_cms.Image = global::haopintui.Properties.Resources.cms1;
-            this.label_cms.Location = new System.Drawing.Point(2, 3);
-            this.label_cms.Name = "label_cms";
-            this.label_cms.Size = new System.Drawing.Size(91, 80);
-            this.label_cms.TabIndex = 0;
-            this.label_cms.Text = "CMS转链";
-            this.label_cms.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.label_cms.Click += new System.EventHandler(this.label8_Click);
-            // 
-            // panelTop
-            // 
-            this.panelTop.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.panelTop.BackColor = System.Drawing.Color.DodgerBlue;
-            this.panelTop.Controls.Add(this.button47);
-            this.panelTop.Controls.Add(this.button_bind);
-            this.panelTop.Controls.Add(this.label_user_type_name);
-            this.panelTop.Controls.Add(this.label_welcome);
-            this.panelTop.Controls.Add(this.label_banben);
-            this.panelTop.Controls.Add(this.linkLabel2);
-            this.panelTop.Controls.Add(this.linkLabel1);
-            this.panelTop.Controls.Add(this.webBrowserQuanAlimama);
-            this.panelTop.Controls.Add(this.pictureBox1);
-            this.panelTop.Controls.Add(this.label_version);
-            this.panelTop.Controls.Add(this.label1);
-            this.panelTop.Controls.Add(this.tool_name);
-            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTop.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.panelTop.Location = new System.Drawing.Point(0, 0);
-            this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(980, 60);
-            this.panelTop.TabIndex = 1;
-            this.panelTop.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            this.panelTop.DoubleClick += new System.EventHandler(this.on_panel_doubleclick);
-            this.panelTop.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseDoubleClick);
-            this.panelTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plan_OnMouseDown);
-            this.panelTop.MouseEnter += new System.EventHandler(this.panelTop_MouseEnter);
-            this.panelTop.MouseLeave += new System.EventHandler(this.panelTop_MouseLeave);
-            this.panelTop.MouseHover += new System.EventHandler(this.panelTop_MouseHover);
-            this.panelTop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseMove);
-            this.panelTop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseUp);
-            // 
-            // button47
-            // 
-            this.button47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button47.ForeColor = System.Drawing.Color.Red;
-            this.button47.Location = new System.Drawing.Point(326, 5);
-            this.button47.Name = "button47";
-            this.button47.Size = new System.Drawing.Size(75, 23);
-            this.button47.TabIndex = 9;
-            this.button47.Text = "高佣授权";
-            this.button47.UseVisualStyleBackColor = false;
-            this.button47.Click += new System.EventHandler(this.button47_Click);
-            // 
-            // button_bind
-            // 
-            this.button_bind.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_bind.Location = new System.Drawing.Point(251, 5);
-            this.button_bind.Name = "button_bind";
-            this.button_bind.Size = new System.Drawing.Size(75, 23);
-            this.button_bind.TabIndex = 8;
-            this.button_bind.Text = "账号认证";
-            this.button_bind.UseVisualStyleBackColor = true;
-            this.button_bind.Click += new System.EventHandler(this.button2_Click_3);
-            // 
-            // label_user_type_name
-            // 
-            this.label_user_type_name.AutoSize = true;
-            this.label_user_type_name.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_user_type_name.ForeColor = System.Drawing.Color.White;
-            this.label_user_type_name.Location = new System.Drawing.Point(515, 30);
-            this.label_user_type_name.Name = "label_user_type_name";
-            this.label_user_type_name.Size = new System.Drawing.Size(68, 17);
-            this.label_user_type_name.TabIndex = 7;
-            this.label_user_type_name.Text = "用户类型：";
-            // 
-            // label_welcome
-            // 
-            this.label_welcome.AutoSize = true;
-            this.label_welcome.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_welcome.ForeColor = System.Drawing.Color.White;
-            this.label_welcome.Location = new System.Drawing.Point(515, 5);
-            this.label_welcome.Name = "label_welcome";
-            this.label_welcome.Size = new System.Drawing.Size(44, 17);
-            this.label_welcome.TabIndex = 7;
-            this.label_welcome.Text = "欢迎：";
-            // 
-            // label_banben
-            // 
-            this.label_banben.AutoSize = true;
-            this.label_banben.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_banben.ForeColor = System.Drawing.Color.White;
-            this.label_banben.Location = new System.Drawing.Point(398, 30);
-            this.label_banben.Name = "label_banben";
-            this.label_banben.Size = new System.Drawing.Size(56, 17);
-            this.label_banben.TabIndex = 6;
-            this.label_banben.Text = "版本号：";
-            // 
-            // linkLabel2
-            // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.linkLabel2.LinkColor = System.Drawing.Color.White;
-            this.linkLabel2.Location = new System.Drawing.Point(397, 5);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(60, 17);
-            this.linkLabel2.TabIndex = 5;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = " 使用教程";
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.linkLabel1.LinkColor = System.Drawing.Color.White;
-            this.linkLabel1.Location = new System.Drawing.Point(754, 5);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(32, 17);
-            this.linkLabel1.TabIndex = 5;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "官网";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked_1);
-            // 
-            // webBrowserQuanAlimama
-            // 
-            this.webBrowserQuanAlimama.ContextMenuStrip = this.contextMenuStripCouponPage;
-            this.webBrowserQuanAlimama.IsWebBrowserContextMenuEnabled = false;
-            this.webBrowserQuanAlimama.Location = new System.Drawing.Point(554, 5);
-            this.webBrowserQuanAlimama.MinimumSize = new System.Drawing.Size(1, 1);
-            this.webBrowserQuanAlimama.Name = "webBrowserQuanAlimama";
-            this.webBrowserQuanAlimama.ScriptErrorsSuppressed = true;
-            this.webBrowserQuanAlimama.Size = new System.Drawing.Size(1, 1);
-            this.webBrowserQuanAlimama.TabIndex = 4;
-            this.webBrowserQuanAlimama.Url = new System.Uri("http://uland.taobao.com/coupon/edetail?activityId=fb9bf43aeda246aa8be2b61d4e619d8" +
-        "c&pid=mm_110019639_17876093_65366558&itemId=45189982853&src=qhkj_dtkp&dx=", System.UriKind.Absolute);
             // 
             // contextMenuStripCouponPage
             // 
             this.contextMenuStripCouponPage.Name = "contextMenuStripCouponPage";
             this.contextMenuStripCouponPage.Size = new System.Drawing.Size(61, 4);
             // 
-            // pictureBox1
+            // contextMenuStripFwSnd
             // 
-            this.pictureBox1.BackgroundImage = global::haopintui.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(55, 50);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.contextMenuStripFwSnd.Name = "contextMenuStripFwSnd";
+            this.contextMenuStripFwSnd.Size = new System.Drawing.Size(61, 4);
             // 
-            // label_version
+            // contextMenuStripCtEdit
             // 
-            this.label_version.AutoSize = true;
-            this.label_version.ForeColor = System.Drawing.Color.White;
-            this.label_version.Location = new System.Drawing.Point(401, 29);
-            this.label_version.Name = "label_version";
-            this.label_version.Size = new System.Drawing.Size(0, 19);
-            this.label_version.TabIndex = 2;
+            this.contextMenuStripCtEdit.Name = "contextMenuStripCtEdit";
+            this.contextMenuStripCtEdit.Size = new System.Drawing.Size(61, 4);
             // 
-            // label1
+            // contextMenuStrip_weibo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(247, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "陪伴你每天进步一点点";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+            this.contextMenuStrip_weibo.Name = "contextMenuStrip_weibo";
+            this.contextMenuStrip_weibo.Size = new System.Drawing.Size(61, 4);
             // 
-            // tool_name
+            // contextMenuStrip_pid_qq
             // 
-            this.tool_name.AutoSize = true;
-            this.tool_name.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tool_name.ForeColor = System.Drawing.Color.White;
-            this.tool_name.Location = new System.Drawing.Point(71, 9);
-            this.tool_name.Name = "tool_name";
-            this.tool_name.Size = new System.Drawing.Size(178, 42);
-            this.tool_name.TabIndex = 0;
-            this.tool_name.Text = "好品推助手";
-            this.tool_name.Click += new System.EventHandler(this.label1_Click);
+            this.contextMenuStrip_pid_qq.Name = "contextMenuStrip_pid_qq";
+            this.contextMenuStrip_pid_qq.Size = new System.Drawing.Size(61, 4);
             // 
-            // panel_content
+            // contextMenuStrip_pid_weixin
             // 
-            this.panel_content.BackColor = System.Drawing.Color.White;
-            this.panel_content.Controls.Add(this.tabControlMain);
-            this.panel_content.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_content.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.panel_content.Location = new System.Drawing.Point(100, 60);
-            this.panel_content.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_content.Name = "panel_content";
-            this.panel_content.Size = new System.Drawing.Size(880, 530);
-            this.panel_content.TabIndex = 3;
+            this.contextMenuStrip_pid_weixin.Name = "contextMenuStrip_pid_weixin";
+            this.contextMenuStrip_pid_weixin.Size = new System.Drawing.Size(61, 4);
             // 
-            // tabControlMain
+            // contextMenuStripTool
             // 
-            this.tabControlMain.Controls.Add(this.tabPage1);
-            this.tabControlMain.Controls.Add(this.tabPage2);
-            this.tabControlMain.Controls.Add(this.tabPage3);
-            this.tabControlMain.Controls.Add(this.tabPage4);
-            this.tabControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlMain.ItemSize = new System.Drawing.Size(0, 10);
-            this.tabControlMain.Location = new System.Drawing.Point(0, 0);
-            this.tabControlMain.Margin = new System.Windows.Forms.Padding(0);
-            this.tabControlMain.Name = "tabControlMain";
-            this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(880, 530);
-            this.tabControlMain.TabIndex = 0;
+            this.contextMenuStripTool.Name = "contextMenuStripTool";
+            this.contextMenuStripTool.Size = new System.Drawing.Size(61, 4);
             // 
-            // tabPage1
+            // notifyIcon_task
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.White;
-            this.tabPage1.Controls.Add(this.panel_cms);
-            this.tabPage1.Controls.Add(this.panel2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 14);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(872, 512);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.notifyIcon_task.ContextMenuStrip = this.contextMenuStripTask;
+            this.notifyIcon_task.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon_task.Icon")));
+            this.notifyIcon_task.Text = "助手";
+            this.notifyIcon_task.Visible = true;
+            this.notifyIcon_task.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
+            this.notifyIcon_task.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
-            // panel_cms
+            // contextMenuStripTask
             // 
-            this.panel_cms.Controls.Add(this.groupBox1);
-            this.panel_cms.Controls.Add(this.groupBox_cms);
-            this.panel_cms.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_cms.Location = new System.Drawing.Point(3, 53);
-            this.panel_cms.Name = "panel_cms";
-            this.panel_cms.Size = new System.Drawing.Size(866, 456);
-            this.panel_cms.TabIndex = 3;
+            this.contextMenuStripTask.Name = "contextMenuStripTask";
+            this.contextMenuStripTask.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStripTask.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripTask_Opening);
             // 
-            // groupBox1
+            // toolStripMenuItem1
             // 
-            this.groupBox1.Controls.Add(this.richTextBoxCms);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Font = new System.Drawing.Font("微软雅黑 Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox1.Location = new System.Drawing.Point(315, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(551, 456);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "执行状况";
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(192, 22);
+            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
             // 
-            // richTextBoxCms
+            // timer_kouling
             // 
-            this.richTextBoxCms.BackColor = System.Drawing.SystemColors.Window;
-            this.richTextBoxCms.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBoxCms.Font = new System.Drawing.Font("新宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.richTextBoxCms.Location = new System.Drawing.Point(3, 21);
-            this.richTextBoxCms.Name = "richTextBoxCms";
-            this.richTextBoxCms.Size = new System.Drawing.Size(545, 432);
-            this.richTextBoxCms.TabIndex = 0;
-            this.richTextBoxCms.Text = "";
+            this.timer_kouling.Enabled = true;
+            this.timer_kouling.Interval = 500;
+            this.timer_kouling.Tick += new System.EventHandler(this.timer_kouling_Tick);
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupBox16.Enabled = false;
+            this.groupBox16.Font = new System.Drawing.Font("新宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox16.Location = new System.Drawing.Point(633, 0);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBox16.Size = new System.Drawing.Size(233, 50);
+            this.groupBox16.TabIndex = 1;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Visible = false;
+            // 
+            // label_tongji_all
+            // 
+            this.label_tongji_all.AutoSize = true;
+            this.label_tongji_all.Font = new System.Drawing.Font("新宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_tongji_all.Location = new System.Drawing.Point(4, 25);
+            this.label_tongji_all.Name = "label_tongji_all";
+            this.label_tongji_all.Size = new System.Drawing.Size(0, 12);
+            this.label_tongji_all.TabIndex = 0;
+            // 
+            // label_tongji_have
+            // 
+            this.label_tongji_have.AutoSize = true;
+            this.label_tongji_have.Font = new System.Drawing.Font("新宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_tongji_have.Location = new System.Drawing.Point(100, 25);
+            this.label_tongji_have.Name = "label_tongji_have";
+            this.label_tongji_have.Size = new System.Drawing.Size(0, 12);
+            this.label_tongji_have.TabIndex = 0;
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label67.Location = new System.Drawing.Point(310, 21);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(320, 17);
+            this.label67.TabIndex = 2;
             // 
             // groupBox_cms
             // 
-            this.groupBox_cms.Controls.Add(this.checkBox_cmslist_xianshi);
-            this.groupBox_cms.Controls.Add(this.checkBox_cmslist_jihua);
-            this.groupBox_cms.Controls.Add(this.linkLabel6);
-            this.groupBox_cms.Controls.Add(this.linkLabelGetPromot);
-            this.groupBox_cms.Controls.Add(this.textBoxAppCmsReson);
-            this.groupBox_cms.Controls.Add(this.label39);
-            this.groupBox_cms.Controls.Add(this.button_cms_click_apply);
-            this.groupBox_cms.Controls.Add(this.label7);
-            this.groupBox_cms.Controls.Add(this.label6);
-            this.groupBox_cms.Controls.Add(this.label5);
-            this.groupBox_cms.Controls.Add(this.label4);
-            this.groupBox_cms.Controls.Add(this.label3);
-            this.groupBox_cms.Controls.Add(this.label2);
-            this.groupBox_cms.Controls.Add(this.comboBoxCmsList);
-            this.groupBox_cms.Controls.Add(this.comboBoxCmPPos);
-            this.groupBox_cms.Controls.Add(this.comboBoxCmPUnit);
-            this.groupBox_cms.Controls.Add(this.radioButtonCmMOth);
-            this.groupBox_cms.Controls.Add(this.radioButtonCmMApp);
-            this.groupBox_cms.Controls.Add(this.radioButtonCmMWeb);
-            this.groupBox_cms.Controls.Add(this.trackBarAlimama);
             this.groupBox_cms.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox_cms.Font = new System.Drawing.Font("微软雅黑 Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox_cms.Location = new System.Drawing.Point(0, 0);
@@ -1598,71 +1342,134 @@ namespace haopintui
             this.groupBox_cms.Size = new System.Drawing.Size(315, 456);
             this.groupBox_cms.TabIndex = 2;
             this.groupBox_cms.TabStop = false;
-            this.groupBox_cms.Text = "cms转换配置";
             // 
-            // checkBox_cmslist_xianshi
+            // trackBarAlimama
             // 
-            this.checkBox_cmslist_xianshi.AutoSize = true;
-            this.checkBox_cmslist_xianshi.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBox_cmslist_xianshi.Location = new System.Drawing.Point(19, 362);
-            this.checkBox_cmslist_xianshi.Name = "checkBox_cmslist_xianshi";
-            this.checkBox_cmslist_xianshi.Size = new System.Drawing.Size(287, 21);
-            this.checkBox_cmslist_xianshi.TabIndex = 12;
-            this.checkBox_cmslist_xianshi.Text = "闲时自动转化(开启此项，请设置好阿狸妈妈请求)";
-            this.checkBox_cmslist_xianshi.UseVisualStyleBackColor = true;
-            this.checkBox_cmslist_xianshi.CheckedChanged += new System.EventHandler(this.checkBox_cmslist_jihua_CheckedChanged);
+            this.trackBarAlimama.Location = new System.Drawing.Point(19, 263);
+            this.trackBarAlimama.Name = "trackBarAlimama";
+            this.trackBarAlimama.Size = new System.Drawing.Size(272, 45);
+            this.trackBarAlimama.TabIndex = 6;
+            this.trackBarAlimama.Scroll += new System.EventHandler(this.trackBarAlimama_Scroll);
+            this.trackBarAlimama.ValueChanged += new System.EventHandler(this.trackBarAlimama_ValueChanged);
             // 
-            // checkBox_cmslist_jihua
+            // radioButtonCmMWeb
             // 
-            this.checkBox_cmslist_jihua.AutoSize = true;
-            this.checkBox_cmslist_jihua.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBox_cmslist_jihua.Location = new System.Drawing.Point(21, 333);
-            this.checkBox_cmslist_jihua.Name = "checkBox_cmslist_jihua";
-            this.checkBox_cmslist_jihua.Size = new System.Drawing.Size(249, 21);
-            this.checkBox_cmslist_jihua.TabIndex = 12;
-            this.checkBox_cmslist_jihua.Text = "只申请计划,不保存链接,可以提高转换速度";
-            this.checkBox_cmslist_jihua.UseVisualStyleBackColor = true;
-            this.checkBox_cmslist_jihua.Visible = false;
-            this.checkBox_cmslist_jihua.CheckedChanged += new System.EventHandler(this.checkBox_cmslist_jihua_CheckedChanged);
+            this.radioButtonCmMWeb.AutoSize = true;
+            this.radioButtonCmMWeb.Checked = true;
+            this.radioButtonCmMWeb.Location = new System.Drawing.Point(21, 31);
+            this.radioButtonCmMWeb.Name = "radioButtonCmMWeb";
+            this.radioButtonCmMWeb.Size = new System.Drawing.Size(79, 23);
+            this.radioButtonCmMWeb.TabIndex = 0;
+            this.radioButtonCmMWeb.TabStop = true;
+            this.radioButtonCmMWeb.Text = "网站推广";
+            this.radioButtonCmMWeb.UseVisualStyleBackColor = true;
             // 
-            // linkLabel6
+            // radioButtonCmMApp
             // 
-            this.linkLabel6.AutoSize = true;
-            this.linkLabel6.Location = new System.Drawing.Point(253, 106);
-            this.linkLabel6.Name = "linkLabel6";
-            this.linkLabel6.Size = new System.Drawing.Size(61, 19);
-            this.linkLabel6.TabIndex = 11;
-            this.linkLabel6.TabStop = true;
-            this.linkLabel6.Text = "如何创建";
-            this.linkLabel6.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel6_LinkClicked);
+            this.radioButtonCmMApp.AutoSize = true;
+            this.radioButtonCmMApp.Enabled = false;
+            this.radioButtonCmMApp.Location = new System.Drawing.Point(127, 31);
+            this.radioButtonCmMApp.Name = "radioButtonCmMApp";
+            this.radioButtonCmMApp.Size = new System.Drawing.Size(78, 23);
+            this.radioButtonCmMApp.TabIndex = 1;
+            this.radioButtonCmMApp.Text = "APP推广";
+            this.radioButtonCmMApp.UseVisualStyleBackColor = true;
             // 
-            // linkLabelGetPromot
+            // radioButtonCmMOth
             // 
-            this.linkLabelGetPromot.AutoSize = true;
-            this.linkLabelGetPromot.Location = new System.Drawing.Point(204, 1);
-            this.linkLabelGetPromot.Name = "linkLabelGetPromot";
-            this.linkLabelGetPromot.Size = new System.Drawing.Size(100, 19);
-            this.linkLabelGetPromot.TabIndex = 10;
-            this.linkLabelGetPromot.TabStop = true;
-            this.linkLabelGetPromot.Text = "获取最新推广位";
-            this.linkLabelGetPromot.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGetPromot_LinkClicked);
+            this.radioButtonCmMOth.AutoSize = true;
+            this.radioButtonCmMOth.Enabled = false;
+            this.radioButtonCmMOth.Location = new System.Drawing.Point(223, 31);
+            this.radioButtonCmMOth.Name = "radioButtonCmMOth";
+            this.radioButtonCmMOth.Size = new System.Drawing.Size(79, 23);
+            this.radioButtonCmMOth.TabIndex = 2;
+            this.radioButtonCmMOth.Text = "导购推广";
+            this.radioButtonCmMOth.UseVisualStyleBackColor = true;
             // 
-            // textBoxAppCmsReson
+            // comboBoxCmPUnit
             // 
-            this.textBoxAppCmsReson.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxAppCmsReson.Location = new System.Drawing.Point(21, 194);
-            this.textBoxAppCmsReson.Multiline = true;
-            this.textBoxAppCmsReson.Name = "textBoxAppCmsReson";
-            this.textBoxAppCmsReson.Size = new System.Drawing.Size(273, 46);
-            this.textBoxAppCmsReson.TabIndex = 9;
+            this.comboBoxCmPUnit.BackColor = System.Drawing.Color.White;
+            this.comboBoxCmPUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCmPUnit.FormattingEnabled = true;
+            this.comboBoxCmPUnit.Location = new System.Drawing.Point(96, 68);
+            this.comboBoxCmPUnit.Name = "comboBoxCmPUnit";
+            this.comboBoxCmPUnit.Size = new System.Drawing.Size(197, 20);
+            this.comboBoxCmPUnit.TabIndex = 3;
+            this.comboBoxCmPUnit.SelectedIndexChanged += new System.EventHandler(this.comboBoxCmPUnit_SelectedIndexChanged);
             // 
-            // label39
+            // comboBoxCmPPos
             // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(161, 286);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(0, 19);
-            this.label39.TabIndex = 8;
+            this.comboBoxCmPPos.BackColor = System.Drawing.Color.White;
+            this.comboBoxCmPPos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCmPPos.FormattingEnabled = true;
+            this.comboBoxCmPPos.Location = new System.Drawing.Point(96, 103);
+            this.comboBoxCmPPos.Name = "comboBoxCmPPos";
+            this.comboBoxCmPPos.Size = new System.Drawing.Size(151, 20);
+            this.comboBoxCmPPos.TabIndex = 3;
+            // 
+            // comboBoxCmsList
+            // 
+            this.comboBoxCmsList.BackColor = System.Drawing.Color.White;
+            this.comboBoxCmsList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCmsList.FormattingEnabled = true;
+            this.comboBoxCmsList.Location = new System.Drawing.Point(96, 139);
+            this.comboBoxCmsList.Name = "comboBoxCmsList";
+            this.comboBoxCmsList.Size = new System.Drawing.Size(197, 20);
+            this.comboBoxCmsList.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(17, 68);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 12);
+            this.label2.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(17, 103);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(17, 147);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 12);
+            this.label4.TabIndex = 4;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.Location = new System.Drawing.Point(15, 173);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(89, 12);
+            this.label5.TabIndex = 4;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("新宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Location = new System.Drawing.Point(15, 248);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(143, 12);
+            this.label6.TabIndex = 4;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label7.Location = new System.Drawing.Point(15, 309);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(263, 12);
+            this.label7.TabIndex = 4;
             // 
             // button_cms_click_apply
             // 
@@ -1678,194 +1485,114 @@ namespace haopintui
             this.button_cms_click_apply.UseVisualStyleBackColor = false;
             this.button_cms_click_apply.Click += new System.EventHandler(this.button_cms_click_apply_Click);
             // 
-            // label7
+            // label39
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(15, 309);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(263, 12);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "建议将间隔时间设置为大于1秒，防止被阿里限制";
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(161, 286);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(0, 19);
+            this.label39.TabIndex = 8;
             // 
-            // label6
+            // textBoxAppCmsReson
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("新宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(15, 248);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(143, 12);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "阿里妈妈请求间隔(秒)：0";
+            this.textBoxAppCmsReson.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxAppCmsReson.Location = new System.Drawing.Point(21, 194);
+            this.textBoxAppCmsReson.Multiline = true;
+            this.textBoxAppCmsReson.Name = "textBoxAppCmsReson";
+            this.textBoxAppCmsReson.Size = new System.Drawing.Size(273, 46);
+            this.textBoxAppCmsReson.TabIndex = 9;
             // 
-            // label5
+            // linkLabelGetPromot
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(15, 173);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 12);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "计划申请理由：";
+            this.linkLabelGetPromot.AutoSize = true;
+            this.linkLabelGetPromot.Location = new System.Drawing.Point(204, 1);
+            this.linkLabelGetPromot.Name = "linkLabelGetPromot";
+            this.linkLabelGetPromot.Size = new System.Drawing.Size(100, 19);
+            this.linkLabelGetPromot.TabIndex = 10;
+            this.linkLabelGetPromot.TabStop = true;
+            this.linkLabelGetPromot.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGetPromot_LinkClicked);
             // 
-            // label4
+            // linkLabel6
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(17, 147);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 12);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "CMS选择：";
+            this.linkLabel6.AutoSize = true;
+            this.linkLabel6.Location = new System.Drawing.Point(253, 106);
+            this.linkLabel6.Name = "linkLabel6";
+            this.linkLabel6.Size = new System.Drawing.Size(61, 19);
+            this.linkLabel6.TabIndex = 11;
+            this.linkLabel6.TabStop = true;
+            this.linkLabel6.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel6_LinkClicked);
             // 
-            // label3
+            // checkBox_cmslist_jihua
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(17, 103);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "推广位：";
+            this.checkBox_cmslist_jihua.AutoSize = true;
+            this.checkBox_cmslist_jihua.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBox_cmslist_jihua.Location = new System.Drawing.Point(21, 333);
+            this.checkBox_cmslist_jihua.Name = "checkBox_cmslist_jihua";
+            this.checkBox_cmslist_jihua.Size = new System.Drawing.Size(249, 21);
+            this.checkBox_cmslist_jihua.TabIndex = 12;
+            this.checkBox_cmslist_jihua.Text = "只申请计划,不保存链接,可以提高转换速度";
+            this.checkBox_cmslist_jihua.UseVisualStyleBackColor = true;
+            this.checkBox_cmslist_jihua.Visible = false;
+            this.checkBox_cmslist_jihua.CheckedChanged += new System.EventHandler(this.checkBox_cmslist_jihua_CheckedChanged);
             // 
-            // label2
+            // checkBox_cmslist_xianshi
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(17, 68);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "推广单元：";
+            this.checkBox_cmslist_xianshi.AutoSize = true;
+            this.checkBox_cmslist_xianshi.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBox_cmslist_xianshi.Location = new System.Drawing.Point(19, 362);
+            this.checkBox_cmslist_xianshi.Name = "checkBox_cmslist_xianshi";
+            this.checkBox_cmslist_xianshi.Size = new System.Drawing.Size(287, 21);
+            this.checkBox_cmslist_xianshi.TabIndex = 12;
+            this.checkBox_cmslist_xianshi.Text = "闲时自动转化(开启此项，请设置好阿狸妈妈请求)";
+            this.checkBox_cmslist_xianshi.UseVisualStyleBackColor = true;
+            this.checkBox_cmslist_xianshi.CheckedChanged += new System.EventHandler(this.checkBox_cmslist_jihua_CheckedChanged);
             // 
-            // comboBoxCmsList
+            // groupBox1
             // 
-            this.comboBoxCmsList.BackColor = System.Drawing.Color.White;
-            this.comboBoxCmsList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxCmsList.FormattingEnabled = true;
-            this.comboBoxCmsList.Location = new System.Drawing.Point(96, 139);
-            this.comboBoxCmsList.Name = "comboBoxCmsList";
-            this.comboBoxCmsList.Size = new System.Drawing.Size(197, 27);
-            this.comboBoxCmsList.TabIndex = 3;
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Font = new System.Drawing.Font("微软雅黑 Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox1.Location = new System.Drawing.Point(315, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(551, 456);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
             // 
-            // comboBoxCmPPos
+            // richTextBoxCms
             // 
-            this.comboBoxCmPPos.BackColor = System.Drawing.Color.White;
-            this.comboBoxCmPPos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxCmPPos.FormattingEnabled = true;
-            this.comboBoxCmPPos.Location = new System.Drawing.Point(96, 103);
-            this.comboBoxCmPPos.Name = "comboBoxCmPPos";
-            this.comboBoxCmPPos.Size = new System.Drawing.Size(151, 27);
-            this.comboBoxCmPPos.TabIndex = 3;
+            this.richTextBoxCms.BackColor = System.Drawing.SystemColors.Window;
+            this.richTextBoxCms.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxCms.Font = new System.Drawing.Font("新宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.richTextBoxCms.Location = new System.Drawing.Point(3, 21);
+            this.richTextBoxCms.Name = "richTextBoxCms";
+            this.richTextBoxCms.Size = new System.Drawing.Size(545, 432);
+            this.richTextBoxCms.TabIndex = 0;
+            this.richTextBoxCms.Text = "";
             // 
-            // comboBoxCmPUnit
+            // panel_content
             // 
-            this.comboBoxCmPUnit.BackColor = System.Drawing.Color.White;
-            this.comboBoxCmPUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxCmPUnit.FormattingEnabled = true;
-            this.comboBoxCmPUnit.Location = new System.Drawing.Point(96, 68);
-            this.comboBoxCmPUnit.Name = "comboBoxCmPUnit";
-            this.comboBoxCmPUnit.Size = new System.Drawing.Size(197, 27);
-            this.comboBoxCmPUnit.TabIndex = 3;
-            this.comboBoxCmPUnit.SelectedIndexChanged += new System.EventHandler(this.comboBoxCmPUnit_SelectedIndexChanged);
+            this.panel_content.BackColor = System.Drawing.Color.White;
+            this.panel_content.Controls.Add(this.tabControlMain);
+            this.panel_content.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_content.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.panel_content.Location = new System.Drawing.Point(100, 60);
+            this.panel_content.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_content.Name = "panel_content";
+            this.panel_content.Size = new System.Drawing.Size(880, 530);
+            this.panel_content.TabIndex = 3;
             // 
-            // radioButtonCmMOth
+            // tabControlMain
             // 
-            this.radioButtonCmMOth.AutoSize = true;
-            this.radioButtonCmMOth.Enabled = false;
-            this.radioButtonCmMOth.Location = new System.Drawing.Point(223, 31);
-            this.radioButtonCmMOth.Name = "radioButtonCmMOth";
-            this.radioButtonCmMOth.Size = new System.Drawing.Size(79, 23);
-            this.radioButtonCmMOth.TabIndex = 2;
-            this.radioButtonCmMOth.Text = "导购推广";
-            this.radioButtonCmMOth.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonCmMApp
-            // 
-            this.radioButtonCmMApp.AutoSize = true;
-            this.radioButtonCmMApp.Enabled = false;
-            this.radioButtonCmMApp.Location = new System.Drawing.Point(127, 31);
-            this.radioButtonCmMApp.Name = "radioButtonCmMApp";
-            this.radioButtonCmMApp.Size = new System.Drawing.Size(78, 23);
-            this.radioButtonCmMApp.TabIndex = 1;
-            this.radioButtonCmMApp.Text = "APP推广";
-            this.radioButtonCmMApp.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonCmMWeb
-            // 
-            this.radioButtonCmMWeb.AutoSize = true;
-            this.radioButtonCmMWeb.Checked = true;
-            this.radioButtonCmMWeb.Location = new System.Drawing.Point(21, 31);
-            this.radioButtonCmMWeb.Name = "radioButtonCmMWeb";
-            this.radioButtonCmMWeb.Size = new System.Drawing.Size(79, 23);
-            this.radioButtonCmMWeb.TabIndex = 0;
-            this.radioButtonCmMWeb.TabStop = true;
-            this.radioButtonCmMWeb.Text = "网站推广";
-            this.radioButtonCmMWeb.UseVisualStyleBackColor = true;
-            // 
-            // trackBarAlimama
-            // 
-            this.trackBarAlimama.Location = new System.Drawing.Point(19, 263);
-            this.trackBarAlimama.Name = "trackBarAlimama";
-            this.trackBarAlimama.Size = new System.Drawing.Size(272, 45);
-            this.trackBarAlimama.TabIndex = 6;
-            this.trackBarAlimama.Scroll += new System.EventHandler(this.trackBarAlimama_Scroll);
-            this.trackBarAlimama.ValueChanged += new System.EventHandler(this.trackBarAlimama_ValueChanged);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label67);
-            this.panel2.Controls.Add(this.groupBox16);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(866, 50);
-            this.panel2.TabIndex = 2;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label67.Location = new System.Drawing.Point(310, 21);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(320, 17);
-            this.label67.TabIndex = 2;
-            this.label67.Text = "实时申请为用户看啥商品，助手立马申请啥商品高佣金计划";
-            // 
-            // groupBox16
-            // 
-            this.groupBox16.Controls.Add(this.label_tongji_have);
-            this.groupBox16.Controls.Add(this.label_tongji_all);
-            this.groupBox16.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBox16.Enabled = false;
-            this.groupBox16.Font = new System.Drawing.Font("新宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox16.Location = new System.Drawing.Point(633, 0);
-            this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox16.Size = new System.Drawing.Size(233, 50);
-            this.groupBox16.TabIndex = 1;
-            this.groupBox16.TabStop = false;
-            this.groupBox16.Text = "实时转换统计";
-            this.groupBox16.Visible = false;
-            // 
-            // label_tongji_have
-            // 
-            this.label_tongji_have.AutoSize = true;
-            this.label_tongji_have.Font = new System.Drawing.Font("新宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_tongji_have.Location = new System.Drawing.Point(100, 25);
-            this.label_tongji_have.Name = "label_tongji_have";
-            this.label_tongji_have.Size = new System.Drawing.Size(0, 12);
-            this.label_tongji_have.TabIndex = 0;
-            // 
-            // label_tongji_all
-            // 
-            this.label_tongji_all.AutoSize = true;
-            this.label_tongji_all.Font = new System.Drawing.Font("新宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_tongji_all.Location = new System.Drawing.Point(4, 25);
-            this.label_tongji_all.Name = "label_tongji_all";
-            this.label_tongji_all.Size = new System.Drawing.Size(0, 12);
-            this.label_tongji_all.TabIndex = 0;
+            this.tabControlMain.Controls.Add(this.tabPage2);
+            this.tabControlMain.Controls.Add(this.tabPage3);
+            this.tabControlMain.Controls.Add(this.tabPage4);
+            this.tabControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlMain.ItemSize = new System.Drawing.Size(0, 10);
+            this.tabControlMain.Location = new System.Drawing.Point(0, 0);
+            this.tabControlMain.Margin = new System.Windows.Forms.Padding(0);
+            this.tabControlMain.Name = "tabControlMain";
+            this.tabControlMain.SelectedIndex = 0;
+            this.tabControlMain.Size = new System.Drawing.Size(880, 530);
+            this.tabControlMain.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -2354,11 +2081,6 @@ namespace haopintui
             this.Column_status.HeaderText = "状态";
             this.Column_status.Name = "Column_status";
             this.Column_status.ReadOnly = true;
-            // 
-            // contextMenuStripFwSnd
-            // 
-            this.contextMenuStripFwSnd.Name = "contextMenuStripFwSnd";
-            this.contextMenuStripFwSnd.Size = new System.Drawing.Size(61, 4);
             // 
             // tabPage8
             // 
@@ -2960,11 +2682,6 @@ namespace haopintui
             this.webBrowser_send_content.TabIndex = 0;
             this.webBrowser_send_content.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             // 
-            // contextMenuStripCtEdit
-            // 
-            this.contextMenuStripCtEdit.Name = "contextMenuStripCtEdit";
-            this.contextMenuStripCtEdit.Size = new System.Drawing.Size(61, 4);
-            // 
             // tabPage15
             // 
             this.tabPage15.Controls.Add(this.groupBox28);
@@ -3075,11 +2792,6 @@ namespace haopintui
             this.status.HeaderText = "状态";
             this.status.Name = "status";
             this.status.ReadOnly = true;
-            // 
-            // contextMenuStrip_weibo
-            // 
-            this.contextMenuStrip_weibo.Name = "contextMenuStrip_weibo";
-            this.contextMenuStrip_weibo.Size = new System.Drawing.Size(61, 4);
             // 
             // tabPage19
             // 
@@ -3412,11 +3124,6 @@ namespace haopintui
             this.Column4.HeaderText = "pid";
             this.Column4.Name = "Column4";
             // 
-            // contextMenuStrip_pid_qq
-            // 
-            this.contextMenuStrip_pid_qq.Name = "contextMenuStrip_pid_qq";
-            this.contextMenuStrip_pid_qq.Size = new System.Drawing.Size(61, 4);
-            // 
             // tabPage24
             // 
             this.tabPage24.Controls.Add(this.groupBox31);
@@ -3549,11 +3256,6 @@ namespace haopintui
             this.dataGridViewTextBoxColumn2.HeaderText = "pid";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
-            // contextMenuStrip_pid_weixin
-            // 
-            this.contextMenuStrip_pid_weixin.Name = "contextMenuStrip_pid_weixin";
-            this.contextMenuStrip_pid_weixin.Size = new System.Drawing.Size(61, 4);
-            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.groupBox2);
@@ -3663,9 +3365,9 @@ namespace haopintui
             this.checkBox3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBox3.Location = new System.Drawing.Point(290, 78);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(231, 21);
+            this.checkBox3.Size = new System.Drawing.Size(75, 21);
             this.checkBox3.TabIndex = 1;
-            this.checkBox3.Text = "全网商品（搭配超级买家系统后可用）";
+            this.checkBox3.Text = "全网商品";
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
@@ -3689,7 +3391,7 @@ namespace haopintui
             this.checkBox_qunfa_top.Checked = true;
             this.checkBox_qunfa_top.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_qunfa_top.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBox_qunfa_top.Location = new System.Drawing.Point(382, 51);
+            this.checkBox_qunfa_top.Location = new System.Drawing.Point(372, 51);
             this.checkBox_qunfa_top.Name = "checkBox_qunfa_top";
             this.checkBox_qunfa_top.Size = new System.Drawing.Size(75, 21);
             this.checkBox_qunfa_top.TabIndex = 1;
@@ -3704,9 +3406,9 @@ namespace haopintui
             this.checkBox_haopintui.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBox_haopintui.Location = new System.Drawing.Point(273, 51);
             this.checkBox_haopintui.Name = "checkBox_haopintui";
-            this.checkBox_haopintui.Size = new System.Drawing.Size(111, 21);
+            this.checkBox_haopintui.Size = new System.Drawing.Size(75, 21);
             this.checkBox_haopintui.TabIndex = 1;
-            this.checkBox_haopintui.Text = "好品推官方直播";
+            this.checkBox_haopintui.Text = "官方直播";
             this.checkBox_haopintui.UseVisualStyleBackColor = true;
             // 
             // checkBox_qunfa_weibo_boolean
@@ -3969,10 +3671,10 @@ namespace haopintui
             this.radioButton_qunfa_duanlian_hpt.AutoSize = true;
             this.radioButton_qunfa_duanlian_hpt.Location = new System.Drawing.Point(6, 24);
             this.radioButton_qunfa_duanlian_hpt.Name = "radioButton_qunfa_duanlian_hpt";
-            this.radioButton_qunfa_duanlian_hpt.Size = new System.Drawing.Size(105, 23);
+            this.radioButton_qunfa_duanlian_hpt.Size = new System.Drawing.Size(66, 23);
             this.radioButton_qunfa_duanlian_hpt.TabIndex = 1;
             this.radioButton_qunfa_duanlian_hpt.TabStop = true;
-            this.radioButton_qunfa_duanlian_hpt.Text = "好品推短连接";
+            this.radioButton_qunfa_duanlian_hpt.Text = "短连接";
             this.radioButton_qunfa_duanlian_hpt.UseVisualStyleBackColor = true;
             // 
             // checkBox_qunfa_duanlian
@@ -4990,9 +4692,9 @@ namespace haopintui
             // 
             // tabControl_tools_common
             // 
-            this.tabControl_tools_common.Controls.Add(this.tabPage13);
-            this.tabControl_tools_common.Controls.Add(this.tabPage14);
             this.tabControl_tools_common.Controls.Add(this.tabPage25);
+            this.tabControl_tools_common.Controls.Add(this.tabPage14);
+            this.tabControl_tools_common.Controls.Add(this.tabPage13);
             this.tabControl_tools_common.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl_tools_common.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tabControl_tools_common.Location = new System.Drawing.Point(3, 3);
@@ -5001,6 +4703,187 @@ namespace haopintui
             this.tabControl_tools_common.SelectedIndex = 0;
             this.tabControl_tools_common.Size = new System.Drawing.Size(858, 417);
             this.tabControl_tools_common.TabIndex = 0;
+            // 
+            // tabPage25
+            // 
+            this.tabPage25.Controls.Add(this.richTextBoxPid);
+            this.tabPage25.Controls.Add(this.groupBox34);
+            this.tabPage25.Location = new System.Drawing.Point(4, 28);
+            this.tabPage25.Name = "tabPage25";
+            this.tabPage25.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage25.Size = new System.Drawing.Size(850, 385);
+            this.tabPage25.TabIndex = 2;
+            this.tabPage25.Text = "阿里妈妈订单同步";
+            this.tabPage25.UseVisualStyleBackColor = true;
+            // 
+            // richTextBoxPid
+            // 
+            this.richTextBoxPid.Location = new System.Drawing.Point(329, 7);
+            this.richTextBoxPid.Name = "richTextBoxPid";
+            this.richTextBoxPid.Size = new System.Drawing.Size(497, 269);
+            this.richTextBoxPid.TabIndex = 1;
+            this.richTextBoxPid.Text = "";
+            // 
+            // groupBox34
+            // 
+            this.groupBox34.Controls.Add(this.label71);
+            this.groupBox34.Controls.Add(this.comboBox_ali_order_days);
+            this.groupBox34.Controls.Add(this.label70);
+            this.groupBox34.Controls.Add(this.button46);
+            this.groupBox34.Controls.Add(this.label69);
+            this.groupBox34.Controls.Add(this.label68);
+            this.groupBox34.Controls.Add(this.comboBox_ali_order_pinlv);
+            this.groupBox34.Location = new System.Drawing.Point(6, 6);
+            this.groupBox34.Name = "groupBox34";
+            this.groupBox34.Size = new System.Drawing.Size(316, 264);
+            this.groupBox34.TabIndex = 0;
+            this.groupBox34.TabStop = false;
+            this.groupBox34.Text = "同步订单设置";
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(140, 83);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(74, 19);
+            this.label71.TabIndex = 17;
+            this.label71.Text = "天内的数据";
+            // 
+            // comboBox_ali_order_days
+            // 
+            this.comboBox_ali_order_days.FormattingEnabled = true;
+            this.comboBox_ali_order_days.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "7",
+            "15",
+            "30",
+            "60",
+            "90"});
+            this.comboBox_ali_order_days.Location = new System.Drawing.Point(68, 77);
+            this.comboBox_ali_order_days.Name = "comboBox_ali_order_days";
+            this.comboBox_ali_order_days.Size = new System.Drawing.Size(61, 27);
+            this.comboBox_ali_order_days.TabIndex = 16;
+            this.comboBox_ali_order_days.SelectedIndexChanged += new System.EventHandler(this.comboBox_ali_order_days_SelectedIndexChanged);
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(9, 79);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(48, 19);
+            this.label70.TabIndex = 15;
+            this.label70.Text = "只同步";
+            // 
+            // button46
+            // 
+            this.button46.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button46.FlatAppearance.BorderSize = 0;
+            this.button46.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button46.ForeColor = System.Drawing.Color.White;
+            this.button46.Location = new System.Drawing.Point(9, 115);
+            this.button46.Name = "button46";
+            this.button46.Size = new System.Drawing.Size(187, 40);
+            this.button46.TabIndex = 14;
+            this.button46.Text = "开始阿里妈妈订单同步";
+            this.button46.UseVisualStyleBackColor = false;
+            this.button46.Click += new System.EventHandler(this.button46_Click);
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Location = new System.Drawing.Point(136, 36);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(35, 19);
+            this.label69.TabIndex = 13;
+            this.label69.Text = "分钟";
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label68.Location = new System.Drawing.Point(6, 36);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(56, 17);
+            this.label68.TabIndex = 12;
+            this.label68.Text = "同步频率";
+            // 
+            // comboBox_ali_order_pinlv
+            // 
+            this.comboBox_ali_order_pinlv.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBox_ali_order_pinlv.FormattingEnabled = true;
+            this.comboBox_ali_order_pinlv.Items.AddRange(new object[] {
+            "1",
+            "5",
+            "10",
+            "15",
+            "20",
+            "25",
+            "30",
+            "35",
+            "45",
+            "50",
+            "55",
+            "60",
+            "120",
+            "300",
+            "600",
+            "1800",
+            "3600"});
+            this.comboBox_ali_order_pinlv.Location = new System.Drawing.Point(68, 32);
+            this.comboBox_ali_order_pinlv.Name = "comboBox_ali_order_pinlv";
+            this.comboBox_ali_order_pinlv.Size = new System.Drawing.Size(61, 25);
+            this.comboBox_ali_order_pinlv.TabIndex = 11;
+            this.comboBox_ali_order_pinlv.SelectedIndexChanged += new System.EventHandler(this.comboBox_ali_order_pinlv_SelectedIndexChanged);
+            // 
+            // tabPage14
+            // 
+            this.tabPage14.Controls.Add(this.create_pid);
+            this.tabPage14.Controls.Add(this.button_tools_test_get_cookie);
+            this.tabPage14.Controls.Add(this.textBoxCreatePid);
+            this.tabPage14.Controls.Add(this.textBoxAlimamaCookieUrl);
+            this.tabPage14.Location = new System.Drawing.Point(4, 28);
+            this.tabPage14.Name = "tabPage14";
+            this.tabPage14.Size = new System.Drawing.Size(850, 385);
+            this.tabPage14.TabIndex = 1;
+            this.tabPage14.Text = "广告位自动创建";
+            this.tabPage14.UseVisualStyleBackColor = true;
+            // 
+            // create_pid
+            // 
+            this.create_pid.AutoSize = true;
+            this.create_pid.Location = new System.Drawing.Point(529, 72);
+            this.create_pid.Name = "create_pid";
+            this.create_pid.Size = new System.Drawing.Size(106, 19);
+            this.create_pid.TabIndex = 2;
+            this.create_pid.Text = "填写一个参考pid";
+            // 
+            // button_tools_test_get_cookie
+            // 
+            this.button_tools_test_get_cookie.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button_tools_test_get_cookie.Location = new System.Drawing.Point(29, 111);
+            this.button_tools_test_get_cookie.Name = "button_tools_test_get_cookie";
+            this.button_tools_test_get_cookie.Size = new System.Drawing.Size(105, 38);
+            this.button_tools_test_get_cookie.TabIndex = 1;
+            this.button_tools_test_get_cookie.Text = "开始创建";
+            this.button_tools_test_get_cookie.UseVisualStyleBackColor = false;
+            this.button_tools_test_get_cookie.Click += new System.EventHandler(this.button_tools_test_get_cookie_Click);
+            // 
+            // textBoxCreatePid
+            // 
+            this.textBoxCreatePid.Location = new System.Drawing.Point(9, 69);
+            this.textBoxCreatePid.Name = "textBoxCreatePid";
+            this.textBoxCreatePid.Size = new System.Drawing.Size(495, 25);
+            this.textBoxCreatePid.TabIndex = 0;
+            // 
+            // textBoxAlimamaCookieUrl
+            // 
+            this.textBoxAlimamaCookieUrl.Location = new System.Drawing.Point(9, 22);
+            this.textBoxAlimamaCookieUrl.Name = "textBoxAlimamaCookieUrl";
+            this.textBoxAlimamaCookieUrl.Size = new System.Drawing.Size(495, 25);
+            this.textBoxAlimamaCookieUrl.TabIndex = 0;
+            this.textBoxAlimamaCookieUrl.Visible = false;
             // 
             // tabPage13
             // 
@@ -5119,164 +5002,6 @@ namespace haopintui
             this.webBrowser_zhuanhua.Name = "webBrowser_zhuanhua";
             this.webBrowser_zhuanhua.Size = new System.Drawing.Size(594, 361);
             this.webBrowser_zhuanhua.TabIndex = 0;
-            // 
-            // contextMenuStripTool
-            // 
-            this.contextMenuStripTool.Name = "contextMenuStripTool";
-            this.contextMenuStripTool.Size = new System.Drawing.Size(61, 4);
-            // 
-            // tabPage14
-            // 
-            this.tabPage14.Controls.Add(this.button_tools_test_get_cookie);
-            this.tabPage14.Controls.Add(this.textBoxAlimamaCookieUrl);
-            this.tabPage14.Location = new System.Drawing.Point(4, 28);
-            this.tabPage14.Name = "tabPage14";
-            this.tabPage14.Size = new System.Drawing.Size(850, 385);
-            this.tabPage14.TabIndex = 1;
-            this.tabPage14.Text = "测试功能";
-            this.tabPage14.UseVisualStyleBackColor = true;
-            // 
-            // button_tools_test_get_cookie
-            // 
-            this.button_tools_test_get_cookie.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button_tools_test_get_cookie.Location = new System.Drawing.Point(181, 67);
-            this.button_tools_test_get_cookie.Name = "button_tools_test_get_cookie";
-            this.button_tools_test_get_cookie.Size = new System.Drawing.Size(105, 30);
-            this.button_tools_test_get_cookie.TabIndex = 1;
-            this.button_tools_test_get_cookie.Text = "跟踪cookies";
-            this.button_tools_test_get_cookie.UseVisualStyleBackColor = false;
-            this.button_tools_test_get_cookie.Click += new System.EventHandler(this.button_tools_test_get_cookie_Click);
-            // 
-            // textBoxAlimamaCookieUrl
-            // 
-            this.textBoxAlimamaCookieUrl.Location = new System.Drawing.Point(3, 17);
-            this.textBoxAlimamaCookieUrl.Name = "textBoxAlimamaCookieUrl";
-            this.textBoxAlimamaCookieUrl.Size = new System.Drawing.Size(495, 25);
-            this.textBoxAlimamaCookieUrl.TabIndex = 0;
-            // 
-            // tabPage25
-            // 
-            this.tabPage25.Controls.Add(this.groupBox34);
-            this.tabPage25.Location = new System.Drawing.Point(4, 28);
-            this.tabPage25.Name = "tabPage25";
-            this.tabPage25.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage25.Size = new System.Drawing.Size(850, 385);
-            this.tabPage25.TabIndex = 2;
-            this.tabPage25.Text = "阿里妈妈订单同步";
-            this.tabPage25.UseVisualStyleBackColor = true;
-            // 
-            // groupBox34
-            // 
-            this.groupBox34.Controls.Add(this.label71);
-            this.groupBox34.Controls.Add(this.comboBox_ali_order_days);
-            this.groupBox34.Controls.Add(this.label70);
-            this.groupBox34.Controls.Add(this.button46);
-            this.groupBox34.Controls.Add(this.label69);
-            this.groupBox34.Controls.Add(this.label68);
-            this.groupBox34.Controls.Add(this.comboBox_ali_order_pinlv);
-            this.groupBox34.Location = new System.Drawing.Point(6, 6);
-            this.groupBox34.Name = "groupBox34";
-            this.groupBox34.Size = new System.Drawing.Size(316, 264);
-            this.groupBox34.TabIndex = 0;
-            this.groupBox34.TabStop = false;
-            this.groupBox34.Text = "同步订单设置";
-            // 
-            // label71
-            // 
-            this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(140, 83);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(74, 19);
-            this.label71.TabIndex = 17;
-            this.label71.Text = "天内的数据";
-            // 
-            // comboBox_ali_order_days
-            // 
-            this.comboBox_ali_order_days.FormattingEnabled = true;
-            this.comboBox_ali_order_days.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "7",
-            "15",
-            "30",
-            "60",
-            "90"});
-            this.comboBox_ali_order_days.Location = new System.Drawing.Point(68, 77);
-            this.comboBox_ali_order_days.Name = "comboBox_ali_order_days";
-            this.comboBox_ali_order_days.Size = new System.Drawing.Size(61, 27);
-            this.comboBox_ali_order_days.TabIndex = 16;
-            this.comboBox_ali_order_days.SelectedIndexChanged += new System.EventHandler(this.comboBox_ali_order_days_SelectedIndexChanged);
-            // 
-            // label70
-            // 
-            this.label70.AutoSize = true;
-            this.label70.Location = new System.Drawing.Point(9, 79);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(48, 19);
-            this.label70.TabIndex = 15;
-            this.label70.Text = "只同步";
-            // 
-            // button46
-            // 
-            this.button46.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button46.FlatAppearance.BorderSize = 0;
-            this.button46.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button46.ForeColor = System.Drawing.Color.White;
-            this.button46.Location = new System.Drawing.Point(9, 115);
-            this.button46.Name = "button46";
-            this.button46.Size = new System.Drawing.Size(187, 40);
-            this.button46.TabIndex = 14;
-            this.button46.Text = "开始阿里妈妈订单同步";
-            this.button46.UseVisualStyleBackColor = false;
-            this.button46.Click += new System.EventHandler(this.button46_Click);
-            // 
-            // label69
-            // 
-            this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(136, 36);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(35, 19);
-            this.label69.TabIndex = 13;
-            this.label69.Text = "分钟";
-            // 
-            // label68
-            // 
-            this.label68.AutoSize = true;
-            this.label68.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label68.Location = new System.Drawing.Point(6, 36);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(56, 17);
-            this.label68.TabIndex = 12;
-            this.label68.Text = "同步频率";
-            // 
-            // comboBox_ali_order_pinlv
-            // 
-            this.comboBox_ali_order_pinlv.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBox_ali_order_pinlv.FormattingEnabled = true;
-            this.comboBox_ali_order_pinlv.Items.AddRange(new object[] {
-            "1",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "45",
-            "50",
-            "55",
-            "60",
-            "120",
-            "300",
-            "600",
-            "1800",
-            "3600"});
-            this.comboBox_ali_order_pinlv.Location = new System.Drawing.Point(68, 32);
-            this.comboBox_ali_order_pinlv.Name = "comboBox_ali_order_pinlv";
-            this.comboBox_ali_order_pinlv.Size = new System.Drawing.Size(61, 25);
-            this.comboBox_ali_order_pinlv.TabIndex = 11;
-            this.comboBox_ali_order_pinlv.SelectedIndexChanged += new System.EventHandler(this.comboBox_ali_order_pinlv_SelectedIndexChanged);
             // 
             // tabPage12
             // 
@@ -5426,11 +5151,9 @@ namespace haopintui
             // 
             // groupBox17
             // 
-            this.groupBox17.Controls.Add(this.label11);
             this.groupBox17.Controls.Add(this.label10);
             this.groupBox17.Controls.Add(this.radioButtonsetting_app_haopintui);
             this.groupBox17.Controls.Add(this.radioButtonsetting_app_ben);
-            this.groupBox17.Controls.Add(this.linkLabel3);
             this.groupBox17.Controls.Add(this.label8);
             this.groupBox17.Controls.Add(this.textBox_setting_appKey);
             this.groupBox17.Controls.Add(this.label9);
@@ -5442,14 +5165,6 @@ namespace haopintui
             this.groupBox17.TabIndex = 0;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "淘口令接口配置";
-            // 
-            // label11
-            // 
-            this.label11.Location = new System.Drawing.Point(4, 163);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(217, 58);
-            this.label11.TabIndex = 6;
-            this.label11.Text = "不会申请接口的，可以使用好品推接口";
             // 
             // label10
             // 
@@ -5466,10 +5181,10 @@ namespace haopintui
             this.radioButtonsetting_app_haopintui.Checked = true;
             this.radioButtonsetting_app_haopintui.Location = new System.Drawing.Point(115, 131);
             this.radioButtonsetting_app_haopintui.Name = "radioButtonsetting_app_haopintui";
-            this.radioButtonsetting_app_haopintui.Size = new System.Drawing.Size(92, 23);
+            this.radioButtonsetting_app_haopintui.Size = new System.Drawing.Size(79, 23);
             this.radioButtonsetting_app_haopintui.TabIndex = 4;
             this.radioButtonsetting_app_haopintui.TabStop = true;
-            this.radioButtonsetting_app_haopintui.Text = "好品推接口";
+            this.radioButtonsetting_app_haopintui.Text = "官方接口";
             this.radioButtonsetting_app_haopintui.UseVisualStyleBackColor = true;
             // 
             // radioButtonsetting_app_ben
@@ -5481,18 +5196,6 @@ namespace haopintui
             this.radioButtonsetting_app_ben.TabIndex = 3;
             this.radioButtonsetting_app_ben.Text = "自己口令接口";
             this.radioButtonsetting_app_ben.UseVisualStyleBackColor = true;
-            // 
-            // linkLabel3
-            // 
-            this.linkLabel3.AutoSize = true;
-            this.linkLabel3.BackColor = System.Drawing.Color.White;
-            this.linkLabel3.Location = new System.Drawing.Point(140, 0);
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(87, 19);
-            this.linkLabel3.TabIndex = 2;
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "查看配置教程";
-            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
             // 
             // label8
             // 
@@ -5644,32 +5347,191 @@ namespace haopintui
             this.textBoxAlimamaAcc.Size = new System.Drawing.Size(112, 25);
             this.textBoxAlimamaAcc.TabIndex = 0;
             // 
-            // notifyIcon_task
+            // layout_menu
             // 
-            this.notifyIcon_task.ContextMenuStrip = this.contextMenuStripTask;
-            this.notifyIcon_task.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon_task.Icon")));
-            this.notifyIcon_task.Text = "好品推助手";
-            this.notifyIcon_task.Visible = true;
-            this.notifyIcon_task.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
-            this.notifyIcon_task.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            this.layout_menu.BackColor = System.Drawing.Color.White;
+            this.layout_menu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.layout_menu.Controls.Add(this.panel1);
+            this.layout_menu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.layout_menu.Location = new System.Drawing.Point(0, 60);
+            this.layout_menu.Name = "layout_menu";
+            this.layout_menu.Size = new System.Drawing.Size(100, 530);
+            this.layout_menu.TabIndex = 2;
+            this.layout_menu.Paint += new System.Windows.Forms.PaintEventHandler(this.layout_menu_Paint);
             // 
-            // contextMenuStripTask
+            // panel1
             // 
-            this.contextMenuStripTask.Name = "contextMenuStripTask";
-            this.contextMenuStripTask.Size = new System.Drawing.Size(61, 4);
-            this.contextMenuStripTask.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripTask_Opening);
+            this.panel1.Controls.Add(this.label_setting);
+            this.panel1.Controls.Add(this.label_tools);
+            this.panel1.Controls.Add(this.label_qunfa);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(96, 476);
+            this.panel1.TabIndex = 0;
             // 
-            // toolStripMenuItem1
+            // label_setting
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(192, 22);
-            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            this.label_setting.Image = global::haopintui.Properties.Resources.setting;
+            this.label_setting.Location = new System.Drawing.Point(2, 194);
+            this.label_setting.Name = "label_setting";
+            this.label_setting.Size = new System.Drawing.Size(91, 80);
+            this.label_setting.TabIndex = 0;
+            this.label_setting.Text = "软件设置";
+            this.label_setting.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label_setting.Click += new System.EventHandler(this.label11_Click);
             // 
-            // timer_kouling
+            // label_tools
             // 
-            this.timer_kouling.Enabled = true;
-            this.timer_kouling.Interval = 500;
-            this.timer_kouling.Tick += new System.EventHandler(this.timer_kouling_Tick);
+            this.label_tools.Image = global::haopintui.Properties.Resources.tools;
+            this.label_tools.Location = new System.Drawing.Point(3, 99);
+            this.label_tools.Name = "label_tools";
+            this.label_tools.Size = new System.Drawing.Size(91, 80);
+            this.label_tools.TabIndex = 0;
+            this.label_tools.Text = "实用工具";
+            this.label_tools.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label_tools.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // label_qunfa
+            // 
+            this.label_qunfa.Image = global::haopintui.Properties.Resources.qunfa;
+            this.label_qunfa.Location = new System.Drawing.Point(2, 3);
+            this.label_qunfa.Name = "label_qunfa";
+            this.label_qunfa.Size = new System.Drawing.Size(91, 80);
+            this.label_qunfa.TabIndex = 0;
+            this.label_qunfa.Text = "群发功能";
+            this.label_qunfa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label_qunfa.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // richTextBoxLogs
+            // 
+            this.richTextBoxLogs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.richTextBoxLogs.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.richTextBoxLogs.Font = new System.Drawing.Font("新宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.richTextBoxLogs.Location = new System.Drawing.Point(0, 590);
+            this.richTextBoxLogs.Name = "richTextBoxLogs";
+            this.richTextBoxLogs.Size = new System.Drawing.Size(980, 60);
+            this.richTextBoxLogs.TabIndex = 0;
+            this.richTextBoxLogs.Text = "";
+            // 
+            // panelTop
+            // 
+            this.panelTop.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.panelTop.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panelTop.Controls.Add(this.button47);
+            this.panelTop.Controls.Add(this.label_user_type_name);
+            this.panelTop.Controls.Add(this.label_welcome);
+            this.panelTop.Controls.Add(this.label_banben);
+            this.panelTop.Controls.Add(this.webBrowserQuanAlimama);
+            this.panelTop.Controls.Add(this.label_version);
+            this.panelTop.Controls.Add(this.label1);
+            this.panelTop.Controls.Add(this.tool_name);
+            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTop.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.panelTop.Location = new System.Drawing.Point(0, 0);
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Size = new System.Drawing.Size(980, 60);
+            this.panelTop.TabIndex = 1;
+            this.panelTop.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panelTop.DoubleClick += new System.EventHandler(this.on_panel_doubleclick);
+            this.panelTop.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseDoubleClick);
+            this.panelTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plan_OnMouseDown);
+            this.panelTop.MouseEnter += new System.EventHandler(this.panelTop_MouseEnter);
+            this.panelTop.MouseLeave += new System.EventHandler(this.panelTop_MouseLeave);
+            this.panelTop.MouseHover += new System.EventHandler(this.panelTop_MouseHover);
+            this.panelTop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseMove);
+            this.panelTop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseUp);
+            // 
+            // button47
+            // 
+            this.button47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button47.ForeColor = System.Drawing.Color.Red;
+            this.button47.Location = new System.Drawing.Point(248, 5);
+            this.button47.Name = "button47";
+            this.button47.Size = new System.Drawing.Size(75, 23);
+            this.button47.TabIndex = 9;
+            this.button47.Text = "高佣授权";
+            this.button47.UseVisualStyleBackColor = false;
+            this.button47.Click += new System.EventHandler(this.button47_Click);
+            // 
+            // label_user_type_name
+            // 
+            this.label_user_type_name.AutoSize = true;
+            this.label_user_type_name.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_user_type_name.ForeColor = System.Drawing.Color.White;
+            this.label_user_type_name.Location = new System.Drawing.Point(515, 30);
+            this.label_user_type_name.Name = "label_user_type_name";
+            this.label_user_type_name.Size = new System.Drawing.Size(68, 17);
+            this.label_user_type_name.TabIndex = 7;
+            this.label_user_type_name.Text = "用户类型：";
+            // 
+            // label_welcome
+            // 
+            this.label_welcome.AutoSize = true;
+            this.label_welcome.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_welcome.ForeColor = System.Drawing.Color.White;
+            this.label_welcome.Location = new System.Drawing.Point(515, 5);
+            this.label_welcome.Name = "label_welcome";
+            this.label_welcome.Size = new System.Drawing.Size(44, 17);
+            this.label_welcome.TabIndex = 7;
+            this.label_welcome.Text = "欢迎：";
+            // 
+            // label_banben
+            // 
+            this.label_banben.AutoSize = true;
+            this.label_banben.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_banben.ForeColor = System.Drawing.Color.White;
+            this.label_banben.Location = new System.Drawing.Point(398, 30);
+            this.label_banben.Name = "label_banben";
+            this.label_banben.Size = new System.Drawing.Size(56, 17);
+            this.label_banben.TabIndex = 6;
+            this.label_banben.Text = "版本号：";
+            // 
+            // webBrowserQuanAlimama
+            // 
+            this.webBrowserQuanAlimama.ContextMenuStrip = this.contextMenuStripCouponPage;
+            this.webBrowserQuanAlimama.IsWebBrowserContextMenuEnabled = false;
+            this.webBrowserQuanAlimama.Location = new System.Drawing.Point(554, 5);
+            this.webBrowserQuanAlimama.MinimumSize = new System.Drawing.Size(1, 1);
+            this.webBrowserQuanAlimama.Name = "webBrowserQuanAlimama";
+            this.webBrowserQuanAlimama.ScriptErrorsSuppressed = true;
+            this.webBrowserQuanAlimama.Size = new System.Drawing.Size(1, 1);
+            this.webBrowserQuanAlimama.TabIndex = 4;
+            this.webBrowserQuanAlimama.Url = new System.Uri("http://uland.taobao.com/coupon/edetail?activityId=fb9bf43aeda246aa8be2b61d4e619d8" +
+        "c&pid=mm_110019639_17876093_65366558&itemId=45189982853&src=qhkj_dtkp&dx=", System.UriKind.Absolute);
+            // 
+            // label_version
+            // 
+            this.label_version.AutoSize = true;
+            this.label_version.ForeColor = System.Drawing.Color.White;
+            this.label_version.Location = new System.Drawing.Point(401, 29);
+            this.label_version.Name = "label_version";
+            this.label_version.Size = new System.Drawing.Size(0, 19);
+            this.label_version.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(247, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 17);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "陪伴你每天进步一点点";
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+            // 
+            // tool_name
+            // 
+            this.tool_name.AutoSize = true;
+            this.tool_name.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tool_name.ForeColor = System.Drawing.Color.White;
+            this.tool_name.Location = new System.Drawing.Point(19, 9);
+            this.tool_name.Name = "tool_name";
+            this.tool_name.Size = new System.Drawing.Size(210, 42);
+            this.tool_name.TabIndex = 0;
+            this.tool_name.Text = "助手管理工具";
+            this.tool_name.Click += new System.EventHandler(this.label1_Click);
             // 
             // CmsForm
             // 
@@ -5681,30 +5543,15 @@ namespace haopintui
             this.Controls.Add(this.panelTop);
             this.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CmsForm";
-            this.Text = "好品推助手";
+            this.Text = "助手";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormEx_FormClosing);
             this.Load += new System.EventHandler(this.FormEx_Load);
             this.SizeChanged += new System.EventHandler(this.FormEx_SizeChanged);
             this.Resize += new System.EventHandler(this.FormEx_Resize);
-            this.layout_menu.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panelTop.ResumeLayout(false);
-            this.panelTop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarAlimama)).EndInit();
             this.panel_content.ResumeLayout(false);
             this.tabControlMain.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.panel_cms.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox_cms.ResumeLayout(false);
-            this.groupBox_cms.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarAlimama)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.groupBox16.ResumeLayout(false);
-            this.groupBox16.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabControl_qunfa.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
@@ -5789,15 +5636,15 @@ namespace haopintui
             this.tabControl_tools.ResumeLayout(false);
             this.tabPage11.ResumeLayout(false);
             this.tabControl_tools_common.ResumeLayout(false);
+            this.tabPage25.ResumeLayout(false);
+            this.groupBox34.ResumeLayout(false);
+            this.groupBox34.PerformLayout();
+            this.tabPage14.ResumeLayout(false);
+            this.tabPage14.PerformLayout();
             this.tabPage13.ResumeLayout(false);
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
             this.groupBox13.ResumeLayout(false);
-            this.tabPage14.ResumeLayout(false);
-            this.tabPage14.PerformLayout();
-            this.tabPage25.ResumeLayout(false);
-            this.groupBox34.ResumeLayout(false);
-            this.groupBox34.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.groupBox_dama.ResumeLayout(false);
@@ -5807,6 +5654,10 @@ namespace haopintui
             this.groupBox17.PerformLayout();
             this.groupBox_alimama.ResumeLayout(false);
             this.groupBox_alimama.PerformLayout();
+            this.layout_menu.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panelTop.ResumeLayout(false);
+            this.panelTop.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -6006,31 +5857,27 @@ namespace haopintui
                 LogUtil.log_call(this, "[initWbSndContent]出错：" + exception.ToString());
             }
 
-            try
-            {
-                if(!string.IsNullOrEmpty(this.appBean.qunfa)
-                    && int.Parse(this.appBean.qunfa)>0)
-                {
-                    this.thread_user_info = new Thread(new ParameterizedThreadStart(UserUtil.updata_user_info));
-                    this.thread_user_info.IsBackground = true;
-                    this.thread_user_info.Start(this);
-                }
-            }
-            catch (Exception)
-            {
+            //try
+            //{
+            //    if(!string.IsNullOrEmpty(this.appBean.qunfa)
+            //        && int.Parse(this.appBean.qunfa)>0)
+            //    {
+            //        this.thread_user_info = new Thread(new ParameterizedThreadStart(UserUtil.updata_user_info));
+            //        this.thread_user_info.IsBackground = true;
+            //        this.thread_user_info.Start(this);
+            //    }
+            //}
+            //catch (Exception)
+            //{
                 
-            }
-
-            this.thread_coupon = new Thread(new ParameterizedThreadStart(CouponUtil.check_coupon));
-            this.thread_coupon.IsBackground = true;
-            this.thread_coupon.Start(this);
+            //}
 
         }
         #endregion
 
         private void FormEx_Load(object sender, EventArgs e)
         {
-            this.tabControlMain.Region = new Region(new RectangleF(this.tabPage1.Left, this.tabPage1.Top, this.tabPage1.Width, this.tabPage1.Height));
+            this.tabControlMain.Region = new Region(new RectangleF(this.tabPage2.Left, this.tabPage2.Top, this.tabPage2.Width, this.tabPage2.Height));
             this.tabControl_qunfa.Region = new Region(new RectangleF(this.tabPage5.Left, this.tabPage5.Top, this.tabPage5.Width, this.tabPage5.Height));
             this.tabControl_tools.Region = new Region(new RectangleF(this.tabPage11.Left, this.tabPage11.Top, this.tabPage11.Width, this.tabPage11.Height));
 
@@ -6347,13 +6194,13 @@ namespace haopintui
         private void label11_Click(object sender, EventArgs e)
         {
             this.tabControlMain.SelectedTab = this.tabPage4;
-            this.update_icon(4);
+            this.update_icon(3);
         }
 
         private void label10_Click(object sender, EventArgs e)
         {
             this.tabControlMain.SelectedTab = this.tabPage3;
-            this.update_icon(3);
+            this.update_icon(2);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -6370,35 +6217,30 @@ namespace haopintui
 
         private void label8_Click(object sender, EventArgs e)
         {
-            this.tabControlMain.SelectedTab = this.tabPage1;
+            this.tabControlMain.SelectedTab = this.tabPage2;
             this.update_icon(1);
         }
 
         private void label9_Click(object sender, EventArgs e)
         {
             this.tabControlMain.SelectedTab = this.tabPage2;
-            this.update_icon(2);
+            this.update_icon(1);
         }
 
         private void update_icon(int icon_index) {
 
-            this.label_cms.Image = global::haopintui.Properties.Resources.cms;
-            this.label_qunfa.Image = global::haopintui.Properties.Resources.qunfa;
+            this.label_qunfa.Image = global::haopintui.Properties.Resources.qunfa1;
             this.label_tools.Image = global::haopintui.Properties.Resources.tools;
             this.label_setting.Image = global::haopintui.Properties.Resources.setting;
             if (icon_index == 1)
             {
-                this.label_cms.Image = global::haopintui.Properties.Resources.cms1;
+                this.label_qunfa.Image = global::haopintui.Properties.Resources.qunfa1;
             }
             else if (icon_index == 2)
             {
-                this.label_qunfa.Image = global::haopintui.Properties.Resources.qunfa1;
-            }
-            else if (icon_index == 3)
-            {
                 this.label_tools.Image = global::haopintui.Properties.Resources.tools1;
             }
-            else if (icon_index == 4)
+            else if (icon_index == 3)
             {
                 this.label_setting.Image = global::haopintui.Properties.Resources.setting1;
             }
@@ -6617,7 +6459,7 @@ namespace haopintui
         {
             if (this.appBean.alimama_cookie_put_url_status == false)
             {
-                this.button_tools_test_get_cookie.Text = "停止跟踪";
+                this.button_tools_test_get_cookie.Text = "停止创建";
                 this.button_tools_test_get_cookie.BackColor = System.Drawing.Color.Gray;
                 this.button_tools_test_get_cookie.ForeColor = System.Drawing.Color.Black;
 
@@ -6629,7 +6471,7 @@ namespace haopintui
             }
             else
             {
-                this.button_tools_test_get_cookie.Text = "开始跟踪cookie";
+                this.button_tools_test_get_cookie.Text = "开始创建";
                 this.button_tools_test_get_cookie.UseVisualStyleBackColor = true;
                 this.button_tools_test_get_cookie.BackColor = System.Drawing.Color.Green;
                 this.button_tools_test_get_cookie.ForeColor = System.Drawing.Color.White;
@@ -6640,6 +6482,8 @@ namespace haopintui
 
         private void button_cms_click_apply_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("平台高佣金授权即可，无需再开转化链接！");
+            return;
 
             if (this.appBean.apply_taoke_url_status == false)
             {
@@ -7631,8 +7475,20 @@ namespace haopintui
 
                     content = UrlUtil.parseContentWenan(this, content);
                     content = UrlUtil.copyImgContent(this, content, sendItem.create_date_str);
-                    ContentItem contentItem = UrlUtil.parseContent(this, content,null, this.checkBox_qunfa_pid.Checked,true,0);
-                    if ((contentItem.urlList == null || contentItem.urlList.Count == 0)
+                    //ContentItem contentItem = UrlUtil.parseContent(this, content,null, this.checkBox_qunfa_pid.Checked,true,0);
+                    //if ((contentItem.urlList == null || contentItem.urlList.Count == 0)
+                    //    && this.checkBox_qunfa_link.Checked)
+                    //{
+                    //    LogUtil.log_call(this, "没有连接，跳过发送！");
+                    //    this.remove_send(sendItem.create_date_str);
+                    //    return false;
+                    //}
+
+                    LogUtil.log_call(this, "---------------1-----------");
+                    CouponContent couponContent = UrlParse.parseContent(this,content,null);
+
+                   
+                    if ((couponContent.num_iid == null || couponContent.num_iid.Length == 0)
                         && this.checkBox_qunfa_link.Checked)
                     {
                         LogUtil.log_call(this, "没有连接，跳过发送！");
@@ -7640,16 +7496,17 @@ namespace haopintui
                         return false;
                     }
 
-                    if (contentItem.status<1)
+                    if (couponContent.status < 1)
                     {
-                        if(!UrlUtil.isPrice(this,contentItem.get_buy_price())){
-                            contentItem.status = 5;
+                        if (!UrlUtil.isPrice(this, couponContent.get_buy_price()))
+                        {
+                            couponContent.status = 5;
                         }
                     }
 
-                    if (contentItem.status < 1)
+                    if (couponContent.status < 1)
                     {
-                        if (!string.IsNullOrEmpty(contentItem.num_iid))
+                        if (!string.IsNullOrEmpty(couponContent.num_iid))
                         {
                             string out_log = "";
                             int hours =1;
@@ -7658,7 +7515,7 @@ namespace haopintui
 		                        hours = int.Parse(this.textBox_qunfa_times.Text.Trim());
 	                        }
 	                        catch (Exception){	                    }
-                            ArrayList arrayList = this.sendSqlUtil.query_send_item(contentItem.num_iid, hours, out out_log);
+                            ArrayList arrayList = this.sendSqlUtil.query_send_item(couponContent.num_iid, hours, out out_log);
                             if(arrayList.Count>0){
                                 LogUtil.log_call(this, hours+"小时内，已经发送过该商品了，跳过发送！");
                                 this.remove_send(sendItem.create_date_str);
@@ -7668,61 +7525,63 @@ namespace haopintui
                         if (this.checkBox_qunfa_qq_boolean.Checked) //开启了qq发送
                         {
                             LogUtil.log_call(this, "开始qq群的发送1！");
-                            string content_send = contentItem.content_send;
-                            content_send = UrlUtil.template_qq(this, contentItem, PidUtil.get_qq_com_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.qq_template);
+                            CouponContentSend couponContentSend = UrlUtil.template_qq(this, couponContent, PidUtil.get_qq_com_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.qq_template);
+                            //string content_send = contentItem.content_send;
+                            //content_send = UrlUtil.template_qq(this, contentItem, PidUtil.get_qq_com_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.qq_template);
                             LogUtil.log_call(this, "发送开始！");
                             //if (this.checkBox_qunfa_qq_kouling_boolean.Checked==true)
                             //{
                             //    string kouling = UrlUtil.parseContent_kouling(this, contentItem, PidUtil.get_qq_com_pid(this, this.appBean.member_id), true);
                             //    content_send = content_send + kouling;
                             //}
-                            QqUtil.send(this, content_send, content, contentItem.url_type, sendItem.type);
+                            QqUtil.send(this, couponContentSend, couponContentSend.url_type, sendItem.type);
                         }
                         if (this.checkBox_qunfa_weixin_boolean.Checked) //开启了qq发送
                         {
-                            UrlUtil.parseContent_weixin(this, contentItem, PidUtil.get_weixin_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked);
+                            //UrlUtil.parseContent_weixin(this, contentItem, PidUtil.get_weixin_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked);
 
-                            UrlUtil.template_qq(this, contentItem, PidUtil.get_weixin_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.weixin_template);
+                            CouponContentSend couponContentSend = UrlUtil.template_qq(this, couponContent, PidUtil.get_weixin_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.weixin_template);
                     
                             LogUtil.log_call(this, "开始微信群的发送！");
-                            WeixinUtil.send(this, contentItem.content_weixin, contentItem.content_weixin_img, contentItem.imgList, content, contentItem.url_type, sendItem.type);
+                            WeixinUtil.send(this, couponContentSend.content_weixin, couponContentSend.content_weixin_img, couponContentSend.imgList, couponContent, couponContentSend.url_type, sendItem.type);
                         }
 
                         if (this.checkBox_qunfa_weibo_boolean.Checked) //开启了qq发送
                         {
-                            UrlUtil.parseContent_weixin(this, contentItem, PidUtil.get_weibo_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked);
+                            //UrlUtil.parseContent_weixin(this, contentItem, PidUtil.get_weibo_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked);
 
-                            UrlUtil.template_qq(this, contentItem, PidUtil.get_weibo_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.weibo_template);
+                            CouponContentSend couponContentSend  = UrlUtil.template_qq(this, couponContent, PidUtil.get_weibo_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.weibo_template);
 
                             LogUtil.log_call(this, "开始微博的发送！");
-                            WeiboUtil.send(this, contentItem.content_weixin, contentItem.content_weixin_img, contentItem.imgList, content, contentItem.url_type, sendItem.type);
+                            WeiboUtil.send(this, couponContentSend.content_weixin, couponContentSend.content_weixin_img, couponContentSend.imgList, couponContent, couponContentSend.url_type, sendItem.type);
                         }
 
-                        if(!string.IsNullOrEmpty(contentItem.num_iid)){
+                        if (!string.IsNullOrEmpty(couponContent.num_iid))
+                        {
                             string out_log = "";
-                            this.sendSqlUtil.insert_item(contentItem.num_iid, out out_log);
+                            this.sendSqlUtil.insert_item(couponContent.num_iid, out out_log);
                         }
                     }
-                    else if (contentItem.status == 1)
+                    else if (couponContent.status == 1)
                     {
                         LogUtil.log_call(this, "优惠券小于最低优惠券要求，跳过发送！");
                         this.remove_send(sendItem.create_date_str);
                         return false;
                     }
-                    else if (contentItem.status == 2)
+                    else if (couponContent.status == 2)
                     {
                         LogUtil.log_call(this, "佣金比例小于设置的最低比例，跳过发送！");
                         this.remove_send(sendItem.create_date_str);
                         return false;
                     }
 
-                    else if (contentItem.status == 3)
+                    else if (couponContent.status == 3)
                     {
                         LogUtil.log_call(this, "所发的链接转换失败，跳过发送！");
                         this.remove_send(sendItem.create_date_str);
                         return false;
                     }
-                    else if (contentItem.status == 4)
+                    else if (couponContent.status == 4)
                     {
                         int hours = 1;
                         try
@@ -7734,7 +7593,7 @@ namespace haopintui
                         this.remove_send(sendItem.create_date_str);
                         return false;
                     }
-                    else if (contentItem.status == 5)
+                    else if (couponContent.status == 5)
                     {
                         LogUtil.log_call(this, "产品价格不在区间内，跳过发送！");
                         this.remove_send(sendItem.create_date_str);
@@ -7758,10 +7617,19 @@ namespace haopintui
                         return false;
                     }
 
-                    content = UrlUtil.parseContentWenan(this, content);
-                    content = UrlUtil.copyImgContent(this, content, sendItem.create_date_str);
-                    ContentItem contentItem = UrlHptUtil.parseContent(this, content, null, this.checkBox_qunfa_pid.Checked, true, 0);
-                    if ((contentItem.urlList == null || contentItem.urlList.Count == 0)
+                    //content = UrlUtil.parseContentWenan(this, content);
+                    //content = UrlUtil.copyImgContent(this, content, sendItem.create_date_str);
+                    //ContentItem contentItem = UrlHptUtil.parseContent(this, content, null, this.checkBox_qunfa_pid.Checked, true, 0);
+                    //if ((contentItem.urlList == null || contentItem.urlList.Count == 0)
+                    //    && this.checkBox_qunfa_link.Checked)
+                    //{
+                    //    LogUtil.log_call(this, "没有连接，跳过发送！");
+                    //    this.remove_send(sendItem.create_date_str);
+                    //    return false;
+                    //}
+
+                    CouponContent couponContent = UrlParse.parseContent(this, content, null);
+                    if ((couponContent.num_iid == null || couponContent.num_iid.Length == 0)
                         && this.checkBox_qunfa_link.Checked)
                     {
                         LogUtil.log_call(this, "没有连接，跳过发送！");
@@ -7769,9 +7637,10 @@ namespace haopintui
                         return false;
                     }
 
-                    if (contentItem.status < 1)
+
+                    if (couponContent.status < 1)
                     {
-                        if (!string.IsNullOrEmpty(contentItem.num_iid))
+                        if (!string.IsNullOrEmpty(couponContent.num_iid))
                         {
                             string out_log = "";
                             int hours = 1;
@@ -7780,7 +7649,7 @@ namespace haopintui
                                 hours = int.Parse(this.textBox_qunfa_times.Text.Trim());
                             }
                             catch (Exception) { }
-                            ArrayList arrayList = this.sendSqlUtil.query_send_item(contentItem.num_iid, hours, out out_log);
+                            ArrayList arrayList = this.sendSqlUtil.query_send_item(couponContent.num_iid, hours, out out_log);
                             if (arrayList.Count > 0)
                             {
                                 LogUtil.log_call(this, hours + "小时内，已经发送过该商品了，跳过发送！");
@@ -7791,35 +7660,39 @@ namespace haopintui
                         if (this.checkBox_qunfa_qq_boolean.Checked) //开启了qq发送
                         {
                             LogUtil.log_call(this, "开始qq群的发送1！");
-                            string content_send = contentItem.content_send;
+                            //string content_send = contentItem.content_send;
                             //content_send = UrlUtil.template_qq(this, contentItem, PidUtil.get_qq_com_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.qq_template);
+                            CouponContentSend couponContentSend = UrlUtil.template_qq(this, couponContent, PidUtil.get_weixin_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.weixin_template);
+
                             LogUtil.log_call(this, "发送开始！");
-                            QqUtil.send(this, content_send, content, contentItem.url_type, sendItem.type);
+                            QqUtil.send(this, couponContentSend, couponContentSend.url_type, sendItem.type);
                         }
                         if (this.checkBox_qunfa_weixin_boolean.Checked) //开启了qq发送
                         {
-                            UrlUtil.parseContent_weixin(this, contentItem, PidUtil.get_weixin_pid_call(this, this.appBean.member_id), false);
+                            //UrlUtil.parseContent_weixin(this, contentItem, PidUtil.get_weixin_pid_call(this, this.appBean.member_id), false);
 
                             //UrlUtil.template_qq(this, contentItem, PidUtil.get_weixin_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.weixin_template);
-
+                            CouponContentSend couponContentSend = UrlUtil.template_qq(this, couponContent, PidUtil.get_weixin_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.weixin_template);
+                    
                             LogUtil.log_call(this, "开始微信群的发送！");
-                            WeixinUtil.send(this, contentItem.content_send, contentItem.content_weixin_img, contentItem.imgList, content, contentItem.url_type, sendItem.type);
+                            WeixinUtil.send(this, couponContentSend.content_send, couponContentSend.content_weixin_img, couponContentSend.imgList, couponContent, couponContentSend.url_type, sendItem.type);
                         }
 
                         if (this.checkBox_qunfa_weibo_boolean.Checked) //开启了qq发送
                         {
-                            UrlUtil.parseContent_weixin(this, contentItem, PidUtil.get_weibo_pid_call(this, this.appBean.member_id), false);
+                            //UrlUtil.parseContent_weixin(this, contentItem, PidUtil.get_weibo_pid_call(this, this.appBean.member_id), false);
 
                             //UrlUtil.template_qq(this, contentItem, PidUtil.get_weibo_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.weibo_template);
+                            CouponContentSend couponContentSend = UrlUtil.template_qq(this, couponContent, PidUtil.get_weibo_pid_call(this, this.appBean.member_id), this.checkBox_qunfa_pid.Checked, this.appBean.weibo_template);
 
                             LogUtil.log_call(this, "开始微博的发送！");
-                            WeiboUtil.send(this, contentItem.content_send, contentItem.content_weixin_img, contentItem.imgList, content, contentItem.url_type, sendItem.type);
+                            WeiboUtil.send(this, couponContentSend.content_send, couponContentSend.content_weixin_img, couponContentSend.imgList, couponContent, couponContentSend.url_type, sendItem.type);
                         }
 
-                        if (!string.IsNullOrEmpty(contentItem.num_iid))
+                        if (!string.IsNullOrEmpty(couponContent.num_iid))
                         {
                             string out_log = "";
-                            this.sendSqlUtil.insert_item(contentItem.num_iid, out out_log);
+                            this.sendSqlUtil.insert_item(couponContent.num_iid, out out_log);
                         }
                     }
                     //else if (contentItem.status == 1)
@@ -7828,19 +7701,19 @@ namespace haopintui
                     //    this.remove_send(sendItem.create_date_str);
                     //    return false;
                     //}
-                    else if (contentItem.status == 2)
+                    else if (couponContent.status == 2)
                     {
                         LogUtil.log_call(this, "佣金比例小于设置的最低比例，跳过发送！");
                         this.remove_send(sendItem.create_date_str);
                         return false;
                     }
-                    else if (contentItem.status == 3)
+                    else if (couponContent.status == 3)
                     {
                         LogUtil.log_call(this, "所发的链接转换失败，跳过发送！");
                         this.remove_send(sendItem.create_date_str);
                         return false;
                     }
-                    else if (contentItem.status == 4)
+                    else if (couponContent.status == 4)
                     {
                         int hours = 1;
                         try
@@ -9717,7 +9590,7 @@ namespace haopintui
                     {
                         //LogUtil.log_call(this, "s" );
                         AliOrderUtil.putOrder(this);
-                        LogUtil.log_call(this, "订单同步完成，等待下一次的同步");
+                        LogUtil.log_pid_call(this, "订单同步完成，等待下一次的同步");
                     }
                     catch (Exception exception2)
                     {
@@ -9798,12 +9671,12 @@ namespace haopintui
 
         private void button47_Click(object sender, EventArgs e)
         {
-            Process.Start("http://www.haopintui.net/user_info.php?action=user&mod=taoke_token");
+            Process.Start(this.appBean.platform_url);
         }
 
         private void button48_Click(object sender, EventArgs e)
         {
-            Process.Start("http://www.haopintui.net/user_info.php?action=user&mod=taoke_token");
+            Process.Start(this.appBean.platform_url);
         }
 
 

@@ -1,0 +1,12 @@
+D:\www\助手\Release\好品推助手.exe.config
+D:\www\助手\main\obj\x86\Release\好品推助手.exe
+D:\www\助手\main\obj\x86\Release\haopintui.BaseForm.resources
+D:\www\助手\main\obj\x86\Release\haopintui.CmsForm.resources
+D:\www\助手\main\obj\x86\Release\haopintui.FormLogin.resources
+D:\www\助手\main\obj\x86\Release\haopintui.Properties.Resources.resources
+D:\www\助手\main\obj\x86\Release\haopintui.ShowFwSndForm.resources
+D:\www\助手\main\obj\x86\Release\haopintui.ShowQqForm.resources
+D:\www\助手\main\obj\x86\Release\haopintui.ShowWeixinForm.resources
+D:\www\助手\main\obj\x86\Release\main.csproj.GenerateResource.Cache
+D:\www\助手\main\obj\x86\Release\main.csprojResolveAssemblyReference.cache
+D:\www\助手\Release\好品推助手.exe

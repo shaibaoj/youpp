@@ -18,7 +18,7 @@ namespace haopintui
 {
    public class WeixinUtil
     {
-       public static void send(CmsForm cmsForm, string content, string content_img, ArrayList imgList, string content_org, int url_type,int goods_type)
+       public static void send(CmsForm cmsForm, string content, string content_img, ArrayList imgList, CouponContent couponContent, int url_type, int goods_type)
        {
             string out_log = "";
             GStruct0 gStruct0;
@@ -57,29 +57,43 @@ namespace haopintui
                             string weixin_pid = PidUtil.get_weixin_pid_qun(cmsForm, item, cmsForm.appBean.member_id, out weiba);
                             if (!string.IsNullOrEmpty(weixin_pid))
                             {
-                                if (goods_type != 2)
-                                {
-                                    ContentItem contentItem_qun = UrlUtil.parseContent(cmsForm, content_org, weixin_pid, cmsForm.checkBox_qunfa_pid.Checked, false, url_type);
-                                    UrlUtil.parseContent_weixin(cmsForm, contentItem_qun, weixin_pid, cmsForm.checkBox_qunfa_pid.Checked);
-                                    UrlUtil.template_qq(cmsForm, contentItem_qun, weixin_pid, cmsForm.checkBox_qunfa_pid.Checked, cmsForm.appBean.weixin_template);
+                                //if (goods_type != 2)
+                                //{
+                                //    ContentItem contentItem_qun = UrlUtil.parseContent(cmsForm, content_org, weixin_pid, cmsForm.checkBox_qunfa_pid.Checked, false, url_type);
+                                //    UrlUtil.parseContent_weixin(cmsForm, contentItem_qun, weixin_pid, cmsForm.checkBox_qunfa_pid.Checked);
+                                //    UrlUtil.template_qq(cmsForm, contentItem_qun, weixin_pid, cmsForm.checkBox_qunfa_pid.Checked, cmsForm.appBean.weixin_template);
 
-                                    content = contentItem_qun.content_weixin;
-                                    content_img = contentItem_qun.content_weixin_img;
-                                    imgList = contentItem_qun.imgList;
-                                    weiba_all = weiba;
-                                }
-                                else {
-                                    ContentItem contentItem_qun = UrlHptUtil.parseContent(cmsForm, content_org, weixin_pid, cmsForm.checkBox_qunfa_pid.Checked, false, url_type);
-                                    UrlUtil.parseContent_weixin(cmsForm, contentItem_qun, weixin_pid, false);
+                                //    content = contentItem_qun.content_weixin;
+                                //    content_img = contentItem_qun.content_weixin_img;
+                                //    imgList = contentItem_qun.imgList;
+                                //    weiba_all = weiba;
+                                //}
+                                //else {
+                                //    ContentItem contentItem_qun = UrlHptUtil.parseContent(cmsForm, content_org, weixin_pid, cmsForm.checkBox_qunfa_pid.Checked, false, url_type);
+                                //    UrlUtil.parseContent_weixin(cmsForm, contentItem_qun, weixin_pid, false);
 
-                                    content = contentItem_qun.content_send;
-                                    content = WeixinUtil.remove_img(content);
+                                //    content = contentItem_qun.content_send;
+                                //    content = WeixinUtil.remove_img(content);
 
-                                    LogUtil.log_call(cmsForm, content);
-                                    content_img = contentItem_qun.content_weixin_img;
-                                    imgList = contentItem_qun.imgList;
-                                    weiba_all = weiba;
-                                }
+                                //    LogUtil.log_call(cmsForm, content);
+                                //    content_img = contentItem_qun.content_weixin_img;
+                                //    imgList = contentItem_qun.imgList;
+                                //    weiba_all = weiba;
+                                //}
+
+                                //ContentItem contentItem_qun = UrlUtil.parseContent(cmsForm, content_org, weixin_pid, cmsForm.checkBox_qunfa_pid.Checked, false, url_type);
+                                //UrlUtil.parseContent_weixin(cmsForm, contentItem_qun, weixin_pid, cmsForm.checkBox_qunfa_pid.Checked);
+                                //UrlUtil.template_qq(cmsForm, contentItem_qun, weixin_pid, cmsForm.checkBox_qunfa_pid.Checked, cmsForm.appBean.weixin_template);
+
+                                LogUtil.log_call(cmsForm, "分群pid转化链接,pid:" + weixin_pid);
+
+                                CouponContentSend couponContentSend = UrlUtil.template_qq(cmsForm, couponContent, weixin_pid, cmsForm.checkBox_qunfa_pid.Checked, cmsForm.appBean.weixin_template);
+
+                                content = couponContentSend.content_weixin;
+                                content_img = couponContentSend.content_weixin_img;
+                                imgList = couponContentSend.imgList;
+                                weiba_all = weiba;
+
                             }
                             else {
                                 if (goods_type != 2)

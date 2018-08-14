@@ -99,67 +99,67 @@ namespace haopintui.util
         {
             try
             {
-                content = UrlUtil.parseContentWenan(cmsForm, content);
-                ContentItem contentItem = UrlUtil.parseContent(cmsForm, content,null, cmsForm.checkBox_qunfa_pid.Checked,true,0);
-                if ((contentItem.urlList == null || contentItem.urlList.Count == 0)
-                    && cmsForm.checkBox_qunfa_link.Checked)
-                {
-                    LogUtil.log_call(cmsForm, "没有连接，跳过发送！");
-                    ((IHTMLDocument2)cmsForm.webBrowser_send_content.Document.DomDocument).body.innerHTML = "";
-                    return;
-                }
+                //content = UrlUtil.parseContentWenan(cmsForm, content);
+                //ContentItem contentItem = UrlUtil.parseContent(cmsForm, content,null, cmsForm.checkBox_qunfa_pid.Checked,true,0);
+                //if ((contentItem.urlList == null || contentItem.urlList.Count == 0)
+                //    && cmsForm.checkBox_qunfa_link.Checked)
+                //{
+                //    LogUtil.log_call(cmsForm, "没有连接，跳过发送！");
+                //    ((IHTMLDocument2)cmsForm.webBrowser_send_content.Document.DomDocument).body.innerHTML = "";
+                //    return;
+                //}
 
-                if (contentItem.status < 1)
-                {
-                    if (cmsForm.checkBox_qunfa_qq_boolean.Checked) //开启了qq发送
-                    {
-                        LogUtil.log_call(cmsForm, "开始qq群的发送！");
+                //if (contentItem.status < 1)
+                //{
+                //    if (cmsForm.checkBox_qunfa_qq_boolean.Checked) //开启了qq发送
+                //    {
+                //        LogUtil.log_call(cmsForm, "开始qq群的发送！");
 
-                        string content_send = contentItem.content_send;
-                        content_send = UrlUtil.template_qq(cmsForm, contentItem, PidUtil.get_qq_com_pid_call(cmsForm, cmsForm.appBean.member_id), cmsForm.checkBox_qunfa_pid.Checked, cmsForm.appBean.qq_template);
-                        content_send = UrlUtil.copyImgContent(cmsForm, content_send, null);
-                        //if (this.checkBox_qunfa_qq_kouling_boolean.Checked == true)
-                        //{
-                        //    string kouling = UrlUtil.parseContent_kouling(this, contentItem, PidUtil.get_qq_com_pid(this, this.appBean.member_id), true);
-                        //    content_send = content_send + kouling;
-                        //}
-                        QqUtil.send(cmsForm, content_send, content, contentItem.url_type,1);
+                //        string content_send = contentItem.content_send;
+                //        content_send = UrlUtil.template_qq(cmsForm, contentItem, PidUtil.get_qq_com_pid_call(cmsForm, cmsForm.appBean.member_id), cmsForm.checkBox_qunfa_pid.Checked, cmsForm.appBean.qq_template);
+                //        content_send = UrlUtil.copyImgContent(cmsForm, content_send, null);
+                //        //if (this.checkBox_qunfa_qq_kouling_boolean.Checked == true)
+                //        //{
+                //        //    string kouling = UrlUtil.parseContent_kouling(this, contentItem, PidUtil.get_qq_com_pid(this, this.appBean.member_id), true);
+                //        //    content_send = content_send + kouling;
+                //        //}
+                //        QqUtil.send(cmsForm, content_send, content, contentItem.url_type,1);
 
-                        //QqUtil.send(this, contentItem.content_send);
-                    }
-                    if (cmsForm.checkBox_qunfa_weixin_boolean.Checked) //开启了qq发送
-                    {
-                        UrlUtil.parseContent_weixin(cmsForm, contentItem,null, cmsForm.checkBox_qunfa_pid.Checked);
-                        UrlUtil.template_qq(cmsForm, contentItem, PidUtil.get_weixin_pid_call(cmsForm, cmsForm.appBean.member_id), cmsForm.checkBox_qunfa_pid.Checked, cmsForm.appBean.weixin_template);
-                        LogUtil.log_call(cmsForm, "开始微信群的发送！");
-                        WeixinUtil.send(cmsForm, contentItem.content_weixin, contentItem.content_weixin_img, contentItem.imgList, content, contentItem.url_type, 1);
-                    }
-                    if (cmsForm.checkBox_qunfa_weibo_boolean.Checked) //开启了qq发送
-                    {
-                        UrlUtil.parseContent_weixin(cmsForm, contentItem, PidUtil.get_weibo_pid_call(cmsForm, cmsForm.appBean.member_id), cmsForm.checkBox_qunfa_pid.Checked);
-                        UrlUtil.template_qq(cmsForm, contentItem, PidUtil.get_weibo_pid_call(cmsForm, cmsForm.appBean.member_id), cmsForm.checkBox_qunfa_pid.Checked, cmsForm.appBean.weibo_template);
-                        LogUtil.log_call(cmsForm, "开始微博的发送！");
-                        WeiboUtil.send(cmsForm, contentItem.content_weixin, contentItem.content_weixin_img, contentItem.imgList, content, contentItem.url_type, 1);
-                    }
-                }
-                else if (contentItem.status == 1)
-                {
-                    LogUtil.log_call(cmsForm, "优惠券小于最低优惠券要求，跳过发送！");
-                }
-                else if (contentItem.status == 2)
-                {
-                    LogUtil.log_call(cmsForm, "佣金比例小于设置的最低比例，跳过发送！");
-                }
-                else if (contentItem.status == 2)
-                {
-                    LogUtil.log_call(cmsForm, "所发的链接转换失败，跳过发送！");
-                }
-                try
-                {
-                    ((IHTMLDocument2)cmsForm.webBrowser_send_content.Document.DomDocument).body.innerHTML = "";
-                }
-                catch (Exception exception)
-                { }
+                //        //QqUtil.send(this, contentItem.content_send);
+                //    }
+                //    if (cmsForm.checkBox_qunfa_weixin_boolean.Checked) //开启了qq发送
+                //    {
+                //        UrlUtil.parseContent_weixin(cmsForm, contentItem,null, cmsForm.checkBox_qunfa_pid.Checked);
+                //        UrlUtil.template_qq(cmsForm, contentItem, PidUtil.get_weixin_pid_call(cmsForm, cmsForm.appBean.member_id), cmsForm.checkBox_qunfa_pid.Checked, cmsForm.appBean.weixin_template);
+                //        LogUtil.log_call(cmsForm, "开始微信群的发送！");
+                //        WeixinUtil.send(cmsForm, contentItem.content_weixin, contentItem.content_weixin_img, contentItem.imgList, content, contentItem.url_type, 1);
+                //    }
+                //    if (cmsForm.checkBox_qunfa_weibo_boolean.Checked) //开启了qq发送
+                //    {
+                //        UrlUtil.parseContent_weixin(cmsForm, contentItem, PidUtil.get_weibo_pid_call(cmsForm, cmsForm.appBean.member_id), cmsForm.checkBox_qunfa_pid.Checked);
+                //        UrlUtil.template_qq(cmsForm, contentItem, PidUtil.get_weibo_pid_call(cmsForm, cmsForm.appBean.member_id), cmsForm.checkBox_qunfa_pid.Checked, cmsForm.appBean.weibo_template);
+                //        LogUtil.log_call(cmsForm, "开始微博的发送！");
+                //        WeiboUtil.send(cmsForm, contentItem.content_weixin, contentItem.content_weixin_img, contentItem.imgList, content, contentItem.url_type, 1);
+                //    }
+                //}
+                //else if (contentItem.status == 1)
+                //{
+                //    LogUtil.log_call(cmsForm, "优惠券小于最低优惠券要求，跳过发送！");
+                //}
+                //else if (contentItem.status == 2)
+                //{
+                //    LogUtil.log_call(cmsForm, "佣金比例小于设置的最低比例，跳过发送！");
+                //}
+                //else if (contentItem.status == 2)
+                //{
+                //    LogUtil.log_call(cmsForm, "所发的链接转换失败，跳过发送！");
+                //}
+                //try
+                //{
+                //    ((IHTMLDocument2)cmsForm.webBrowser_send_content.Document.DomDocument).body.innerHTML = "";
+                //}
+                //catch (Exception exception)
+                //{ }
 
             }
             catch (Exception exception)

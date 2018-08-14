@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Windows.Forms;
 
 namespace haopintui
 {
@@ -163,6 +164,7 @@ namespace haopintui
                 writer.WriteLine("qunfa_erheyi=" + (cmsForm.checkBox_qunfa_erheyi.Checked ? "1" : "0"));
 
                 writer.WriteLine("alimama_cookie_url=" + cmsForm.textBoxAlimamaCookieUrl.Text.Trim());
+                writer.WriteLine("alimama_create_pid=" + cmsForm.textBoxCreatePid.Text.Trim());
 
                 writer.WriteLine("setting_app_ben=" + (cmsForm.radioButtonsetting_app_ben.Checked ? "1" : "0"));
 
@@ -532,6 +534,7 @@ namespace haopintui
                 cmsForm.checkBox_qunfa_erheyi.Checked = "1".Equals((string)appBean.hashtable_config["qunfa_erheyi"]);
 
                 cmsForm.textBoxAlimamaCookieUrl.Text = (string)appBean.hashtable_config["alimama_cookie_url"];
+                cmsForm.textBoxCreatePid.Text = (string)appBean.hashtable_config["alimama_create_pid"];
 
                 cmsForm.checkBox_qunfa_qq_kouling_boolean.Checked = "1".Equals((string)appBean.hashtable_config["qunfa_qq_kouling_boolean"]);
 
@@ -685,11 +688,11 @@ namespace haopintui
             {
                 cmsForm.appBean.cms_adzoneid = selectedItem_pos.getId().ToString();
             }
-            SelectedItem selectedItem_cms = (SelectedItem)cmsForm.comboBoxCmsList.SelectedItem;
-            if (selectedItem_cms != null)
-            {
-                cmsForm.appBean.cms_app_id = selectedItem_cms.getId().ToString();
-            }
+            //SelectedItem selectedItem_cms = (SelectedItem)cmsForm.comboBoxCmsList.SelectedItem;
+            //if (selectedItem_cms != null)
+            //{
+            //    cmsForm.appBean.cms_app_id = selectedItem_cms.getId().ToString();
+            //}
 
             SelectedItem selectedItem_tongyong_duanyuan = (SelectedItem)cmsForm.comboBox_qq_tongyong_danyuan.SelectedItem;
             if (selectedItem_tongyong_duanyuan != null)
@@ -987,6 +990,63 @@ namespace haopintui
             string content = cmsForm.appBean.taoke_cookie;
             UtilFile.write(ini_taoke_cookie_path, content);
         }
+
+
+        public static void init_platform(CmsForm cmsForm)
+        {
+            try
+            {
+                AppBean appBean = cmsForm.appBean;
+                if (!Directory.Exists(cmsForm.app_path + "/config"))
+                {
+                    Directory.CreateDirectory(cmsForm.app_path + "/config");
+                }
+                appBean.platform_ini = cmsForm.app_path + Constants.platform_ini;
+                if (!File.Exists(appBean.platform_ini))
+                {
+                    FileStream stream = File.Create(appBean.platform_ini);
+                    stream.Close();
+                    stream.Dispose();
+                }
+                StreamReader reader = new StreamReader(appBean.platform_ini, Encoding.GetEncoding("GB2312"));
+                string str = null;
+                while ((str = reader.ReadLine()) != null)
+                {
+                    if (!appBean.hashtable_platform.ContainsKey(str.Split(new char[] { '=' })[0]))
+                    {
+                        string keyname = str.Split(new char[] { '=' })[0];
+                        string valuename = "";
+                        string[] strLen = str.Split(new char[] { '=' });
+                        for (int i = 0; i < strLen.Length; i++)
+                        {
+                            if (i > 1)
+                            {
+                                valuename = valuename + "=";
+                            }
+                            if (i > 0)
+                            {
+                                valuename = valuename + strLen[i];
+                            }
+                        }
+                        appBean.hashtable_platform.Add(keyname, valuename);
+                    }
+                }
+                reader.Close();
+                reader.Dispose();
+
+                appBean.platform_id = (string)appBean.hashtable_platform["platform_id"];
+                appBean.platform_name = (string)appBean.hashtable_platform["platform_name"];
+                appBean.platform_url = (string)appBean.hashtable_platform["platform_url"];
+            }
+            catch (Exception exception)
+            {
+               // LogUtil.log_call(cmsForm, "[init_config]" + exception.ToString());
+
+            }
+
+        }
+
+       
 
     }
 }

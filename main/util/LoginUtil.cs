@@ -21,7 +21,7 @@ namespace haopintui
         public int visits = 0;
         public long user_id = 0L;
         public string user_name = "";
-        public string user_key = "";
+        public string user_token = "";
         public string login_url = "";
         public string softwarename = "";
         public string main_exe = "";
@@ -31,9 +31,14 @@ namespace haopintui
         public string qunfa = "";
         public string alimama_id = "";
         public string md5 = "";
+        public string app_id = "";
 
         public string qunfa_date = "";
         public string user_type_name = "";
+
+        public string platform_id = "";
+        public string platform_name = "";
+        public string platform_url = "";
 
         public bool login(string softwarename, string main_exe, string version)
         {
@@ -42,9 +47,15 @@ namespace haopintui
             this.version = version;
             FormLogin form = new FormLogin(softwarename, version);
             form.login_url = this.login_url;
+
+            form.platform_id = this.platform_id;
+            form.platform_name = this.platform_name;
+            form.platform_url = this.platform_url;
+
             form.ShowDialog();
             this.user_id = form.user_id;
-            this.user_key = form.user_key;
+            this.app_id = form.app_id;
+            this.user_token = form.user_token;
             this.user_name = form.user_name;
             this.feetype = form.feetype;
             this.expiredate = form.expiredate;

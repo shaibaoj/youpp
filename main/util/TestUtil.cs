@@ -35,9 +35,14 @@ namespace haopintui
                     {
                         LogUtil.log_call(cmsForm, "阿里妈妈登录正常");
                         string put_url = cmsForm.textBoxAlimamaCookieUrl.Text;
-                        if (!String.IsNullOrEmpty(put_url))
-                        {                        
-                            StringUtil.login(cmsForm.httpService, put_url, "key=alimama_cookie_" + cmsForm.textBoxAlimamaAcc.Text.Trim() + "&value=" + cmsForm.appBean.taoke_cookie);
+                        put_url = "http://" + Constants.api_url  + "/zhushou/pid/create";
+                        String user_key = cmsForm.appBean.user_token;
+
+                        string create_pid = cmsForm.textBoxCreatePid.Text;
+
+                        if (!String.IsNullOrEmpty(put_url) && !String.IsNullOrEmpty(create_pid))
+                        {
+                            StringUtil.login(cmsForm.httpService, put_url, "key=alimama_cookie_" + cmsForm.textBoxAlimamaAcc.Text.Trim() + "&content=" + cmsForm.appBean.taoke_cookie + "&member_token=" + user_key + "&pid=" + create_pid);
                         }
 
                     }
@@ -47,7 +52,7 @@ namespace haopintui
                         Thread.Sleep(3000);
                     }
 
-                    Thread.Sleep(10000);
+                    Thread.Sleep(100000);
 
                 }
                 LogUtil.log_call(cmsForm, "停止批量转化");

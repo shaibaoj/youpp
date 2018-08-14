@@ -136,6 +136,7 @@ namespace haopintui.util
                 {
                     File.Delete(str1);
                 }
+                int type = 1;
                 string str2 = "http://pub.alimama.com/report/getTbkPaymentDetails.json?queryType=1&payStatus=&DownloadID=DOWNLOAD_REPORT_INCOME_NEW&startTime={startTime}&endTime={endTime}";
                 if (queryType==1)
                 {                
@@ -143,10 +144,12 @@ namespace haopintui.util
                 }
                 if (queryType == 2)
                 {
+                    type = 0;
                     str2 = "http://pub.alimama.com/report/getTbkThirdPaymentDetails.json?queryType=2&payStatus=&DownloadID=DOWNLOAD_REPORT_TK3_PUB&startTime={startTime}&endTime={endTime}";
                 }
                 if (queryType == 3)
                 {
+                    type = 0;
                     str2 = "http://pub.alimama.com/report/getTbkThirdPaymentDetails.json?queryType=4&payStatus=3&DownloadID=DOWNLOAD_REPORT_TK3_PUB&startTime={startTime}&endTime={endTime}";
                 }
 
@@ -175,7 +178,8 @@ namespace haopintui.util
                 try
                 {
                     string out_log;
-                    arrayLists = ExeclUtil.query_order_list(cmsForm, str1, out out_log);
+                    bool logined = true;
+                    arrayLists = ExeclUtil.query_order_list(cmsForm, str1, out out_log, type,out logined);
                     //System.Data.DataTable dt = ExeclUtil.GetExcelData(str1);
                     //LogUtil.log_call(cmsForm, "dt.Rows.Count：" + dt.Rows.Count);
                     //foreach(DataRow dr in dt.Rows)        
@@ -183,15 +187,18 @@ namespace haopintui.util
                     //     object value = dr["ColumnsName"];
 
                     //     LogUtil.log_call(cmsForm,"value"+ value.ToString());
-                    //}     
+                    //}  
+                     if(logined==false){
+                         AlimamaLogin.login(cmsForm, 1);
+                     }
 
                 }
                 catch (Exception exception)
                 {
-                    LogUtil.log_call(cmsForm, "[DataTable]出错！" + exception.ToString());
+                    LogUtil.log_call(cmsForm, "[--------DataTable]出错！" + exception.ToString());
                 }
 
-                File.Delete(str1);
+               File.Delete(str1);
             }
             catch (Exception)
             {
@@ -244,9 +251,10 @@ namespace haopintui.util
             return flag;
         }
 
-        public static ArrayList query_order_list(CmsForm cmsForm,string string_0, out string out_log)
+        public static ArrayList query_order_list(CmsForm cmsForm,string string_0, out string out_log,int type,out bool logined)
         {
             out_log = "";
+            logined = true;
             ArrayList arrayLists = new ArrayList();
             HSSFWorkbook hSSFWorkbook = null;
             try
@@ -287,17 +295,33 @@ namespace haopintui.util
                                 aliOrderBean.settlement_date = ExeclUtil.read_cell(row.GetCell(16));
                                 aliOrderBean.product_rate = ExeclUtil.read_cell(row.GetCell(17));
                                 aliOrderBean.product_money = ExeclUtil.read_cell(row.GetCell(18));
-                                aliOrderBean.benefit_rate = ExeclUtil.read_cell(row.GetCell(19));
-                                aliOrderBean.benefit_money = ExeclUtil.read_cell(row.GetCell(20));
-                                aliOrderBean.benefit_type = ExeclUtil.read_cell(row.GetCell(21));
-                                aliOrderBean.order_platform = ExeclUtil.read_cell(row.GetCell(22));
-                                aliOrderBean.third_party_service = ExeclUtil.read_cell(row.GetCell(23));
-                                aliOrderBean.order_no = ExeclUtil.read_cell(row.GetCell(24));
-                                aliOrderBean.cate_name = ExeclUtil.read_cell(row.GetCell(25));
-                                aliOrderBean.site_id = ExeclUtil.read_cell(row.GetCell(26));
-                                aliOrderBean.site_name = ExeclUtil.read_cell(row.GetCell(27));
-                                aliOrderBean.zone_id = ExeclUtil.read_cell(row.GetCell(28));
-                                aliOrderBean.zone_name = ExeclUtil.read_cell(row.GetCell(29));
+
+                                if(type==1){
+                                    aliOrderBean.benefit_rate = ExeclUtil.read_cell(row.GetCell(20));
+                                    aliOrderBean.benefit_money = ExeclUtil.read_cell(row.GetCell(21));
+                                    aliOrderBean.benefit_type = ExeclUtil.read_cell(row.GetCell(22));
+                                    aliOrderBean.order_platform = ExeclUtil.read_cell(row.GetCell(23));
+                                    aliOrderBean.third_party_service = ExeclUtil.read_cell(row.GetCell(24));
+                                    aliOrderBean.order_no = ExeclUtil.read_cell(row.GetCell(25));
+                                    aliOrderBean.cate_name = ExeclUtil.read_cell(row.GetCell(26));
+                                    aliOrderBean.site_id = ExeclUtil.read_cell(row.GetCell(27));
+                                    aliOrderBean.site_name = ExeclUtil.read_cell(row.GetCell(28));
+                                    aliOrderBean.zone_id = ExeclUtil.read_cell(row.GetCell(29));
+                                    aliOrderBean.zone_name = ExeclUtil.read_cell(row.GetCell(30));
+                                }else{
+                                
+                                    aliOrderBean.benefit_rate = ExeclUtil.read_cell(row.GetCell(19));
+                                    aliOrderBean.benefit_money = ExeclUtil.read_cell(row.GetCell(20));
+                                    aliOrderBean.benefit_type = ExeclUtil.read_cell(row.GetCell(21));
+                                    aliOrderBean.order_platform = ExeclUtil.read_cell(row.GetCell(22));
+                                    aliOrderBean.third_party_service = ExeclUtil.read_cell(row.GetCell(23));
+                                    aliOrderBean.order_no = ExeclUtil.read_cell(row.GetCell(24));
+                                    aliOrderBean.cate_name = ExeclUtil.read_cell(row.GetCell(25));
+                                    aliOrderBean.site_id = ExeclUtil.read_cell(row.GetCell(26));
+                                    aliOrderBean.site_name = ExeclUtil.read_cell(row.GetCell(27));
+                                    aliOrderBean.zone_id = ExeclUtil.read_cell(row.GetCell(28));
+                                    aliOrderBean.zone_name = ExeclUtil.read_cell(row.GetCell(29));
+                                }
 
                                 //LastCellNum 是当前行的总列数
                                 //for (int j = 0; j < row.LastCellNum; j++)
@@ -317,6 +341,7 @@ namespace haopintui.util
                 }
                 catch (Exception exception)
                 {
+                    logined = false;
                     LogUtil.log_call(cmsForm, "exception" + exception.ToString());
                 }
             }
