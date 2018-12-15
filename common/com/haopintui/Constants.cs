@@ -8,12 +8,30 @@ namespace com.haopintui
     {
         public static string api_url = "ok.haopintui.net";
         public static string software_url = "http://software.huopinjie.com";
+<<<<<<< HEAD
         public static string domain_url = "www.haopintui.net";
+        public static string put_tools_url = "http://put.tools.youdanhui.com";
+=======
+        public static string domain_url = "www.haopintui.com";
+        public static string user_plug_url = "user.plug.huopinjie.com";
+        public static string user_data_plug_url = "user-data.plug.huopinjie.com";
+
+        public static string user_kouling_plug_url = "user-kouling.plug.huopinjie.com";
+
+        public static string top_data_plug_url = "top.data.haopintui.net";
+        public static string user_cms_data_url = "user-cms.plug.huopinjie.com";
+>>>>>>> c4e00a19033c7dd0168a20f2f78b11e8d25713c0
+
         public static string put_tools_url = "http://put.tools.youdanhui.com";
 
         public static string product_code = "zhushou";
+<<<<<<< HEAD
         public static int version = 191; //版本 更新判断
         public static string version_str = "2.0"; //显示的版本编号
+=======
+        public static int version = 181; //版本 更新判断
+        public static string version_str = "1.0"; //显示的版本编号
+>>>>>>> c4e00a19033c7dd0168a20f2f78b11e8d25713c0
 
         public static string main_exe = "助手.exe";
         public static string auto_update_exe = "AutoUpdate.exe";
@@ -40,6 +58,7 @@ namespace com.haopintui
         public static int FORM_MSG_TYPE_LOGINED = 1;
         public static int FORM_MSG_TYPE_NOTOPEN = 2;
 
+<<<<<<< HEAD
         //public static string cms_url = "http://" + api_url + "/user_cms.php";
         //public static string user_taoke_url = "http://" + api_url + "/item.php";
         //public static string user_taoke_url_user = "http://" + api_url + "/item_user.php";
@@ -47,6 +66,17 @@ namespace com.haopintui
         //public static string user_goods_url = "http://" + api_url + "/goods.php";
         //public static string cms_tongji_url = "http://" + api_url + "/tongji.php";
         //public static string cms_tongzhi_url = "http://" + api_url + "/tongzhi.php";
+=======
+        public static string cms_url = "http://" + api_url + "/user_cms.php";
+        public static string user_taoke_url = "http://" + user_plug_url + "/item.php";
+        public static string user_taoke_url_user = "http://" + user_plug_url + "/item_user.php";
+        public static string user_taoke_create_url = "http://" + user_plug_url + "/taoke_item.php";
+        public static string user_goods_url = "http://" + user_plug_url + "/goods.php";
+        public static string cms_tongji_url = "http://" + user_plug_url + "/tongji.php";
+        public static string cms_tongzhi_url = "http://" + user_plug_url + "/tongzhi.php";
+
+        public static string user_taoke_create_url_plan = "http://" + user_plug_url + "/taoke_item_plan.php";
+>>>>>>> c4e00a19033c7dd0168a20f2f78b11e8d25713c0
 
         //public static string user_taoke_create_url_plan = "http://" + api_url + "/taoke_item_plan.php";
 
@@ -60,7 +90,12 @@ namespace com.haopintui
         //public static string user_qunfa_top_url = "http://" + api_url + "/user.php";
 
         public static string sms_url = "http://" + api_url + "/sms.php";
+<<<<<<< HEAD
         public static string kouling_url = "http://" + api_url + "/kouling.php";
+=======
+
+        public static string kouling_url = "http://" + user_kouling_plug_url + "/kouling.php";
+>>>>>>> c4e00a19033c7dd0168a20f2f78b11e8d25713c0
 
         public static string config_ini = "/config/config.ini";
         public static string config_qq_template_ini = "/config/qq_template.txt";

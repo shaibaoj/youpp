@@ -144,12 +144,18 @@ namespace haopintui.util
                 }
                 if (queryType == 2)
                 {
+<<<<<<< HEAD
                     type = 0;
+=======
+>>>>>>> c4e00a19033c7dd0168a20f2f78b11e8d25713c0
                     str2 = "http://pub.alimama.com/report/getTbkThirdPaymentDetails.json?queryType=2&payStatus=&DownloadID=DOWNLOAD_REPORT_TK3_PUB&startTime={startTime}&endTime={endTime}";
                 }
                 if (queryType == 3)
                 {
+<<<<<<< HEAD
                     type = 0;
+=======
+>>>>>>> c4e00a19033c7dd0168a20f2f78b11e8d25713c0
                     str2 = "http://pub.alimama.com/report/getTbkThirdPaymentDetails.json?queryType=4&payStatus=3&DownloadID=DOWNLOAD_REPORT_TK3_PUB&startTime={startTime}&endTime={endTime}";
                 }
 

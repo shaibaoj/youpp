@@ -10,6 +10,7 @@ E:\haopintui\zhuzhou\Release\好品推助手.exe.config
 E:\haopintui\zhuzhou\Release\好品推助手.exe
 E:\haopintui\zhuzhou\main\obj\x86\Debug\main.csprojResolveAssemblyReference.cache
 E:\haopintui\zhuzhou\main\obj\x86\Debug\好品推助手.exe
+<<<<<<< HEAD
 D:\www\助手\Release\助手.exe.config
 D:\www\助手\Release\助手.exe
 D:\www\助手\main\obj\x86\Debug\main.csprojResolveAssemblyReference.cache
@@ -22,3 +23,5 @@ D:\www\助手\main\obj\x86\Debug\haopintui.ShowQqForm.resources
 D:\www\助手\main\obj\x86\Debug\haopintui.ShowWeixinForm.resources
 D:\www\助手\main\obj\x86\Debug\main.csproj.GenerateResource.Cache
 D:\www\助手\main\obj\x86\Debug\助手.exe
+=======
+>>>>>>> c4e00a19033c7dd0168a20f2f78b11e8d25713c0

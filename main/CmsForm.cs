@@ -756,11 +756,32 @@ namespace haopintui
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+<<<<<<< HEAD
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CmsForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon_task.Icon")));
 
+=======
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CmsForm));
+            this.richTextBoxLogs = new System.Windows.Forms.RichTextBox();
+            this.layout_menu = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label_setting = new System.Windows.Forms.Label();
+            this.label_tools = new System.Windows.Forms.Label();
+            this.label_qunfa = new System.Windows.Forms.Label();
+            this.label_cms = new System.Windows.Forms.Label();
+            this.panelTop = new System.Windows.Forms.Panel();
+            this.button47 = new System.Windows.Forms.Button();
+            this.button_bind = new System.Windows.Forms.Button();
+            this.label_user_type_name = new System.Windows.Forms.Label();
+            this.label_welcome = new System.Windows.Forms.Label();
+            this.label_banben = new System.Windows.Forms.Label();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.webBrowserQuanAlimama = new System.Windows.Forms.WebBrowser();
+>>>>>>> c4e00a19033c7dd0168a20f2f78b11e8d25713c0
             this.contextMenuStripCouponPage = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStripFwSnd = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStripCtEdit = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -1132,6 +1153,7 @@ namespace haopintui
             this.textBoxAlimamaPwd = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxAlimamaAcc = new System.Windows.Forms.TextBox();
+<<<<<<< HEAD
             this.layout_menu = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label_setting = new System.Windows.Forms.Label();
@@ -1148,6 +1170,17 @@ namespace haopintui
             this.label1 = new System.Windows.Forms.Label();
             this.tool_name = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarAlimama)).BeginInit();
+=======
+            this.notifyIcon_task = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStripTask = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer_kouling = new System.Windows.Forms.Timer(this.components);
+            this.timer_caiji = new System.Windows.Forms.Timer(this.components);
+            this.layout_menu.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panelTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+>>>>>>> c4e00a19033c7dd0168a20f2f78b11e8d25713c0
             this.panel_content.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -1253,8 +1286,174 @@ namespace haopintui
             // 
             // contextMenuStrip_pid_qq
             // 
+<<<<<<< HEAD
             this.contextMenuStrip_pid_qq.Name = "contextMenuStrip_pid_qq";
             this.contextMenuStrip_pid_qq.Size = new System.Drawing.Size(61, 4);
+=======
+            this.label_tools.Image = global::haopintui.Properties.Resources.tools;
+            this.label_tools.Location = new System.Drawing.Point(3, 168);
+            this.label_tools.Name = "label_tools";
+            this.label_tools.Size = new System.Drawing.Size(91, 80);
+            this.label_tools.TabIndex = 0;
+            this.label_tools.Text = "实用工具";
+            this.label_tools.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label_tools.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // label_qunfa
+            // 
+            this.label_qunfa.Image = global::haopintui.Properties.Resources.qunfa;
+            this.label_qunfa.Location = new System.Drawing.Point(2, 86);
+            this.label_qunfa.Name = "label_qunfa";
+            this.label_qunfa.Size = new System.Drawing.Size(91, 80);
+            this.label_qunfa.TabIndex = 0;
+            this.label_qunfa.Text = "群发功能";
+            this.label_qunfa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label_qunfa.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // label_cms
+            // 
+            this.label_cms.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label_cms.Image = global::haopintui.Properties.Resources.cms1;
+            this.label_cms.Location = new System.Drawing.Point(2, 3);
+            this.label_cms.Name = "label_cms";
+            this.label_cms.Size = new System.Drawing.Size(91, 80);
+            this.label_cms.TabIndex = 0;
+            this.label_cms.Text = "CMS转链";
+            this.label_cms.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label_cms.Click += new System.EventHandler(this.label8_Click);
+            // 
+            // panelTop
+            // 
+            this.panelTop.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.panelTop.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panelTop.Controls.Add(this.button47);
+            this.panelTop.Controls.Add(this.button_bind);
+            this.panelTop.Controls.Add(this.label_user_type_name);
+            this.panelTop.Controls.Add(this.label_welcome);
+            this.panelTop.Controls.Add(this.label_banben);
+            this.panelTop.Controls.Add(this.linkLabel2);
+            this.panelTop.Controls.Add(this.linkLabel1);
+            this.panelTop.Controls.Add(this.webBrowserQuanAlimama);
+            this.panelTop.Controls.Add(this.pictureBox1);
+            this.panelTop.Controls.Add(this.label_version);
+            this.panelTop.Controls.Add(this.label1);
+            this.panelTop.Controls.Add(this.tool_name);
+            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTop.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.panelTop.Location = new System.Drawing.Point(0, 0);
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Size = new System.Drawing.Size(980, 60);
+            this.panelTop.TabIndex = 1;
+            this.panelTop.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panelTop.DoubleClick += new System.EventHandler(this.on_panel_doubleclick);
+            this.panelTop.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseDoubleClick);
+            this.panelTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plan_OnMouseDown);
+            this.panelTop.MouseEnter += new System.EventHandler(this.panelTop_MouseEnter);
+            this.panelTop.MouseLeave += new System.EventHandler(this.panelTop_MouseLeave);
+            this.panelTop.MouseHover += new System.EventHandler(this.panelTop_MouseHover);
+            this.panelTop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseMove);
+            this.panelTop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseUp);
+            // 
+            // button47
+            // 
+            this.button47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button47.ForeColor = System.Drawing.Color.Red;
+            this.button47.Location = new System.Drawing.Point(326, 5);
+            this.button47.Name = "button47";
+            this.button47.Size = new System.Drawing.Size(75, 23);
+            this.button47.TabIndex = 9;
+            this.button47.Text = "高佣授权";
+            this.button47.UseVisualStyleBackColor = false;
+            this.button47.Click += new System.EventHandler(this.button47_Click);
+            // 
+            // button_bind
+            // 
+            this.button_bind.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button_bind.Location = new System.Drawing.Point(251, 5);
+            this.button_bind.Name = "button_bind";
+            this.button_bind.Size = new System.Drawing.Size(75, 23);
+            this.button_bind.TabIndex = 8;
+            this.button_bind.Text = "账号认证";
+            this.button_bind.UseVisualStyleBackColor = true;
+            this.button_bind.Click += new System.EventHandler(this.button2_Click_3);
+            // 
+            // label_user_type_name
+            // 
+            this.label_user_type_name.AutoSize = true;
+            this.label_user_type_name.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_user_type_name.ForeColor = System.Drawing.Color.White;
+            this.label_user_type_name.Location = new System.Drawing.Point(515, 30);
+            this.label_user_type_name.Name = "label_user_type_name";
+            this.label_user_type_name.Size = new System.Drawing.Size(68, 17);
+            this.label_user_type_name.TabIndex = 7;
+            this.label_user_type_name.Text = "用户类型：";
+            // 
+            // label_welcome
+            // 
+            this.label_welcome.AutoSize = true;
+            this.label_welcome.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_welcome.ForeColor = System.Drawing.Color.White;
+            this.label_welcome.Location = new System.Drawing.Point(515, 5);
+            this.label_welcome.Name = "label_welcome";
+            this.label_welcome.Size = new System.Drawing.Size(44, 17);
+            this.label_welcome.TabIndex = 7;
+            this.label_welcome.Text = "欢迎：";
+            // 
+            // label_banben
+            // 
+            this.label_banben.AutoSize = true;
+            this.label_banben.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_banben.ForeColor = System.Drawing.Color.White;
+            this.label_banben.Location = new System.Drawing.Point(398, 30);
+            this.label_banben.Name = "label_banben";
+            this.label_banben.Size = new System.Drawing.Size(56, 17);
+            this.label_banben.TabIndex = 6;
+            this.label_banben.Text = "版本号：";
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.linkLabel2.LinkColor = System.Drawing.Color.White;
+            this.linkLabel2.Location = new System.Drawing.Point(397, 5);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(60, 17);
+            this.linkLabel2.TabIndex = 5;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = " 使用教程";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.linkLabel1.LinkColor = System.Drawing.Color.White;
+            this.linkLabel1.Location = new System.Drawing.Point(754, 5);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(32, 17);
+            this.linkLabel1.TabIndex = 5;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "官网";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked_1);
+            // 
+            // webBrowserQuanAlimama
+            // 
+            this.webBrowserQuanAlimama.ContextMenuStrip = this.contextMenuStripCouponPage;
+            this.webBrowserQuanAlimama.IsWebBrowserContextMenuEnabled = false;
+            this.webBrowserQuanAlimama.Location = new System.Drawing.Point(554, 5);
+            this.webBrowserQuanAlimama.MinimumSize = new System.Drawing.Size(1, 1);
+            this.webBrowserQuanAlimama.Name = "webBrowserQuanAlimama";
+            this.webBrowserQuanAlimama.ScriptErrorsSuppressed = true;
+            this.webBrowserQuanAlimama.Size = new System.Drawing.Size(1, 1);
+            this.webBrowserQuanAlimama.TabIndex = 4;
+            this.webBrowserQuanAlimama.Url = new System.Uri("http://uland.taobao.com/coupon/edetail?activityId=fb9bf43aeda246aa8be2b61d4e619d8" +
+        "c&pid=mm_110019639_17876093_65366558&itemId=45189982853&src=qhkj_dtkp&dx=", System.UriKind.Absolute);
+            // 
+            // contextMenuStripCouponPage
+            // 
+            this.contextMenuStripCouponPage.Name = "contextMenuStripCouponPage";
+            this.contextMenuStripCouponPage.Size = new System.Drawing.Size(61, 4);
+>>>>>>> c4e00a19033c7dd0168a20f2f78b11e8d25713c0
             // 
             // contextMenuStrip_pid_weixin
             // 
@@ -5184,7 +5383,11 @@ namespace haopintui
             this.radioButtonsetting_app_haopintui.Size = new System.Drawing.Size(79, 23);
             this.radioButtonsetting_app_haopintui.TabIndex = 4;
             this.radioButtonsetting_app_haopintui.TabStop = true;
+<<<<<<< HEAD
             this.radioButtonsetting_app_haopintui.Text = "官方接口";
+=======
+            this.radioButtonsetting_app_haopintui.Text = "好品推接口";
+>>>>>>> c4e00a19033c7dd0168a20f2f78b11e8d25713c0
             this.radioButtonsetting_app_haopintui.UseVisualStyleBackColor = true;
             // 
             // radioButtonsetting_app_ben
@@ -5414,6 +5617,7 @@ namespace haopintui
             this.richTextBoxLogs.TabIndex = 0;
             this.richTextBoxLogs.Text = "";
             // 
+<<<<<<< HEAD
             // panelTop
             // 
             this.panelTop.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
@@ -5533,6 +5737,8 @@ namespace haopintui
             this.tool_name.Text = "助手管理工具";
             this.tool_name.Click += new System.EventHandler(this.label1_Click);
             // 
+=======
+>>>>>>> c4e00a19033c7dd0168a20f2f78b11e8d25713c0
             // CmsForm
             // 
             this.BackColor = System.Drawing.Color.DodgerBlue;
